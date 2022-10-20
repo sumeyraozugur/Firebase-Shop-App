@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">Shop</string>
+
+
+    <string name="content_description">image</string>
+    <string name="sum_shop">Sum Shop</string>
+    <string name="email_id">Email ID</string>
+    <string name="password">Password</string>
+    <string name="btn_login">Login</string>
+    <string name="forgot_password"><u>Forgot Password</u></string>
+    <string name="or">~ OR ~</string>
+    <string name="register"><u>Register</u></string>
+    <string name="invalid_mail">Invalid e-mail address</string>
+    <string name="wrong_email_password">Wrong E-mail or Password, Try Again !</string>
+    <string name="password_match_error">Passwords do not match</string>
+    <string name="sign_up_snack_text">Registration successfully created</string>
+    <string name="registered_mail">E-mail address already registered!</string>
+
+
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="i_agree_to_the_terms_and_condition">I Agree To The <u> Terms &amp; Condition </u></string> <!--html entity names -->
+    <string name="btn_register">Register</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="incomplete_information_entered">Incomplete information entered!</string>
+    <string name="login"><u>Login</u></string>
+
+
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your username and e-mail address we\'ll send you a email to reset your password</string>
+    <string name="btn_submit">Submit</string>
+
+    <string name="invalid_password">Must be 6 digit</string>
+    <string name="required_field">Required Field</string>
+    <string name="required_name">Please enter first name</string>
+    <string name="required_lastname">Please enter last name</string>
+    <string name="required_email">Please enter a valid email address(aa@gmail.com)</string>
+    <string name="required_password">Please enter 4 digit password</string>
+    <string name="accept_condition">Please accept terms and condition</string>
+    <string name="password_match">Password not matches</string>
+    <string name="success">Success:)</string>
+    <string name="fail">Fail:(</string>
+    <string name="email_sent">Email sent</string>
+    <string name="please_wait">please wait</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_update">Update</string>
+
+
+</resources>

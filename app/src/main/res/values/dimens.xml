@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--START-->
+    <dimen name="image_width">250dp</dimen>
+    <dimen name="image_height">200dp</dimen>
+    <dimen name="image_margin">110dp</dimen>
+    <dimen name="image_margin_top">56dp</dimen>
+    <dimen name="title_margin">130dp</dimen>
+    <dimen name="title_textSize">28sp</dimen>
+    <dimen name="til_margin">16dp</dimen>
+    <dimen name="first_til_margin_top">34dp</dimen>
+    <dimen name="et_padding">16dp</dimen>
+    <dimen name="et_textSize">16sp</dimen>
+    <dimen name="tv_forgot_password_margin_start">30dp</dimen>
+    <dimen name="tv_medium_text_size">16sp</dimen>
+
+    <dimen name="scrollview_margin_top">20dp</dimen>
+    <dimen name="tv_login_margin_end">30dp</dimen>
+    <dimen name="til_margin_top">36dp</dimen>
+    <dimen name="margin_in_order_top">20dp</dimen>
+    <dimen name="ll_margin_top">25dp</dimen>
+    <dimen name="txt_terms_condition_marginStart">10dp</dimen>
+    <dimen name="txt_terms_and_condition_textSize">14sp</dimen>
+    <dimen name="btn_margin">16dp</dimen>
+    <dimen name="btn_margin_top">30dp</dimen>
+    <dimen name="btn_padding">8dp</dimen>
+    <dimen name="btn_textSize">18sp</dimen>
+    <dimen name="clickable_text_view_padding">5dp</dimen>
+    <dimen name="title_forgot_margin_top">160dp</dimen>
+    <dimen name="forgot_password_title_textSize">18sp</dimen>
+    <dimen name="tv_explanation_margin">50dp</dimen>
+    <dimen name="tv_explanation_margin_top">8dp</dimen>
+    <dimen name="forgot_password_title_description_textSize">14sp</dimen>
+
+    <dimen name="button_background_radius">10dp</dimen>
+    <dimen name="tv_login_margin_start">5dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_dialog_content_padding">10dp</dimen>
+    <dimen name="progress_text_marginStart">16dp</dimen>
+    <dimen name="progress_text_size">16sp</dimen>
+    <dimen name="user_image_background_stroke">4dp</dimen>
+    <dimen name="user_image_background_corner_radius">10dp</dimen>
+    <dimen name="profile_name_marginTop">30dp</dimen>
+    <dimen name="profile_name_textSize">22sp</dimen>
+    <dimen name="profile_info_marginTop">4dp</dimen>
+    <dimen name="profile_info_textSize">18sp</dimen>
+    <dimen name="grey_border_stroke_size">1dp</dimen>
+    <dimen name="grey_border_radius">2dp</dimen>
+    <dimen name="profile_edit_label_textSize">14sp</dimen>
+    <dimen name="update_profile_image_width">207dp</dimen>
+    <dimen name="update_profile_image_height">196dp</dimen>
+    <dimen name="update_profile_image_border_width">216dp</dimen>
+    <dimen name="update_prıfofile_image_border_height">193dp</dimen>
+    <dimen name="update_image_marginTop">50dp</dimen>
+    <dimen name="update_til_image_marginTop">12dp</dimen>
+    <dimen name="profile_image_width">262dp</dimen>
+    <dimen name="profile_immage_height">226dp</dimen>
+    <dimen name="profile_image_marginTop">44dp</dimen>
+    <dimen name="profile_image_border_width">254dp</dimen>
+    <dimen name="profile_image_border_height">224dp</dimen>
+    <dimen name="edit_marginTop">8dp</dimen>
+    <dimen name="profile_tv_marginTop">64dp</dimen>
+    <dimen name="tv_marginTop">20dp</dimen>
+    <dimen name="btn_marginTop2">52dp</dimen>
+
+
+</resources>
