@@ -23,7 +23,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.tvEdit.setOnClickListener {
             Navigation.sent(it, R.id.action_profileFragment_to_updateProfileFragment)
-
         }
 
         binding.btnLogout.setOnClickListener {

@@ -20,6 +20,7 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeChangePassword()
 
 
         with(binding) {
@@ -28,7 +29,7 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
                 if (emailResult) {
                     val email = etEmail.text.toString()
                     viewModel.changePassword(email)
-                    observeChangePassword()
+
                 }
             }
         }

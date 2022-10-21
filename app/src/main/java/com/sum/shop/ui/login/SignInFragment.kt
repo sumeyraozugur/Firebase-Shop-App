@@ -24,7 +24,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.checkCurrentUser()
-        observeIsCurrentUser()
+        initObservers()
+
 
         with(binding) {
             tvRegister.setOnClickListener {
@@ -45,14 +46,13 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     val password = etPassword.text.toString()
 
                     viewModel.signIn(email, password)
-                    observeIsSignIn()
                 }
             }
         }
     }
 
 
-    private fun observeIsSignIn() {
+    private fun initObservers() {
         viewModel.isSignIn.observe(viewLifecycleOwner, Observer {
             if (it) {
                 //context?.showToast("Success")
@@ -62,15 +62,15 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                 showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
             }
         })
-    }
 
-    private fun observeIsCurrentUser() {
         viewModel.isCurrentUser.observe(viewLifecycleOwner, Observer {
             if (it) {
                 findNavController().navigate(R.id.action_loginFragment_to_main_graph)
             }
         })
     }
+
+
 
 
 }
