@@ -29,7 +29,7 @@
 
 
     <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tv_edit"
+        android:id="@+id/tvEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
     <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tvProfileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -59,7 +59,7 @@
         android:text="Sümeyra Özuğur" />
 
     <com.sum.shop.utils.NormalTextView
-        android:id="@+id/tv_email"
+        android:id="@+id/tvProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
         android:text="ozugursumeyra@gmail.com" />
 
     <com.sum.shop.utils.Button
@@ -80,7 +80,7 @@
         android:text="@string/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

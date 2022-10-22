@@ -48,6 +48,7 @@
     <string name="edit">Edit</string>
     <string name="btn_logout">Logout</string>
     <string name="btn_update">Update</string>
+    <string name="see_all"><u>See All</u></string>
 
 
 </resources>
