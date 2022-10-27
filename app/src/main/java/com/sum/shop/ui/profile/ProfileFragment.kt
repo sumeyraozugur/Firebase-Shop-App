@@ -31,7 +31,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             startActivity(intent)
             activity?.finish()
 
-
         }
+     with(binding){
+         viewModel.profileInfo.observe(viewLifecycleOwner) {
+             tvProfileName.text = "${it.firstName} ${it.lastName}"
+             tvProfileEmail.text = it.email
+
+         }
+     }
+
+
     }
 }

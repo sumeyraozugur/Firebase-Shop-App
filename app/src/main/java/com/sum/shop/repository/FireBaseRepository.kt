@@ -1,5 +1,6 @@
 package com.sum.shop.repository
 
+import android.content.ContentValues
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
@@ -12,6 +13,7 @@ import com.sum.shop.Constant.ID
 import com.sum.shop.Constant.LAST_NAME
 import com.sum.shop.Constant.SIGN_UP
 import com.sum.shop.Constant.SUCCESS
+import com.sum.shop.model.ProfileModel
 
 class FireBaseRepository {
 
@@ -19,6 +21,8 @@ class FireBaseRepository {
     var isSignIn = MutableLiveData<Boolean>()
     var isChangePassword = MutableLiveData<Boolean>()
     var isCurrentUser = MutableLiveData<Boolean>()
+    var profileInfo = MutableLiveData<ProfileModel>()
+    var updateInfo = MutableLiveData<ProfileModel>()
 
 
     private var auth = Firebase.auth
@@ -89,6 +93,39 @@ class FireBaseRepository {
             isCurrentUser.value = true
         }
     }
+
+    //Profile
+    fun getProfileInfo() {
+        auth.currentUser?.let { user ->
+
+            val docRef = fireStore.collection("users").document(user.uid)
+            docRef.get()
+                .addOnSuccessListener { document ->
+                    document?.let {
+                        profileInfo.value = ProfileModel(
+                            document.get("firstname") as String,
+                            document.get("lastname") as String,
+                            user.email,
+                        )
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(ContentValues.TAG, "get failed with ", exception)
+                }
+        }
+    }
+
+    //update Profile
+    fun updateProfile(firstName: String, lastName: String, email: String) {
+        auth.currentUser?.let {
+            fireStore.collection("users").document(it.uid)
+                .update(
+                    "firstname", firstName,
+                    "lastname", lastName,
+                    "email", email)
+        }
+    }
+
 
     //Signout
     fun signOut() {

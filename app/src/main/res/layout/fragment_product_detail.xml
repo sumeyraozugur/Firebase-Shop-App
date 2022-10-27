@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.productdetail.ProductDetailFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.cardview.widget.CardView
+
+                android:id="@+id/cardViewİmageDetail"
+                android:layout_width="250dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:elevation="10dp"
+                app:cardCornerRadius="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageViewDetail"
+                    android:layout_width="200dp"
+                    android:layout_height="240dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/add_to_cart"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.cardview.widget.CardView>
+
+            <com.sum.shop.utils.BoldTextView
+                android:id="@+id/textViewDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:text="Product Title"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewİmageDetail" />
+
+            <com.sum.shop.utils.NormalTextView
+                android:id="@+id/textViewDetailInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text=" Product Explainn Product Explainn"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDetailName" />
+
+            <com.sum.shop.utils.BoldTextView
+                android:id="@+id/textViewDetailPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text='12TL'
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonAddToBasket"
+                app:layout_constraintEnd_toStartOf="@+id/buttonAddToBasket"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/buttonAddToBasket" />
+
+            <com.sum.shop.utils.Button
+                android:id="@+id/buttonAddToBasket"
+                style="@style/ButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="128dp"
+                android:layout_marginEnd="64dp"
+                android:text="Add to Basket"
+                android:background="@drawable/app_gradient_color_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDetailInfo">
+
+            </com.sum.shop.utils.Button>
+
+            <CheckBox
+                android:id="@+id/btnDetailAddFav"
+                android:layout_width="34dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="20dp"
+                android:button="@drawable/whistlist_item"
+                app:layout_constraintBottom_toTopOf="@+id/textViewDetailName"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewİmageDetail"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewİmageDetail" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
