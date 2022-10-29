@@ -13,24 +13,15 @@ class ProfileViewModel:ViewModel() {
     val profileInfo: LiveData<ProfileModel>
         get() = _profileInfo
 
-    private var _updateInfo = MutableLiveData<ProfileModel>()
-    val updateInfo: LiveData<ProfileModel>
-        get() = _updateInfo
+
 
     init {
         getProfileInfo()
-
     }
 
     fun getProfileInfo(){
         firebaseRepo.getProfileInfo()
         _profileInfo = firebaseRepo.profileInfo
-    }
-
-    fun updateProfile(firstName: String, lastName: String, email: String){
-        firebaseRepo.updateProfile(firstName,lastName,email)
-        _updateInfo= firebaseRepo.updateInfo
-
     }
 
     fun signOut(){

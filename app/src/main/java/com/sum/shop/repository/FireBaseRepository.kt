@@ -22,7 +22,8 @@ class FireBaseRepository {
     var isChangePassword = MutableLiveData<Boolean>()
     var isCurrentUser = MutableLiveData<Boolean>()
     var profileInfo = MutableLiveData<ProfileModel>()
-    var updateInfo = MutableLiveData<ProfileModel>()
+    var updateInfo = MutableLiveData<Boolean>()
+
 
 
     private var auth = Firebase.auth
@@ -122,7 +123,13 @@ class FireBaseRepository {
                 .update(
                     "firstname", firstName,
                     "lastname", lastName,
-                    "email", email)
+                    "email", email).addOnSuccessListener {
+                        updateInfo.value = true
+
+                }.addOnFailureListener {
+                    updateInfo.value = false
+
+                }
         }
     }
 

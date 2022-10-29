@@ -106,7 +106,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.sum.shop.utils.Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

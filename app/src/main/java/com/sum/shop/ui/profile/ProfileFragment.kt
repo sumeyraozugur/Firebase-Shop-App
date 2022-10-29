@@ -15,6 +15,7 @@ import com.sum.shop.utils.sent
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
+
     private val binding by viewBinding(FragmentProfileBinding::bind)
     private val viewModel by lazy{ProfileViewModel()}
 
@@ -30,13 +31,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val intent= Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
             activity?.finish()
-
         }
+
      with(binding){
          viewModel.profileInfo.observe(viewLifecycleOwner) {
              tvProfileName.text = "${it.firstName} ${it.lastName}"
              tvProfileEmail.text = it.email
-
          }
      }
 
