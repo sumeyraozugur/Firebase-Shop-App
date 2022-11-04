@@ -63,6 +63,10 @@
     <dimen name="profile_tv_marginTop">64dp</dimen>
     <dimen name="tv_marginTop">20dp</dimen>
     <dimen name="btn_marginTop2">52dp</dimen>
+    <dimen name="add_edit_address_radio_button_height">40dp</dimen>
+    <dimen name="gender_radio_button_radius">5dp</dimen>
+    <dimen name="gender_radio_button_stroke_width">1dp</dimen>
+    <dimen name="add_edit_address_radio_button_marginStartEnd">5dp</dimen>
 
 
 </resources>

@@ -32,8 +32,9 @@
                 <ImageView
                     android:id="@+id/ivProductImage"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="350dp"
                     android:background="@color/color_image_view_background"
+                    android:scaleType="fitXY"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -151,13 +152,66 @@
                     android:textSize="@dimen/et_textSize" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <RadioGroup
+                android:id="@+id/rgType"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/add_edit_address_radio_button_height"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tilProductQuantity">
+
+                <com.sum.shop.utils.RadioButton
+                    android:id="@+id/rbWoman"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_edit_address_radio_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_gender_tab_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="Woman"
+                    android:textColor="@drawable/drawable_gender_tab_text_color_selector"
+                    android:textStyle="bold" />
+
+                <com.sum.shop.utils.RadioButton
+                    android:id="@+id/rbMan"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_edit_address_radio_button_height"
+                    android:layout_marginStart="@dimen/add_edit_address_radio_button_marginStartEnd"
+                    android:layout_marginEnd="@dimen/add_edit_address_radio_button_marginStartEnd"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_gender_tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Man"
+                    android:textColor="@drawable/drawable_gender_tab_text_color_selector"
+                    android:textStyle="bold" />
+
+                <com.sum.shop.utils.RadioButton
+                    android:id="@+id/rbAccessory"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/add_edit_address_radio_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_gender_tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="Accessory"
+                    android:textColor="@drawable/drawable_gender_tab_text_color_selector"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+
             <com.sum.shop.utils.Button
                 android:id="@+id/btnAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="26dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/app_gradient_color_background"
@@ -171,7 +225,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilProductQuantity" />
+                app:layout_constraintTop_toBottomOf="@+id/rgType" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

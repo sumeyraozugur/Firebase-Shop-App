@@ -1,18 +1,26 @@
 package com.sum.shop.repository
 
 import android.content.ContentValues
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.sum.shop.Constant.COLLECTION_PATH
+import com.google.firebase.storage.ktx.storage
 import com.sum.shop.Constant.E_MAIL
 import com.sum.shop.Constant.FIRST_NAME
 import com.sum.shop.Constant.ID
 import com.sum.shop.Constant.LAST_NAME
+import com.sum.shop.Constant.PRODUCTS_PATH
+import com.sum.shop.Constant.PRODUCT_DESCRIPTION
+import com.sum.shop.Constant.PRODUCT_IMAGE
+import com.sum.shop.Constant.PRODUCT_PRICE
+import com.sum.shop.Constant.PRODUCT_QUANTILES
+import com.sum.shop.Constant.PRODUCT_TITLE
 import com.sum.shop.Constant.SIGN_UP
 import com.sum.shop.Constant.SUCCESS
+import com.sum.shop.Constant.USERS_PATH
 import com.sum.shop.model.ProfileModel
 
 class FireBaseRepository {
@@ -23,11 +31,13 @@ class FireBaseRepository {
     var isCurrentUser = MutableLiveData<Boolean>()
     var profileInfo = MutableLiveData<ProfileModel>()
     var updateInfo = MutableLiveData<Boolean>()
+    var isLoadProduct = MutableLiveData<Boolean>()
 
-
+    //val selectedPicture : Uri ?=null
 
     private var auth = Firebase.auth
-    private var fireStore = Firebase.firestore
+    private var firebaseFirestore = Firebase.firestore
+    private val firebaseStorage by lazy { Firebase.storage.reference }
 
 
     //Register
@@ -48,7 +58,7 @@ class FireBaseRepository {
                         FIRST_NAME to firstName,
                         LAST_NAME to lastName
                     )
-                    fireStore.collection(COLLECTION_PATH).document(firebaseUser.uid)
+                    firebaseFirestore.collection(USERS_PATH).document(firebaseUser.uid)
                         .set(user)
                         .addOnSuccessListener {
                             isSignUp.value = true
@@ -99,7 +109,7 @@ class FireBaseRepository {
     fun getProfileInfo() {
         auth.currentUser?.let { user ->
 
-            val docRef = fireStore.collection("users").document(user.uid)
+            val docRef = firebaseFirestore.collection("users").document(user.uid)
             docRef.get()
                 .addOnSuccessListener { document ->
                     document?.let {
@@ -119,12 +129,13 @@ class FireBaseRepository {
     //update Profile
     fun updateProfile(firstName: String, lastName: String, email: String) {
         auth.currentUser?.let {
-            fireStore.collection("users").document(it.uid)
+            firebaseFirestore.collection(USERS_PATH).document(it.uid)
                 .update(
                     "firstname", firstName,
                     "lastname", lastName,
-                    "email", email).addOnSuccessListener {
-                        updateInfo.value = true
+                    "email", email
+                ).addOnSuccessListener {
+                    updateInfo.value = true
 
                 }.addOnFailureListener {
                     updateInfo.value = false
@@ -137,6 +148,46 @@ class FireBaseRepository {
     //Signout
     fun signOut() {
         auth.signOut()
+    }
+
+    fun addProduct(
+        img: Uri,
+        productTitle: String,
+        productPrice: String,
+        productDescription: String,
+        productQuantiles: String,
+        // productType: String = "Woman"
+    ) {
+        firebaseStorage.child(auth.currentUser?.uid.toString()).putFile(img).addOnSuccessListener {
+
+            it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
+
+
+                val product = hashMapOf(
+                    ID to auth.currentUser?.uid,
+                    PRODUCT_IMAGE to url,
+                    PRODUCT_TITLE to productTitle,
+                    PRODUCT_PRICE to productPrice,
+                    PRODUCT_DESCRIPTION to productDescription,
+                    PRODUCT_QUANTILES to productQuantiles
+                    //  PRODUCT_TYPE to productType
+                )
+
+                auth.currentUser?.uid?.let {
+                    firebaseFirestore.collection(PRODUCTS_PATH).document(it)
+                        .set(product)
+                        .addOnSuccessListener {
+                            isLoadProduct.value = true
+                            Log.d("Product", SUCCESS)
+                        }
+                        .addOnFailureListener { exception ->
+                            isLoadProduct.value = false
+                            Log.w("Product", exception)
+                        }
+                }
+
+            }
+        }
     }
 
 }
