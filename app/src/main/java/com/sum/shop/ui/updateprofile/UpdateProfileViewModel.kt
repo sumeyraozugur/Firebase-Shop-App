@@ -14,12 +14,12 @@ class UpdateProfileViewModel:ViewModel() {
     val profileInfo: LiveData<ProfileModel>
         get() = _profileInfo
 
-    private var _updateInfo = MutableLiveData<Boolean>()
-    val updateInfo: LiveData<Boolean>
-        get() = _updateInfo
+    private var _isSuccess = MutableLiveData<Boolean>()
+    val isSuccess: LiveData<Boolean>
+        get() = _isSuccess
 
     init {
-        _updateInfo= firebaseRepo.updateInfo
+        _isSuccess= firebaseRepo.isSuccess
         getProfileInfo()
     }
 
@@ -30,7 +30,7 @@ class UpdateProfileViewModel:ViewModel() {
 
     fun updateProfile(firstName: String, lastName: String, email: String){
         firebaseRepo.updateProfile(firstName,lastName,email)
-        _updateInfo= firebaseRepo.updateInfo
+        _isSuccess= firebaseRepo.isSuccess
     }
 
 }

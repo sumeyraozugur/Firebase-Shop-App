@@ -37,7 +37,7 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
 
 
     private fun observeChangePassword() {
-        viewModel.isChange.observe(viewLifecycleOwner, Observer {
+        viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
             if (it) {
                 showErrorSnackBar(requireContext(),requireView(),getString(R.string.email_sent),false)
                 findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)

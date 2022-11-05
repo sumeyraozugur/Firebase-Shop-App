@@ -7,12 +7,12 @@ import com.sum.shop.repository.FireBaseRepository
 class ForgotPasswordViewModel : ViewModel() {
     private val firebaseRepo = FireBaseRepository()
 
-    private var _isChange= MutableLiveData<Boolean>()
-    val isChange:MutableLiveData<Boolean>
-        get()=_isChange
+    private var _isSuccess= MutableLiveData<Boolean>()
+    val isSuccess:MutableLiveData<Boolean>
+        get()=_isSuccess
 
    init {
-       _isChange = firebaseRepo.isChangePassword
+       _isSuccess = firebaseRepo.isSuccess
    }
 
     fun changePassword(email:String) =firebaseRepo.changePassword(email)

@@ -65,7 +65,6 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
                 false
             }
             else -> {
-                //showErrorSnackBar("Your details are valid.", false)
                 true
             }
         }
@@ -79,7 +78,7 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
                 etEmail.setText(it.email)
             }
 
-            viewModel.updateInfo.observe(viewLifecycleOwner, Observer {
+            viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
                 if (it) {
                     //context?.showToast("Success")
                     showErrorSnackBar(requireContext(), requireView(), getString(R.string.success), false)

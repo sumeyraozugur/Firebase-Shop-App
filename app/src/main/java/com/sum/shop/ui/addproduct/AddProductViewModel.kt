@@ -9,13 +9,13 @@ import com.sum.shop.repository.FireBaseRepository
 class AddProductViewModel:ViewModel() {
     private val firebaseRepo = FireBaseRepository()
 
-    private var _isLoadProduct= MutableLiveData<Boolean>()
-    val isLoadProduct: LiveData<Boolean>
-        get()=_isLoadProduct
+    private var _isSuccess= MutableLiveData<Boolean>()
+    val isSuccess: LiveData<Boolean>
+        get()=_isSuccess
 
 
     init {
-        _isLoadProduct = firebaseRepo.isLoadProduct
+        _isSuccess = firebaseRepo.isSuccess
     }
 
 

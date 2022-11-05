@@ -77,7 +77,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
 
     private fun observeIsLoad() {
-        viewModel.isLoadProduct.observe(viewLifecycleOwner, Observer {
+        viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
             if (it) {
                 showErrorSnackBar(
                     requireContext(),

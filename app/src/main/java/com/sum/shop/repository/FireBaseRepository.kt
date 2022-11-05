@@ -25,16 +25,8 @@ import com.sum.shop.Constant.USERS_PATH
 import com.sum.shop.model.ProfileModel
 
 class FireBaseRepository {
-
-    var isSignUp = MutableLiveData<Boolean>()
-    var isSignIn = MutableLiveData<Boolean>()
-    var isChangePassword = MutableLiveData<Boolean>()
-    var isCurrentUser = MutableLiveData<Boolean>()
     var profileInfo = MutableLiveData<ProfileModel>()
-    var updateInfo = MutableLiveData<Boolean>()
-    var isLoadProduct = MutableLiveData<Boolean>()
-
-    //val selectedPicture : Uri ?=null
+    var isSuccess =  MutableLiveData<Boolean>()
 
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
@@ -62,16 +54,16 @@ class FireBaseRepository {
                     firebaseFirestore.collection(USERS_PATH).document(firebaseUser.uid)
                         .set(user)
                         .addOnSuccessListener {
-                            isSignUp.value = true
+                            isSuccess.value = true
                             Log.d(SIGN_UP, SUCCESS)
                         }
                         .addOnFailureListener { exception ->
-                            isSignUp.value = false
+                            isSuccess.value = false
                             Log.w(SIGN_UP, exception)
                         }
                 }
             } else {
-                isSignUp.value = false
+                isSuccess.value = false
                 Log.w(SIGN_UP, task.exception)
             }
         }
@@ -81,28 +73,28 @@ class FireBaseRepository {
     fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
             it?.let {
-                isSignIn.value = true
+                isSuccess.value = true
             }
         }.addOnFailureListener {
-            isSignIn.value = false
+            isSuccess.value = false
         }
     }
 
     //Change Password
     fun changePassword(email: String) {
         auth.sendPasswordResetEmail(email).addOnSuccessListener {
-            isChangePassword.value = true
+            isSuccess.value = true
         }.addOnFailureListener {
-            isChangePassword.value = false
+            isSuccess.value = false
         }
     }
 
 
     //Current user control
     fun checkCurrentUser() {
-        isCurrentUser.value = false
+        isSuccess.value = false
         auth.currentUser?.let {
-            isCurrentUser.value = true
+            isSuccess.value = true
         }
     }
 
@@ -136,10 +128,10 @@ class FireBaseRepository {
                     "lastname", lastName,
                     "email", email
                 ).addOnSuccessListener {
-                    updateInfo.value = true
+                    isSuccess.value = true
 
                 }.addOnFailureListener {
-                    updateInfo.value = false
+                    isSuccess.value = false
 
                 }
         }
@@ -151,6 +143,7 @@ class FireBaseRepository {
         auth.signOut()
     }
 
+    //Product upload to Firebase
     fun addProduct(
         img: Uri,
         productTitle: String,
@@ -178,11 +171,11 @@ class FireBaseRepository {
                     firebaseFirestore.collection(PRODUCTS_PATH).document(it)
                         .set(product)
                         .addOnSuccessListener {
-                            isLoadProduct.value = true
+                            isSuccess.value = true
                             Log.d("Product", SUCCESS)
                         }
                         .addOnFailureListener { exception ->
-                            isLoadProduct.value = false
+                            isSuccess.value = false
                             Log.w("Product", exception)
                         }
                 }

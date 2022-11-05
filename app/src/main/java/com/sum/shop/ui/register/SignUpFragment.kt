@@ -114,16 +114,14 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 false
             }
 
-
             else -> {
-                //showErrorSnackBar("Your details are valid.", false)
                 true
             }
         }
     }
 
     private fun observeIsSignUp() {
-        viewModel.isSignUp.observe(viewLifecycleOwner, Observer {
+        viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
             if (it) {
                 showErrorSnackBar(
                     requireContext(),
@@ -132,7 +130,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                     false
                 )
             } else {
-                //Toast.makeText(context, getString(R.string.fail), Toast.LENGTH_LONG).show()
                 showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
             }
         })
