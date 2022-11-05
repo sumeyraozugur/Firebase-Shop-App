@@ -13,6 +13,7 @@
     <color name="main_color">#5956E9</color>
     <color name="red">#BA2418</color>
     <color name="color_image_view_background">#E1E1E1</color>
+    <color name="color_home_cardview">#fafafa</color>
 
 
 
