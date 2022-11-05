@@ -18,6 +18,7 @@ import com.sum.shop.Constant.PRODUCT_IMAGE
 import com.sum.shop.Constant.PRODUCT_PRICE
 import com.sum.shop.Constant.PRODUCT_QUANTILES
 import com.sum.shop.Constant.PRODUCT_TITLE
+import com.sum.shop.Constant.PRODUCT_TYPE
 import com.sum.shop.Constant.SIGN_UP
 import com.sum.shop.Constant.SUCCESS
 import com.sum.shop.Constant.USERS_PATH
@@ -156,7 +157,7 @@ class FireBaseRepository {
         productPrice: String,
         productDescription: String,
         productQuantiles: String,
-        // productType: String = "Woman"
+        productType: String = "Woman"
     ) {
         firebaseStorage.child(auth.currentUser?.uid.toString()).putFile(img).addOnSuccessListener {
 
@@ -169,8 +170,8 @@ class FireBaseRepository {
                     PRODUCT_TITLE to productTitle,
                     PRODUCT_PRICE to productPrice,
                     PRODUCT_DESCRIPTION to productDescription,
-                    PRODUCT_QUANTILES to productQuantiles
-                    //  PRODUCT_TYPE to productType
+                    PRODUCT_QUANTILES to productQuantiles,
+                    PRODUCT_TYPE to productType
                 )
 
                 auth.currentUser?.uid?.let {

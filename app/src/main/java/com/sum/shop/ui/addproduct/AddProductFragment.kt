@@ -32,25 +32,22 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 pickImageFromGallery()
             }
             btnAdd.setOnClickListener {
-              /*  val chosenOption = binding.rgType.checkedRadioButtonId
+               val chosenOption = binding.rgType.checkedRadioButtonId
 
                 val productType = when (chosenOption) {
                     R.id.rbWoman -> "Woman"
                     R.id.rbMan -> "Man"
                     else -> "Accessory"
-                }*/
+                }
 
                 val productTitle = etProductTitle.text.toString().trim { it <= ' ' }
                 val productPrice = etProductPrice.text.toString().trim { it <= ' ' }
                 val productDescription = etProductDescription.text.toString().trim { it <= ' ' }
                 val productQuantity = etProductQuantity.text.toString().trim { it <= ' ' }
                 picture
-
-                if(validAddProduct() && picture !=null)
-                    viewModel.addProduct(picture!!, productTitle, productPrice, productDescription, productQuantity)
-
+                if( validAddProduct() && picture != null)
+                    viewModel.addProduct(picture!!, productTitle, productPrice, productDescription, productQuantity,productType)
             }
-
         }
     }
 
@@ -69,22 +66,12 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
         }
 
     private fun validAddProduct(): Boolean {
-       /* val alternativeOption = binding.rgType.checkedRadioButtonId
 
-        val chosenOption = when (alternativeOption) {
-            R.id.rbWoman -> "woman"
-            R.id.rbMan -> "man"
-            else -> "aksesuar"
-        }*/
-        return when {
-            binding.etProductTitle.isNullorEmpty(getString(R.string.invalid_password)) -> false
-            binding.etProductPrice.isNullorEmpty(getString(R.string.invalid_password)) -> false
-            binding.etProductDescription.isNullorEmpty(getString(R.string.invalid_password)) -> false
-            binding.etProductQuantity.isNullorEmpty(getString(R.string.invalid_password)) -> false
-
-            else -> false
-
-        }
+        val productTitle = binding.etProductTitle.isNullorEmpty(getString(R.string.required_field))
+        val productPrice = binding.etProductPrice.isNullorEmpty(getString(R.string.required_field))
+        val productDescription = binding.etProductDescription.isNullorEmpty(getString(R.string.required_field))
+        val productQuantity = binding.etProductQuantity.isNullorEmpty(getString(R.string.required_field))
+        return productTitle && productPrice && productDescription && productQuantity
 
     }
 

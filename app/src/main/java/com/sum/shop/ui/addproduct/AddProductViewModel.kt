@@ -26,10 +26,10 @@ class AddProductViewModel:ViewModel() {
         productPrice:String,
         productDescription: String,
         productQuantiles: String,
-        //productType:String
+        productType:String
         ){
 
-        firebaseRepo.addProduct(img,productTitle,productPrice,productDescription, productQuantiles)
+        firebaseRepo.addProduct(img,productTitle,productPrice,productDescription, productQuantiles,productType)
 
     }
 }
