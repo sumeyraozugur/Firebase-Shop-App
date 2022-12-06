@@ -18,6 +18,8 @@ object Constant {
     const val PRODUCT_DESCRIPTION = "product description"
     const val PRODUCT_QUANTILES = "product quantiles"
     const val PRODUCT_TYPE = "product type"
+    const val PRODUCT_DATE = "date"
+    const val PRODUCT_TIME = "time"
   //  const val IS_ACCEPT = false
 
 }

@@ -13,24 +13,31 @@ import com.sum.shop.Constant.FIRST_NAME
 import com.sum.shop.Constant.ID
 import com.sum.shop.Constant.LAST_NAME
 import com.sum.shop.Constant.PRODUCTS_PATH
+import com.sum.shop.Constant.PRODUCT_DATE
 import com.sum.shop.Constant.PRODUCT_DESCRIPTION
 import com.sum.shop.Constant.PRODUCT_IMAGE
 import com.sum.shop.Constant.PRODUCT_PRICE
 import com.sum.shop.Constant.PRODUCT_QUANTILES
+import com.sum.shop.Constant.PRODUCT_TIME
 import com.sum.shop.Constant.PRODUCT_TITLE
 import com.sum.shop.Constant.PRODUCT_TYPE
 import com.sum.shop.Constant.SIGN_UP
 import com.sum.shop.Constant.SUCCESS
 import com.sum.shop.Constant.USERS_PATH
 import com.sum.shop.model.ProfileModel
+import java.util.*
 
 class FireBaseRepository {
     var profileInfo = MutableLiveData<ProfileModel>()
     var isSuccess =  MutableLiveData<Boolean>()
+    var isSignIn = MutableLiveData<Boolean>()
+
 
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
     private val firebaseStorage by lazy { Firebase.storage.reference }
+    private val calendar by lazy { Calendar.getInstance() }
+    val name = auth.currentUser?.uid.toString() + date() +time()
 
 
     //Register
@@ -73,10 +80,10 @@ class FireBaseRepository {
     fun signIn(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
             it?.let {
-                isSuccess.value = true
+                isSignIn.value = true
             }
         }.addOnFailureListener {
-            isSuccess.value = false
+            isSignIn.value = false
         }
     }
 
@@ -151,8 +158,10 @@ class FireBaseRepository {
         productDescription: String,
         productQuantiles: String,
         productType: String = "Woman"
-    ) {
-        firebaseStorage.child(auth.currentUser?.uid.toString()).putFile(img).addOnSuccessListener {
+    )
+
+    {
+        firebaseStorage.child(name).putFile(img).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
 
@@ -164,14 +173,17 @@ class FireBaseRepository {
                     PRODUCT_PRICE to productPrice,
                     PRODUCT_DESCRIPTION to productDescription,
                     PRODUCT_QUANTILES to productQuantiles,
-                    PRODUCT_TYPE to productType
+                    PRODUCT_TYPE to productType,
+                    PRODUCT_DATE to date(),
+                    PRODUCT_TIME to time()
                 )
 
-                auth.currentUser?.uid?.let {
+                name.let {
                     firebaseFirestore.collection(PRODUCTS_PATH).document(it)
                         .set(product)
                         .addOnSuccessListener {
                             isSuccess.value = true
+                            println(name)
                             Log.d("Product", SUCCESS)
                         }
                         .addOnFailureListener { exception ->
@@ -182,6 +194,24 @@ class FireBaseRepository {
 
             }
         }
+    }
+
+    private fun date(): Int {
+
+        val date = calendar[Calendar.DAY_OF_MONTH].toString() +
+                calendar[Calendar.MONTH].toString() +
+                calendar[Calendar.YEAR].toString()
+
+        return date.toInt()
+    }
+
+    private fun time(): Int {
+
+        val time = calendar[Calendar.MILLISECOND].toString() +
+                calendar[Calendar.MINUTE].toString() +
+                calendar[Calendar.HOUR_OF_DAY].toString()
+
+        return time.toInt()
     }
 
 }

@@ -31,6 +31,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             val intent= Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
             activity?.finish()
+
         }
 
      with(binding){

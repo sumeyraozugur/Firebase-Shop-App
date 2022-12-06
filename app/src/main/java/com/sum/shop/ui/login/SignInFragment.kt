@@ -54,7 +54,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
 
     private fun initObservers() {
-        viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
+        viewModel.isSingnIn.observe(viewLifecycleOwner, Observer {
             if (it) {
                 //context?.showToast("Success")
                 findNavController().navigate(R.id.action_loginFragment_to_main_graph)

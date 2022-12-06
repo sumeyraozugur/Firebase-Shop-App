@@ -8,13 +8,13 @@ import com.sum.shop.repository.FireBaseRepository
 class SignInViewModel : ViewModel() {
     private val firebaseRepo = FireBaseRepository()
 
-    private var _isSuccess= MutableLiveData<Boolean>()
-    val isSuccess: LiveData<Boolean>
-        get()=_isSuccess
+    private var _isSignIn= MutableLiveData<Boolean>()
+    val isSingnIn: LiveData<Boolean>
+        get()=_isSignIn
 
 
     init {
-        _isSuccess = firebaseRepo.isSuccess
+        _isSignIn = firebaseRepo.isSignIn
 
     }
 
