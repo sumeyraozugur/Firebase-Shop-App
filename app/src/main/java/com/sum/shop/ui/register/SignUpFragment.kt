@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSignUpBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.utils.*
+import com.sum.shop.utils.sent
+import com.sum.shop.utils.showErrorSnackBar
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
@@ -18,11 +20,19 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeIsSignUp()
+        checkCondition()
 
 
         binding.tvLogin.setOnClickListener {
             Navigation.sent(it, R.id.action_registerFragment_to_loginFragment)
         }
+
+        binding.tvTermsCondition.setOnClickListener {
+            Navigation.sent(it, R.id.action_signUpFragment_to_termConditionBottomSheet2)
+
+        }
+
+
 
         with(binding) {
             btnRegister.setOnClickListener {
@@ -38,6 +48,18 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             }
         }
     }
+
+
+    /*
+     if(Constant.CONDITION_ACCEPT){
+
+              Log.v("isChecked",binding.cbTermsAndCondition.isChecked.toString())
+
+          }
+
+     */
+
+
 
 
     private fun validateSignUpDetails(): Boolean {
@@ -136,4 +158,12 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     }
 
 
+    //check it is clicked or not
+    private fun checkCondition() {
+        setFragmentResultListener("checkBox") { _, bundle ->
+            bundle.getBoolean("acceptCondition")
+            binding.cbTermsAndCondition.isChecked =true
+
+        }
+    }
 }

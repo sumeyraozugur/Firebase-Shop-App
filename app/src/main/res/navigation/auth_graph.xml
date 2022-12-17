@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_termConditionBottomSheet2"
+            app:destination="@id/termConditionBottomSheet2" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
@@ -39,4 +42,15 @@
             app:destination="@id/signInFragment" />
     </fragment>
     <include app:graph="@navigation/main_graph" />
+    <dialog
+        android:id="@+id/termConditionBottomSheet2"
+        android:name="com.sum.shop.ui.termcondition.TermConditionBottomSheet"
+        android:label="TermConditionBottomSheet" >
+        <action
+            android:id="@+id/action_termConditionBottomSheet2_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_termConditionBottomSheet2_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </dialog>
 </navigation>

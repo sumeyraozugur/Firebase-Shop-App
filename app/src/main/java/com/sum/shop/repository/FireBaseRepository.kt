@@ -31,6 +31,7 @@ class FireBaseRepository {
     var profileInfo = MutableLiveData<ProfileModel>()
     var isSuccess =  MutableLiveData<Boolean>()
     var isSignIn = MutableLiveData<Boolean>()
+    var isCheck =MutableLiveData<Boolean>()
 
 
     private var auth = Firebase.auth

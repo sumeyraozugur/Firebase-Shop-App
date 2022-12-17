@@ -13,9 +13,7 @@ class RadioButton(context: Context, attrs: AttributeSet) :
         applyFont()
     }
 
-
     private fun applyFont() {
-
         val typeface: Typeface =
             Typeface.createFromAsset(context.assets, "Montserrat-Bold.ttf")
         setTypeface(typeface)
