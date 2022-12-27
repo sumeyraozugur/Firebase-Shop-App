@@ -12,9 +12,14 @@ class SignInViewModel : ViewModel() {
     val isSingnIn: LiveData<Boolean>
         get()=_isSignIn
 
+    private var _isSuccess= MutableLiveData<Boolean>()
+    val isSuccess: LiveData<Boolean>
+        get()=_isSuccess
+
 
     init {
         _isSignIn = firebaseRepo.isSignIn
+        _isSuccess = firebaseRepo.isSuccess
 
     }
 

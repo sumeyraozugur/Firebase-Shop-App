@@ -29,7 +29,34 @@ class AddProductViewModel:ViewModel() {
         productType:String
         ){
 
-        firebaseRepo.addProduct(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+        firebaseRepo.addProductWoman(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+
+    }
+
+
+    fun addProductMan(
+        img: Uri,
+        productTitle: String,
+        productPrice:String,
+        productDescription: String,
+        productQuantiles: String,
+        productType:String
+    ){
+
+        firebaseRepo.addProductMan(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+
+    }
+
+
+    fun addProductAppliance(
+        img: Uri,
+        productTitle: String,
+        productPrice:String,
+        productDescription: String,
+        productQuantiles: String,
+        productType:String
+    ){
+        firebaseRepo.addProductAppliances(img,productTitle,productPrice,productDescription, productQuantiles,productType)
 
     }
 }

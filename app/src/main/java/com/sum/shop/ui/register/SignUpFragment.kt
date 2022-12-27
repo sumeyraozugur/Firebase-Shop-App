@@ -29,9 +29,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         binding.tvTermsCondition.setOnClickListener {
             Navigation.sent(it, R.id.action_signUpFragment_to_termConditionBottomSheet2)
-
         }
-
 
 
         with(binding) {
@@ -48,16 +46,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             }
         }
     }
-
-
-    /*
-     if(Constant.CONDITION_ACCEPT){
-
-              Log.v("isChecked",binding.cbTermsAndCondition.isChecked.toString())
-
-          }
-
-     */
 
 
 

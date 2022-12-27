@@ -37,7 +37,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 val productType = when (chosenOption) {
                     R.id.rbWoman -> "Woman"
                     R.id.rbMan -> "Man"
-                    else -> "Accessory"
+                    else -> "Home Appliances"
                 }
 
                 val productTitle = etProductTitle.text.toString().trim { it <= ' ' }
@@ -45,8 +45,38 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 val productDescription = etProductDescription.text.toString().trim { it <= ' ' }
                 val productQuantity = etProductQuantity.text.toString().trim { it <= ' ' }
                 picture
-                if( validAddProduct() && picture != null)
-                    viewModel.addProduct(picture!!, productTitle, productPrice, productDescription, productQuantity,productType)
+                if( validAddProduct() && picture != null) {
+                    if(productType =="Woman")
+                        viewModel.addProduct(
+                            picture!!,
+                            productTitle,
+                            productPrice,
+                            productDescription,
+                            productQuantity,
+                            productType
+                        )
+
+                    if(productType == "Man")
+                        viewModel.addProductMan(
+                            picture!!,
+                            productTitle,
+                            productPrice,
+                            productDescription,
+                            productQuantity,
+                            productType
+                        )
+
+                    if(productType == "Home Appliances")
+                        viewModel.addProductAppliance(
+                            picture!!,
+                            productTitle,
+                            productPrice,
+                            productDescription,
+                            productQuantity,
+                            productType
+                        )
+
+                }
             }
         }
     }

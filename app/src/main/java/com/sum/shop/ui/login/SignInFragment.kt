@@ -64,6 +64,14 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             }
         })
 
+         viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
+             if(it){
+                 findNavController().navigate(R.id.action_loginFragment_to_main_graph)
+             }
+
+         })
+
+
     }
 
 

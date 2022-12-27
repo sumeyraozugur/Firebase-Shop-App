@@ -16,6 +16,15 @@
         <action
             android:id="@+id/action_homeFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_womanFragment"
+            app:destination="@id/womanFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_manFragment"
+            app:destination="@id/manFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_homeAppliancesFragment"
+            app:destination="@id/homeAppliancesFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -51,4 +60,19 @@
         android:name="com.sum.shop.ui.productdetail.ProductDetailFragment"
         android:label="fragment_product_detail"
         tools:layout="@layout/fragment_product_detail" />
+    <fragment
+        android:id="@+id/womanFragment"
+        android:name="com.sum.shop.ui.woman.WomanFragment"
+        android:label="fragment_woman"
+        tools:layout="@layout/fragment_woman" />
+    <fragment
+        android:id="@+id/manFragment"
+        android:name="com.sum.shop.ui.man.ManFragment"
+        android:label="fragment_man"
+        tools:layout="@layout/fragment_man" />
+    <fragment
+        android:id="@+id/homeAppliancesFragment"
+        android:name="com.sum.shop.ui.homeappliances.HomeAppliancesFragment"
+        android:label="fragment_home_appliances"
+        tools:layout="@layout/fragment_home_appliances" />
 </navigation>

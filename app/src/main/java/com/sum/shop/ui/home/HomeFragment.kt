@@ -24,5 +24,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             Navigation.sent(it, R.id.action_homeFragment_to_productDetailFragment)
 
         }
+        binding.cvWoman.setOnClickListener {
+            Navigation.sent(it, R.id.action_homeFragment_to_womanFragment)
+
+        }
+        binding.cvMan.setOnClickListener {
+            Navigation.sent(it, R.id.action_homeFragment_to_manFragment)
+
+        }
+        binding.cvAccessory.setOnClickListener {
+            Navigation.sent(it, R.id.action_homeFragment_to_homeAppliancesFragment)
+
+        }
     }
 }
