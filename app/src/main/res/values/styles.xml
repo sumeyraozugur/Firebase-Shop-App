@@ -15,4 +15,12 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/btn_textSize</item>
     </style>
+
+    <style name="CardViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">280dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardCornerRadius">5dp</item>
+        <item name="cardElevation">5dp</item>
+    </style>
 </resources>

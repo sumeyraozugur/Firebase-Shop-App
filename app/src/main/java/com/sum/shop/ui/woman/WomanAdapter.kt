@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sum.shop.databinding.ItemWomanListBinding
 import com.sum.shop.model.ProductModel
+import com.sum.shop.utils.visible
 
 class WomanAdapter : RecyclerView.Adapter<WomanAdapter.WomanViewHolder>() {
     private var womanList = listOf<ProductModel>()
@@ -27,7 +28,12 @@ class WomanAdapter : RecyclerView.Adapter<WomanAdapter.WomanViewHolder>() {
         fun bind(item: ProductModel) {
             with(binding) {
                 itemWomanName.text = item.productTitle
+                itemWomanPrice.text = "${item.productPrice} TL"
                 Glide.with(binding.itemWomanImage).load(item.img).into(binding.itemWomanImage)
+                if(item.productCount.toInt()<= 3){
+                    itemWomanCount.visible()
+                    itemWomanCount.text = "Only ${item.productCount} left in stock " // order soon
+                }
             }
         }
     }

@@ -327,7 +327,10 @@ class FireBaseRepository {
                     ProductModel(
                         document.id,
                         document.get("product image") as String,
-                        document.get("product title") as String
+                        document.get("product title") as String,
+                        document.get("product description") as String,
+                        document.get("product price") as String,
+                        document.get("product quantiles") as String
                     )
                 )
             }
@@ -347,7 +350,10 @@ class FireBaseRepository {
                     ProductModel(
                         document.id,
                         document.get("product image") as String,
-                        document.get("product title") as String
+                        document.get("product title") as String,
+                        document.get("product description") as String,
+                        document.get("product price") as String,
+                        document.get("product quantiles") as String
                     )
                 )
             }
@@ -366,7 +372,10 @@ class FireBaseRepository {
                     ProductModel(
                         document.id,
                         document.get("product image") as String,
-                        document.get("product title") as String
+                        document.get("product title") as String,
+                        document.get("product description") as String,
+                        document.get("product price") as String,
+                        document.get("product quantiles") as String
                     )
                 )
             }
