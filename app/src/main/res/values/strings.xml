@@ -7,7 +7,7 @@
     <string name="email_id">Email ID</string>
     <string name="password">Password</string>
     <string name="btn_login">Login</string>
-    <string name="forgot_password"><u>Forgot Password</u></string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
     <string name="or">~ OR ~</string>
     <string name="register"><u>Register</u></string>
     <string name="invalid_mail">Invalid e-mail address</string>

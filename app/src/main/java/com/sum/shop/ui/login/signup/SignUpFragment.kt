@@ -1,4 +1,4 @@
-package com.sum.shop.ui.register
+package com.sum.shop.ui.login.signup
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -23,9 +23,9 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         checkCondition()
 
 
-        binding.tvLogin.setOnClickListener {
+       /* binding.tvLogin.setOnClickListener {
             Navigation.sent(it, R.id.action_registerFragment_to_loginFragment)
-        }
+        }*/
 
         binding.tvTermsCondition.setOnClickListener {
             Navigation.sent(it, R.id.action_signUpFragment_to_termConditionBottomSheet2)

@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.SignInFragment">
+    tools:context=".ui.login.signin.SignInFragment">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="@dimen/image_width"
         android:layout_height="@dimen/image_height"
         android:layout_marginStart="@dimen/image_margin"
-        android:layout_marginTop="@dimen/image_margin_top"
+        android:layout_marginTop="46dp"
         android:layout_marginEnd="@dimen/image_margin"
         android:src="@drawable/ecommerce"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,52 +99,15 @@
         android:id="@+id/tvForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/tv_forgot_password_margin_start"
-        android:layout_marginEnd="5dp"
         android:foreground="?attr/selectableItemBackground"
         android:padding="@dimen/clickable_text_view_padding"
         android:text="@string/forgot_password"
         android:textColor="@color/color_secondary_text"
         android:textSize="@dimen/tv_medium_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/tvOR"
-        app:layout_constraintEnd_toStartOf="@+id/tvOR"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toTopOf="@+id/tvOR"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <com.sum.shop.utils.NormalTextView
-        android:id="@+id/tvOR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:padding="@dimen/clickable_text_view_padding"
-        android:text="@string/or"
-        android:textColor="@color/color_secondary_text"
-        android:textSize="@dimen/tv_medium_text_size"
-        app:layout_constraintEnd_toStartOf="@+id/tvRegister"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tvForgotPassword"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-
-    <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/tv_login_margin_start"
-        android:layout_marginEnd="@dimen/tv_login_margin_end"
-        android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/clickable_text_view_padding"
-        android:text="@string/register"
-        android:textColor="@color/color_secondary_text"
-        android:textSize="@dimen/tv_medium_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/tvOR"
         app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-        app:layout_constraintStart_toEndOf="@+id/tvOR"
-        app:layout_constraintTop_toTopOf="@+id/tvOR"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnLogin"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

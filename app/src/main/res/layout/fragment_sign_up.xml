@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.register.SignUpFragment">
+    tools:context=".ui.login.signup.SignUpFragment">
 
 
     <androidx.core.widget.NestedScrollView
@@ -164,30 +164,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTermsCondition" />
 
-            <com.sum.shop.utils.NormalTextView
-                android:id="@+id/tvAlreadyHaveAnAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/clickable_text_view_padding"
-                android:text="@string/already_have_an_account"
-                android:textColor="@color/color_secondary_text"
-                android:textSize="@dimen/tv_medium_text_size"
-                app:layout_constraintEnd_toStartOf="@+id/tvLogin"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/btnRegister"
-                app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
-            <com.sum.shop.utils.BoldTextView
-                android:id="@+id/tvLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foreground="?attr/selectableItemBackground"
-                android:padding="@dimen/clickable_text_view_padding"
-                android:text="@string/login"
-                android:textColor="@color/color_secondary_text"
-                android:textSize="@dimen/tv_medium_text_size"
-                app:layout_constraintEnd_toEndOf="@+id/btnRegister"
-                app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
+
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/cbTermsAndCondition"

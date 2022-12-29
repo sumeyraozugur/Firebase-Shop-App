@@ -9,8 +9,6 @@ import com.sum.shop.MainActivity
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentProfileBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.ui.login.SignInFragment
-import com.sum.shop.ui.register.SignUpFragment
 import com.sum.shop.utils.sent
 
 

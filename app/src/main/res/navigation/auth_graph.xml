@@ -6,25 +6,20 @@
     app:startDestination="@id/signInFragment">
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.sum.shop.ui.register.SignUpFragment"
+        android:name="com.sum.shop.ui.login.signup.SignUpFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_sign_up" >
 
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/signInFragment" />
-        <action
             android:id="@+id/action_signUpFragment_to_termConditionBottomSheet2"
             app:destination="@id/termConditionBottomSheet2" />
     </fragment>
+
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.sum.shop.ui.login.SignInFragment"
+        android:name="com.sum.shop.ui.login.signin.SignInFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_sign_in" >
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
@@ -32,6 +27,7 @@
             android:id="@+id/action_loginFragment_to_main_graph"
             app:destination="@id/main_graph" />
     </fragment>
+
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.sum.shop.ui.forgotpassword.ForgotPasswordFragment"
@@ -41,7 +37,9 @@
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
             app:destination="@id/signInFragment" />
     </fragment>
+
     <include app:graph="@navigation/main_graph" />
+
     <dialog
         android:id="@+id/termConditionBottomSheet2"
         android:name="com.sum.shop.ui.termcondition.TermConditionBottomSheet"

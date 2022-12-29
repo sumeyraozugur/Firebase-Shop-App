@@ -1,4 +1,4 @@
-package com.sum.shop.ui.login
+package com.sum.shop.ui.login.signin
 
 import android.os.Bundle
 import android.view.View
@@ -29,9 +29,9 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
 
         with(binding) {
-            tvRegister.setOnClickListener {
+         /*   tvRegister.setOnClickListener {
                 Navigation.sent(it, R.id.action_loginFragment_to_registerFragment)
-            }
+            }*/
             tvForgotPassword.setOnClickListener {
                 Navigation.sent(it, R.id.action_loginFragment_to_forgotPasswordFragment)
             }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.sum.shop.databinding.ActivityMainBinding
 import com.sum.shop.utils.gone
 import com.sum.shop.utils.visible
@@ -23,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController = navHostFragment.navController
 
 
-
         //put somewhere where you want to see bottom nav
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
@@ -36,10 +34,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-         //bottom navigation is working correctly
-        binding.bottomNavigationView.setupWithNavController(navController)
-    }
+        //bottom navigation is working correctly
 
+
+    }
 
 
 }

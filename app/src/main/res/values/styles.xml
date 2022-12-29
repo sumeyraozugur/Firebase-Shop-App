@@ -23,4 +23,12 @@
         <item name="cardCornerRadius">5dp</item>
         <item name="cardElevation">5dp</item>
     </style>
+
+    <style name="TabLayoutColor">
+        <item name="android:background">?attr/colorPrimaryVariant</item>
+        <item name="tabIconTint">@color/mtrl_tabs_icon_color_selector_colored</item>
+        <item name="tabIndicatorColor">?attr/colorOnPrimary</item>
+        <item name="tabTextColor">@color/mtrl_tabs_icon_color_selector_colored</item>
+        <item name="tabRippleColor">@color/mtrl_tabs_colored_ripple_color</item>
+    </style>
 </resources>
