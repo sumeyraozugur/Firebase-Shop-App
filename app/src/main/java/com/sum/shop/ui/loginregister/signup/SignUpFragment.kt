@@ -1,4 +1,4 @@
-package com.sum.shop.ui.login.signup
+package com.sum.shop.ui.loginregister.signup
 
 import android.os.Bundle
 import android.text.TextUtils

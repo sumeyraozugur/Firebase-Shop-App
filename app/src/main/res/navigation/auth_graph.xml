@@ -6,7 +6,7 @@
     app:startDestination="@id/loginRegiser">
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.sum.shop.ui.login.signup.SignUpFragment"
+        android:name="com.sum.shop.ui.loginregister.signup.SignUpFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_sign_up" >
 
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.sum.shop.ui.login.signin.SignInFragment"
+        android:name="com.sum.shop.ui.loginregister.signin.SignInFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -59,7 +59,7 @@
     </dialog>
     <fragment
         android:id="@+id/loginRegiser"
-        android:name="com.sum.shop.ui.login.LoginRegiser"
+        android:name="com.sum.shop.ui.loginregister.LoginRegister"
         android:label="fragment_login_regiser"
         tools:layout="@layout/fragment_login_regiser" >
         <action

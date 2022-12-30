@@ -1,4 +1,4 @@
-package com.sum.shop.ui.login.signin
+package com.sum.shop.ui.loginregister.signin
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

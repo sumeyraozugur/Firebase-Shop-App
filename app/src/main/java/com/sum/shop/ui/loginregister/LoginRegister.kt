@@ -12,7 +12,7 @@ import com.sum.shop.databinding.FragmentLoginRegiserBinding
 import com.sum.shop.delegate.viewBinding
 
 
-class LoginRegiser : Fragment(R.layout.fragment_login_regiser) {
+class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
     private val binding by viewBinding(FragmentLoginRegiserBinding::bind)
     val titleList = arrayListOf(Constant.SIGN_IN, Constant.SIGN_UP)
 

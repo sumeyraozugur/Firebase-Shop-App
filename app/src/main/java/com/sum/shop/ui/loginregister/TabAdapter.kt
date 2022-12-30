@@ -1,11 +1,9 @@
-package com.sum.shop.ui.login
+package com.sum.shop.ui.loginregister
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.sum.shop.ui.login.signin.SignInFragment
-import com.sum.shop.ui.login.signup.SignUpFragment
+import com.sum.shop.ui.loginregister.signin.SignInFragment
+import com.sum.shop.ui.loginregister.signup.SignUpFragment
 
 class TabAdapter(fragment: Fragment):
     FragmentStateAdapter(fragment){
