@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment -> binding.bottomNavigationView.gone()
                 R.id.signUpFragment -> binding.bottomNavigationView.gone()
                 R.id.loginRegiser -> binding.bottomNavigationView.gone()
+                R.id.splashFragment -> binding.bottomNavigationView.gone()
                 R.id.forgotPasswordFragment -> binding.bottomNavigationView.gone()
                 else -> {
                     binding.bottomNavigationView.visible()

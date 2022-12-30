@@ -56,7 +56,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 )
                 false
             }
-
             TextUtils.isEmpty(binding.etLastName.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     requireContext(),
@@ -66,7 +65,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 )
                 false
             }
-
             TextUtils.isEmpty(binding.etEmail.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     requireContext(),
@@ -76,7 +74,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 )
                 false
             }
-
             TextUtils.isEmpty(binding.etPassword.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     requireContext(),
@@ -86,7 +83,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 )
                 false
             }
-
             TextUtils.isEmpty(binding.etConfirmPassword.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                     requireContext(),
@@ -96,7 +92,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 )
                 false
             }
-
 
             binding.etPassword.text.toString()
                 .trim { it <= ' ' } != binding.etConfirmPassword.text.toString()
@@ -118,7 +113,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 )
                 false
             }
-
             else -> {
                 true
             }
@@ -140,21 +134,15 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         })
     }
 
-
     //check it is clicked or not
     private fun checkCondition() {
         if (Constant.result) {
             binding.cbTermsAndCondition.isChecked = true
-            binding.cbTermsAndCondition.isSelected =true
-
-
-            if (binding.cbTermsAndCondition.isChecked)
-
-                Toast.makeText(
-                    context,
-                    binding.cbTermsAndCondition.isChecked.toString(),
-                    Toast.LENGTH_SHORT
-                ).show()
+            Toast.makeText(
+                context,
+                binding.cbTermsAndCondition.isChecked.toString(),
+                Toast.LENGTH_SHORT
+            ).show()
 
         }
 

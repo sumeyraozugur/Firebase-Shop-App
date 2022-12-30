@@ -14,7 +14,7 @@
         android:layout_marginStart="@dimen/image_margin"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="@dimen/image_margin"
-        android:src="@drawable/ecommerce"
+        android:src="@drawable/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,13 +25,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/title_margin"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="@dimen/title_margin"
         android:text="@string/sum_shop"
         android:textColor="@color/color_primary_dark"
         android:textSize="@dimen/title_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilEmail"
@@ -39,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/til_margin"
-        android:layout_marginTop="@dimen/first_til_margin_top"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="@dimen/til_margin"
         android:hint="@string/email_id"
         android:textColorHint="@color/color_secondary_text"

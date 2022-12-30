@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginRegiser">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.sum.shop.ui.loginregister.signup.SignUpFragment"
@@ -77,5 +77,16 @@
         <action
             android:id="@+id/action_loginRegiser_to_termConditionBottomSheet"
             app:destination="@id/termConditionBottomSheet2" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.sum.shop.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginRegiser"
+            app:destination="@id/loginRegiser"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

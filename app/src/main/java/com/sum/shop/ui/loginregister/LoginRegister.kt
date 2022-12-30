@@ -34,7 +34,7 @@ class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
     private fun checkCondition() {
         setFragmentResultListener("checkBox") { _, bundle ->
             Constant.result = bundle.getBoolean("acceptCondition")//true
-            activity?.recreate()
+           // activity?.recreate()
 
 
             /*     val fragment: SignUpFragment? =
