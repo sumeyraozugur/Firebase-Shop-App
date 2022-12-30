@@ -7,6 +7,7 @@
     <color name="color_primary_text">#222934</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#000000</color>
+    <color name="light_black">#C3C3C3</color>
     <color name="color_secondary_text">#989898</color>
     <color name="color_dark_grey">#878787</color>
     <color name="color_border">#E8E6E6</color>

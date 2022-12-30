@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/loginRegiser">
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.sum.shop.ui.login.signup.SignUpFragment"
@@ -12,6 +12,9 @@
 
         <action
             android:id="@+id/action_signUpFragment_to_termConditionBottomSheet2"
+            app:destination="@id/termConditionBottomSheet2" />
+        <action
+            android:id="@+id/action_signUpFragment_to_termConditionBottomSheet22"
             app:destination="@id/termConditionBottomSheet2" />
     </fragment>
 
@@ -26,6 +29,9 @@
         <action
             android:id="@+id/action_loginFragment_to_main_graph"
             app:destination="@id/main_graph" />
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
 
     <fragment
@@ -51,4 +57,25 @@
             android:id="@+id/action_termConditionBottomSheet2_to_signInFragment"
             app:destination="@id/signInFragment" />
     </dialog>
+    <fragment
+        android:id="@+id/loginRegiser"
+        android:name="com.sum.shop.ui.login.LoginRegiser"
+        android:label="fragment_login_regiser"
+        tools:layout="@layout/fragment_login_regiser" >
+        <action
+            android:id="@+id/action_loginRegiser2_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_loginRegiser2_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginRegiser_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginRegiser_to_termConditionBottomSheet2"
+            app:destination="@id/termConditionBottomSheet2" />
+        <action
+            android:id="@+id/action_loginRegiser_to_termConditionBottomSheet"
+            app:destination="@id/termConditionBottomSheet2" />
+    </fragment>
 </navigation>

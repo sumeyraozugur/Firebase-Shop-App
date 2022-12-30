@@ -22,5 +22,6 @@ object Constant {
     const val PRODUCT_TYPE = "product type"
     const val PRODUCT_DATE = "date"
     const val PRODUCT_TIME = "time"
+    var result = false
 
 }

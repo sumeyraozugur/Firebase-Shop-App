@@ -7,8 +7,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.sum.shop.ui.login.signin.SignInFragment
 import com.sum.shop.ui.login.signup.SignUpFragment
 
-class TabAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):
-    FragmentStateAdapter(fragmentManager,lifecycle){
+class TabAdapter(fragment: Fragment):
+    FragmentStateAdapter(fragment){
 
 
     override fun getItemCount(): Int {

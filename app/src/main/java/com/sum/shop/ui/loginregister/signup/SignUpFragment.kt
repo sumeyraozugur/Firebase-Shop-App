@@ -3,10 +3,11 @@ package com.sum.shop.ui.login.signup
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
+import com.sum.shop.Constant
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSignUpBinding
 import com.sum.shop.delegate.viewBinding
@@ -23,12 +24,8 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         checkCondition()
 
 
-       /* binding.tvLogin.setOnClickListener {
-            Navigation.sent(it, R.id.action_registerFragment_to_loginFragment)
-        }*/
-
         binding.tvTermsCondition.setOnClickListener {
-            Navigation.sent(it, R.id.action_signUpFragment_to_termConditionBottomSheet2)
+            Navigation.sent(it, R.id.action_loginRegiser_to_termConditionBottomSheet)
         }
 
 
@@ -46,8 +43,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             }
         }
     }
-
-
 
 
     private fun validateSignUpDetails(): Boolean {
@@ -148,10 +143,20 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
     //check it is clicked or not
     private fun checkCondition() {
-        setFragmentResultListener("checkBox") { _, bundle ->
-            bundle.getBoolean("acceptCondition")
-            binding.cbTermsAndCondition.isChecked =true
+        if (Constant.result) {
+            binding.cbTermsAndCondition.isChecked = true
+            binding.cbTermsAndCondition.isSelected =true
+
+
+            if (binding.cbTermsAndCondition.isChecked)
+
+                Toast.makeText(
+                    context,
+                    binding.cbTermsAndCondition.isChecked.toString(),
+                    Toast.LENGTH_SHORT
+                ).show()
 
         }
+
     }
 }

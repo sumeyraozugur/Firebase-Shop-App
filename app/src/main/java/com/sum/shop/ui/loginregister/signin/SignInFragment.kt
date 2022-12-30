@@ -29,11 +29,9 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
 
         with(binding) {
-         /*   tvRegister.setOnClickListener {
-                Navigation.sent(it, R.id.action_loginFragment_to_registerFragment)
-            }*/
+
             tvForgotPassword.setOnClickListener {
-                Navigation.sent(it, R.id.action_loginFragment_to_forgotPasswordFragment)
+                Navigation.sent(it, R.id.action_loginRegiser2_to_forgotPasswordFragment)
             }
 
             btnLogin.setOnClickListener {
