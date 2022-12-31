@@ -24,7 +24,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.checkCurrentUser()
+       // viewModel.checkCurrentUser()
         initObservers()
 
 
@@ -55,7 +55,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         viewModel.isSingnIn.observe(viewLifecycleOwner, Observer {
             if (it) {
                 //context?.showToast("Success")
-                findNavController().navigate(R.id.action_loginFragment_to_main_graph)
+                findNavController().navigate(R.id.action_loginRegiser_to_main_graph)
             } else {
                 //  context?.showToast(getString(R.string.fail))
                 showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
@@ -64,7 +64,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
          viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
              if(it){
-                 findNavController().navigate(R.id.action_loginFragment_to_main_graph)
+                 findNavController().navigate(R.id.action_loginRegiser_to_main_graph)
              }
 
          })

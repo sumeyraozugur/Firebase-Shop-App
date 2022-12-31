@@ -13,6 +13,9 @@ import com.sum.shop.databinding.FragmentSignUpBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.sent
 import com.sum.shop.utils.showErrorSnackBar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
@@ -136,13 +139,11 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
     //check it is clicked or not
     private fun checkCondition() {
-        if (Constant.result) {
-            binding.cbTermsAndCondition.isChecked = true
-            Toast.makeText(
-                context,
-                binding.cbTermsAndCondition.isChecked.toString(),
-                Toast.LENGTH_SHORT
-            ).show()
+        CoroutineScope(Dispatchers.Main).launch{
+            if (Constant.result) {
+                binding.cbTermsAndCondition.isChecked = true
+
+        }
 
         }
 

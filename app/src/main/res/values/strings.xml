@@ -28,7 +28,7 @@
 
 
     <string name="title_forgot_password">FORGOT PASSWORD?</string>
-    <string name="forgot_password_title_description">Enter your username and e-mail address we\'ll send you a email to reset your password</string>
+    <string name="forgot_password_title_description">Enter your e-mail address we\'ll send you a email to reset your password</string>
     <string name="btn_submit">Submit</string>
 
     <string name="invalid_password">Must be 6 digit</string>

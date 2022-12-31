@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.sum.shop.databinding.ActivityMainBinding
 import com.sum.shop.utils.gone
 import com.sum.shop.utils.visible
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         val navController: NavController = navHostFragment.navController
+
+        NavigationUI.setupWithNavController(binding.bottomNavigationView,navController)
 
 
         //put somewhere where you want to see bottom nav

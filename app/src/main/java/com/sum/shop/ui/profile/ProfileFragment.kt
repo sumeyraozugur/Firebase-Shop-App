@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.sum.shop.MainActivity
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentProfileBinding
@@ -26,9 +27,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.btnLogout.setOnClickListener {
             viewModel.signOut()
-            val intent= Intent(requireActivity(), MainActivity::class.java)
+         /*   val intent= Intent(requireActivity(), MainActivity::class.java)
             startActivity(intent)
-            activity?.finish()
+            activity?.finish()*/
+            findNavController().navigate(R.id.loginRegiser)
 
         }
 
