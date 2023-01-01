@@ -11,7 +11,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/scrollview_margin_top"
+        android:layout_marginTop="@dimen/_12sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +23,13 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilFirstName"
+                android:id="@+id/til_first_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/til_margin"
-                android:layout_marginTop="@dimen/til_margin_top"
-                android:layout_marginEnd="@dimen/til_margin"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:hint="@string/first_name"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,161 +37,161 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etFirstName"
+                    android:id="@+id/et_first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:padding="@dimen/et_padding"
+                    android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
-                    android:textSize="@dimen/et_textSize" />
+                    android:textSize="@dimen/_12ssp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilLastName"
+                android:id="@+id/til_last_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/til_margin"
-                android:layout_marginTop="@dimen/margin_in_order_top"
-                android:layout_marginEnd="@dimen/til_margin"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:hint="@string/last_name"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilFirstName">
+                app:layout_constraintTop_toBottomOf="@id/til_first_name">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etLastName"
+                    android:id="@+id/et_last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:padding="@dimen/et_padding"
+                    android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
-                    android:textSize="@dimen/et_textSize" />
+                    android:textSize="@dimen/_12ssp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEmail"
+                android:id="@+id/til_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/til_margin"
-                android:layout_marginTop="@dimen/margin_in_order_top"
-                android:layout_marginEnd="@dimen/til_margin"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:hint="@string/email_id"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilLastName">
+                app:layout_constraintTop_toBottomOf="@id/til_last_name">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:padding="@dimen/et_padding"
+                    android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
-                    android:textSize="@dimen/et_textSize" />
+                    android:textSize="@dimen/_12ssp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPassword"
+                android:id="@+id/til_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/til_margin"
-                android:layout_marginTop="@dimen/margin_in_order_top"
-                android:layout_marginEnd="@dimen/til_margin"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:hint="@string/password"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilEmail">
+                app:layout_constraintTop_toBottomOf="@id/til_email">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberPassword"
-                    android:padding="@dimen/et_padding"
+                    android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
-                    android:textSize="@dimen/et_textSize" />
+                    android:textSize="@dimen/_12ssp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilConfirmPassword"
+                android:id="@+id/til_confirm_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/til_margin"
-                android:layout_marginTop="@dimen/margin_in_order_top"
-                android:layout_marginEnd="@dimen/til_margin"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:hint="@string/confirm_password"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilPassword">
+                app:layout_constraintTop_toBottomOf="@id/til_password">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etConfirmPassword"
+                    android:id="@+id/et_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberPassword"
-                    android:padding="@dimen/et_padding"
+                    android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
-                    android:textSize="@dimen/et_textSize" />
+                    android:textSize="@dimen/_12ssp" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.sum.shop.utils.Button
-                android:id="@+id/btnRegister"
+                android:id="@+id/btn_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/btn_margin"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="@dimen/btn_margin"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@drawable/app_gradient_color_background"
                 android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:paddingTop="@dimen/btn_padding"
-                android:paddingBottom="@dimen/btn_padding"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingBottom="@dimen/_6sdp"
                 android:text="@string/btn_register"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/btn_textSize"
+                android:textSize="@dimen/_14ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTermsCondition" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_terms_condition" />
 
 
 
 
             <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/cbTermsAndCondition"
-                android:layout_width="41dp"
-                android:layout_height="19dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvTermsCondition"
-                app:layout_constraintEnd_toStartOf="@+id/tvTermsCondition"
+                android:id="@+id/cb_terms_and_condition"
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_36sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_terms_condition"
+                app:layout_constraintEnd_toStartOf="@+id/tv_terms_condition"
                 app:layout_constraintHorizontal_bias="0.52"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvTermsCondition"
+                app:layout_constraintTop_toTopOf="@+id/tv_terms_condition"
                 app:layout_constraintVertical_bias="0.586"
                 />
 
             <com.sum.shop.utils.NormalTextView
-                android:id="@+id/tvTermsCondition"
+                android:id="@+id/tv_terms_condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:layout_marginEnd="44dp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_33sdp"
                 android:text="@string/i_agree_to_the_terms_and_condition"
                 android:textColor="@color/color_secondary_text"
-                android:textSize="@dimen/txt_terms_and_condition_textSize"
+                android:textSize="@dimen/_11sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilConfirmPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/til_confirm_password" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

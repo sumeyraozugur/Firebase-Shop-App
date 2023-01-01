@@ -8,27 +8,27 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="@dimen/progress_dialog_content_padding">
+    android:padding="@dimen/_10sdp">
 
     <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="@dimen/progress_bar_size"
-        android:layout_height="@dimen/progress_bar_size"
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvProgressText"
+        app:layout_constraintEnd_toStartOf="@+id/tv_progress_text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.sum.shop.utils.NormalTextView
-        android:id="@+id/tvProgressText"
+        android:id="@+id/tv_progress_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/progress_text_marginStart"
+        android:layout_marginStart="@dimen/_16sdp"
         android:text="@string/please_wait"
         android:textColor="@color/color_primary_text"
-        android:textSize="@dimen/progress_text_size"
+        android:textSize="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
+        app:layout_constraintStart_toEndOf="@+id/progress_bar"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

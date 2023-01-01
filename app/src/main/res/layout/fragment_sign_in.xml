@@ -8,12 +8,12 @@
     tools:context=".ui.loginregister.signin.SignInFragment">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="@dimen/image_width"
-        android:layout_height="@dimen/image_height"
-        android:layout_marginStart="@dimen/image_margin"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="@dimen/image_margin"
+        android:id="@+id/iv_sign_in"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_22sdp"
+        android:layout_marginEnd="@dimen/_100sdp"
         android:src="@drawable/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
@@ -21,95 +21,95 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/title_margin"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="@dimen/title_margin"
+        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_100sdp"
         android:text="@string/sum_shop"
         android:textColor="@color/color_primary_dark"
-        android:textSize="@dimen/title_textSize"
+        android:textSize="@dimen/_20ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_sign_in" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmail"
+        android:id="@+id/til_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/til_margin"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="@dimen/til_margin"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:hint="@string/email_id"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <com.sum.shop.utils.EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:padding="@dimen/et_padding"
+            android:padding="@dimen/_12sdp"
             android:textColor="@color/color_primary_text"
-            android:textSize="@dimen/et_textSize"
+            android:textSize="@dimen/_12ssp"
             tools:text="abc@gmail.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPassword"
+        android:id="@+id/til_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:hint="@string/password"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmail">
+        app:layout_constraintTop_toBottomOf="@+id/til_email">
 
         <com.sum.shop.utils.EditText
-            android:id="@+id/etPassword"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberPassword"
-            android:padding="@dimen/et_padding"
+            android:padding="@dimen/_12sdp"
             android:textColor="@color/color_primary_text"
-            android:textSize="@dimen/et_textSize"
+            android:textSize="@dimen/_12ssp"
             tools:text="123456" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.sum.shop.utils.Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btn_login"
         style="@style/ButtonStyle"
-        android:layout_marginTop="@dimen/btn_margin_top"
+        android:layout_marginTop="@dimen/_22sdp"
         android:background="@drawable/app_gradient_color_background"
         android:text="@string/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
     <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tvForgotPassword"
+        android:id="@+id/tv_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="@dimen/_1sdp"
         android:foreground="?attr/selectableItemBackground"
-        android:padding="@dimen/clickable_text_view_padding"
+        android:padding="@dimen/_3sdp"
         android:text="@string/forgot_password"
         android:textColor="@color/color_secondary_text"
-        android:textSize="@dimen/tv_medium_text_size"
-        app:layout_constraintEnd_toEndOf="@+id/btnLogin"
+        android:textSize="@dimen/_12ssp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintStart_toStartOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

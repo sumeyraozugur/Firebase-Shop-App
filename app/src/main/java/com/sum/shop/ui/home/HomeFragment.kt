@@ -32,7 +32,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             Navigation.sent(it, R.id.action_homeFragment_to_manFragment)
 
         }
-        binding.cvAccessory.setOnClickListener {
+        binding.cvHomeAppliences.setOnClickListener {
             Navigation.sent(it, R.id.action_homeFragment_to_homeAppliancesFragment)
 
         }

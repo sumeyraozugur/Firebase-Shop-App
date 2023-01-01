@@ -27,13 +27,13 @@ class ManAdapter : RecyclerView.Adapter<ManAdapter.ManViewHolder>() {
 
         fun bind(item: ProductModel) {
             with(binding) {
-                itemManName.text = item.productTitle
+                tvManName.text = item.productTitle
                 //itemManDescription.text = item.productDescription
-                itemManPrice.text = item.productPrice
-                Glide.with(binding.itemManImage).load(item.img).into(binding.itemManImage)
+                tvManPrice.text = item.productPrice
+                Glide.with(binding.ivMan).load(item.img).into(binding.ivMan)
                 if(item.productCount.toInt()<= 3){
-                    itemManCount.visible()
-                    itemManCount.text = "Only ${item.productCount} left in stock " // order soon
+                    tvManCount.visible()
+                    tvManCount.text = "Only ${item.productCount} left in stock " // order soon
                 }
             }
         }

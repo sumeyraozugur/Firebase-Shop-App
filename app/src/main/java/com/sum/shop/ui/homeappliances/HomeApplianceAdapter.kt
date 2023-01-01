@@ -15,14 +15,14 @@ class HomeApplianceAdapter : RecyclerView.Adapter<HomeApplianceAdapter.HomeViewH
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ProductModel) {
             with(binding) {
-                itemApplianceName.text = item.productTitle
+                tvApplianceName.text = item.productTitle
                 //itemApplianceDescription.text =item.productDescription
-                itemAppliancePrice.text = "${item.productPrice} TL"
-                Glide.with(binding.itemApplianceImage).load(item.img)
-                    .into(binding.itemApplianceImage)
+                tvAppliancePrice.text = "${item.productPrice} TL"
+                Glide.with(binding.ivHomeAppliance).load(item.img)
+                    .into(binding.ivHomeAppliance)
                 if(item.productCount.toInt()<= 3){
-                    itemApplianceCount.visible()
-                    itemApplianceCount.text = "Only ${item.productCount} left in stock " // order soon
+                    tvApplianceCount.visible()
+                    tvApplianceCount.text = "Only ${item.productCount} left in stock " // order soon
                 }
             }
         }

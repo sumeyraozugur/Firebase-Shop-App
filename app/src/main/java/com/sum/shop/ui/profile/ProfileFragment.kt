@@ -27,9 +27,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding.btnLogout.setOnClickListener {
             viewModel.signOut()
-         /*   val intent= Intent(requireActivity(), MainActivity::class.java)
-            startActivity(intent)
-            activity?.finish()*/
             findNavController().navigate(R.id.loginRegiser)
 
         }

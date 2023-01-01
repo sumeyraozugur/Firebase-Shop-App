@@ -9,121 +9,121 @@
 
 
     <ImageView
-        android:id="@+id/updateImage"
-        android:layout_width="@dimen/update_profile_image_width"
-        android:layout_height="@dimen/update_profile_image_height"
-        android:layout_marginTop="@dimen/image_margin_top"
+        android:id="@+id/iv_update"
+        android:layout_width="@dimen/_190sdp"
+        android:layout_height="@dimen/_160sdp"
+        android:layout_marginTop="@dimen/_44sdp"
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/updateBorder"
-        android:layout_width="@dimen/update_profile_image_border_width"
-        android:layout_height="@dimen/update_prıfofile_image_border_height"
+        android:id="@+id/iv_update_border"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_160sdp"
         android:src="@drawable/user_image_background"
-        app:layout_constraintBottom_toBottomOf="@+id/updateImage"
-        app:layout_constraintEnd_toEndOf="@+id/updateImage"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_update"
+        app:layout_constraintEnd_toEndOf="@+id/iv_update"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="@+id/updateImage"
-        app:layout_constraintTop_toTopOf="@+id/updateImage"
+        app:layout_constraintStart_toStartOf="@+id/iv_update"
+        app:layout_constraintTop_toTopOf="@+id/iv_update"
         app:layout_constraintVertical_bias="1.0" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilFirstName"
+        android:id="@+id/til_first_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/til_margin"
-        android:layout_marginTop="@dimen/update_image_marginTop"
-        android:layout_marginEnd="@dimen/til_margin"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_37sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:hint="@string/first_name"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateImage">
+        app:layout_constraintTop_toBottomOf="@+id/iv_update">
 
         <com.sum.shop.utils.EditText
-            android:id="@+id/etFirstName"
+            android:id="@+id/et_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:padding="@dimen/et_padding"
+            android:padding="@dimen/_12sdp"
             android:textColor="@color/color_primary_text"
-            android:textSize="@dimen/et_textSize" />
+            android:textSize="@dimen/_12ssp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilLastName"
+        android:id="@+id/til_last_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/til_margin"
+        android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginTop="@dimen/update_til_image_marginTop"
 
-        android:layout_marginEnd= "@dimen/til_margin"
+        android:layout_marginEnd= "@dimen/_12sdp"
         android:hint="@string/last_name"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilFirstName">
+        app:layout_constraintTop_toBottomOf="@+id/til_first_name">
 
         <com.sum.shop.utils.EditText
-            android:id="@+id/etLastName"
+            android:id="@+id/et_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:padding="@dimen/et_padding"
+            android:padding="@dimen/_12sdp"
             android:textColor="@color/color_primary_text"
-            android:textSize="@dimen/et_textSize" />
+            android:textSize="@dimen/_12ssp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmail"
+        android:id="@+id/til_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/update_til_image_marginTop"
-        android:layout_marginEnd="@dimen/til_margin"
+        android:layout_marginEnd="@dimen/_12sdp"
 
         android:hint="@string/email_id"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilLastName">
+        app:layout_constraintTop_toBottomOf="@+id/til_last_name">
 
         <com.sum.shop.utils.EditText
-            android:id="@+id/etEmail"
+            android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:padding="@dimen/et_padding"
+            android:padding="@dimen/_12sdp"
             android:textColor="@color/color_primary_text"
-            android:textSize="@dimen/et_textSize" />
+            android:textSize="@dimen/_12ssp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.sum.shop.utils.Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btn_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/btn_margin"
-        android:layout_marginTop="@dimen/btn_margin_top"
-        android:layout_marginEnd="@dimen/btn_margin"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:background="@drawable/app_gradient_color_background"
         android:foreground="?attr/selectableItemBackground"
         android:gravity="center"
-        android:paddingTop="@dimen/btn_padding"
-        android:paddingBottom="@dimen/btn_padding"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingBottom="@dimen/_6sdp"
         android:text="@string/btn_update"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/btn_textSize"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/til_email" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

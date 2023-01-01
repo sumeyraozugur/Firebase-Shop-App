@@ -8,79 +8,79 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="@dimen/profile_image_width"
-        android:layout_height="@dimen/profile_immage_height"
-        android:layout_marginTop="@dimen/profile_image_marginTop"
+        android:id="@+id/iv_profile"
+        android:layout_width="@dimen/_210sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_marginTop="@dimen/_28sdp"
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/profileBorder"
-        android:layout_width="@dimen/profile_image_border_width"
-        android:layout_height="@dimen/profile_image_border_height"
+        android:id="@+id/iv_profile_border"
+        android:layout_width="@dimen/_208sdp"
+        android:layout_height="@dimen/_180sdp"
         android:src="@drawable/user_image_background"
-        app:layout_constraintBottom_toBottomOf="@+id/profileImage"
-        app:layout_constraintEnd_toEndOf="@+id/profileImage"
-        app:layout_constraintStart_toStartOf="@+id/profileImage"
-        app:layout_constraintTop_toTopOf="@+id/profileImage" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+        app:layout_constraintEnd_toEndOf="@+id/iv_profile"
+        app:layout_constraintStart_toStartOf="@+id/iv_profile"
+        app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
 
     <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tvEdit"
+        android:id="@+id/tv_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="@dimen/edit_marginTop"
+        android:layout_marginTop="@dimen/_6sdp"
         android:background="@drawable/item_grey_border_background"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="@string/edit"
         android:textColor="@color/color_secondary_text"
-        android:textSize="@dimen/profile_edit_label_textSize"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
     <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tvProfileName"
+        android:id="@+id/tv_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/profile_tv_marginTop"
+        android:layout_marginTop="@dimen/_48sdp"
         android:textColor="@color/color_dark_grey"
-        android:textSize="@dimen/profile_name_textSize"
+        android:textSize="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile"
         tools:text="Sümeyra Özuğur" />
 
     <com.sum.shop.utils.NormalTextView
-        android:id="@+id/tvProfileEmail"
+        android:id="@+id/tv_profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:textColor="@color/color_secondary_text"
-        android:textSize="@dimen/profile_info_textSize"
-        app:layout_constraintEnd_toEndOf="@+id/tvProfileName"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_profile_name"
         app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="@+id/tvProfileName"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
+        app:layout_constraintStart_toStartOf="@+id/tv_profile_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_name"
         tools:text="ozugursumeyra@gmail.com" />
 
     <com.sum.shop.utils.Button
-        android:id="@+id/btnLogout"
+        android:id="@+id/btn_logout"
         style="@style/ButtonStyle"
-        android:layout_marginTop="@dimen/btn_marginTop2"
+        android:layout_marginTop="@dimen/_36sdp"
         android:background="@drawable/app_gradient_color_background"
         android:text="@string/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile_email" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -25,7 +25,7 @@ class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
 
         binding.viewPager.adapter = TabAdapter(this)
 
-        TabLayoutMediator(binding.loginTabLayout, binding.viewPager) { tab, position ->
+        TabLayoutMediator(binding.loginRegisterTabLayout, binding.viewPager) { tab, position ->
             tab.text = titleList[position]
         }.attach()
     }

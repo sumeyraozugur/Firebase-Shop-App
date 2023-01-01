@@ -27,12 +27,12 @@ class WomanAdapter : RecyclerView.Adapter<WomanAdapter.WomanViewHolder>() {
 
         fun bind(item: ProductModel) {
             with(binding) {
-                itemWomanName.text = item.productTitle
-                itemWomanPrice.text = "${item.productPrice} TL"
-                Glide.with(binding.itemWomanImage).load(item.img).into(binding.itemWomanImage)
+                tvWomanName.text = item.productTitle
+                tvWomanPrice.text = "${item.productPrice} TL"
+                Glide.with(binding.ivWoman).load(item.img).into(binding.ivWoman)
                 if(item.productCount.toInt()<= 3){
-                    itemWomanCount.visible()
-                    itemWomanCount.text = "Only ${item.productCount} left in stock " // order soon
+                    tvWomanCount.visible()
+                    tvWomanCount.text = "Only ${item.productCount} left in stock " // order soon
                 }
             }
         }

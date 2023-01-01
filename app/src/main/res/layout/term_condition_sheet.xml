@@ -7,7 +7,7 @@
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardviewCondition"
+        android:id="@+id/cv_condition"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +22,7 @@
 
 
             <androidx.core.widget.NestedScrollView
-                android:id="@+id/nestedScrollView"
+                android:id="@+id/nested_scroll_view"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:fillViewport="true"
@@ -33,13 +33,13 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="8dp">
+                    android:layout_margin="@dimen/_6sdp">
 
                     <com.sum.shop.utils.Button
-                        android:id="@+id/cancelButton"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="4dp"
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="@dimen/_32sdp"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
                         android:background="@android:drawable/ic_menu_close_clear_cancel"
                         app:layout_constraintEnd_toEndOf="@+id/boldTextView2"
                         app:layout_constraintTop_toTopOf="parent"
@@ -49,10 +49,10 @@
                         android:id="@+id/boldTextView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="@dimen/_16sdp"
                         android:gravity="center"
                         android:text="@string/terms_first_title"
-                        android:textSize="22sp"
+                        android:textSize="@dimen/_16sdp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +63,7 @@
                         android:id="@+id/boldTextView3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="26dp"
+                        android:layout_marginTop="@dimen/_20sdp"
                         android:gravity="center"
                         android:text="@string/term_second_title"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -74,17 +74,17 @@
                         android:id="@+id/normalTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:text="@string/shop_condition"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/boldTextView3" />
 
                     <com.sum.shop.utils.Button
-                        android:id="@+id/termAccept"
-                        android:layout_width="270dp"
+                        android:id="@+id/btn_term_accept"
+                        android:layout_width="@dimen/_270sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="@dimen/_8sdp"
                         android:background="@drawable/app_gradient_color_background"
                         android:text="Accept"
                         android:textColor="@color/white"

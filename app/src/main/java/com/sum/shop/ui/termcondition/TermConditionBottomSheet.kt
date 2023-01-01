@@ -35,11 +35,11 @@ class TermConditionBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cancelButton.setOnClickListener {
+        binding.btnCancel.setOnClickListener {
            dismiss()
         }
 
-        binding.termAccept.setOnClickListener {
+        binding.btnTermAccept.setOnClickListener {
             setFragmentResult("checkBox",bundleOf("acceptCondition" to true))
             dismiss()
         }

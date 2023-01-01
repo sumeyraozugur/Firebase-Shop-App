@@ -8,7 +8,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -23,109 +23,109 @@
 
 
             <com.sum.shop.utils.NormalTextView
-                android:id="@+id/tvExplainAddStyle"
+                android:id="@+id/tv_explain_add_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginVertical="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_16sdp"
                 android:text="Add your style and earn money! Let's get started"
                 android:textColor="#60000000"
                 android:textStyle="italic|bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleAddStyle" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_add_style" />
 
 
             <com.sum.shop.utils.BoldTextView
-                android:id="@+id/tvLatestClothes"
+                android:id="@+id/tv_latest_clothes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:text="Latest Clothes!"
                 android:textColor="@color/red"
-                android:textSize="25sp"
+                android:textSize="@dimen/_24ssp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.sum.shop.utils.NormalTextView
-                android:id="@+id/tvExplainAddedOutfit"
+                android:id="@+id/tv_explain_added_outfit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginVertical="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_12sdp"
                 android:text="You will find the most recently added outfits!"
                 android:textStyle="italic|bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvLatestClothes" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_latest_clothes" />
 
             <com.sum.shop.utils.BoldTextView
-                android:id="@+id/tvTitleAddStyle"
+                android:id="@+id/tv_title_add_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
+                android:layout_marginTop="@dimen/_30sdp"
                 android:text="Add Your Style!"
                 android:textColor="#000000"
-                android:textSize="25sp"
+                android:textSize="@dimen/_24ssp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.11"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvAccessory" />
+                app:layout_constraintTop_toBottomOf="@+id/cv_home_appliences" />
 
             <com.sum.shop.utils.NormalTextView
-                android:id="@+id/tvSeeAll"
+                android:id="@+id/tv_see_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
                 android:text="@string/see_all"
                 android:textColor="@color/main_color"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvExplainAddedOutfit" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_explain_added_outfit" />
 
             <ImageView
-                android:id="@+id/ivClickAddClothes"
-                android:layout_width="300dp"
-                android:layout_height="126dp"
+                android:id="@+id/iv_click_add_clothes"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_126sdp"
                 android:src="@drawable/add_to_cart"
-                app:layout_constraintBottom_toBottomOf="@+id/ivBorder"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_border"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ivBorder" />
+                app:layout_constraintTop_toTopOf="@+id/iv_border" />
 
             <ImageView
-                android:id="@+id/ivBorder"
-                android:layout_width="250dp"
-                android:layout_height="128dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
+                android:id="@+id/iv_border"
+                android:layout_width="@dimen/_220sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
                 android:src="@drawable/user_image_background"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/ivClickAddClothes"
+                app:layout_constraintEnd_toEndOf="@+id/iv_click_add_clothes"
                 app:layout_constraintHorizontal_bias="0.356"
-                app:layout_constraintStart_toStartOf="@+id/ivClickAddClothes"
-                app:layout_constraintTop_toBottomOf="@+id/tvExplainAddStyle" />
+                app:layout_constraintStart_toStartOf="@+id/iv_click_add_clothes"
+                app:layout_constraintTop_toBottomOf="@+id/tv_explain_add_style" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvWoman"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginTop="44dp"
-                app:cardCornerRadius="18dp"
-                app:layout_constraintEnd_toStartOf="@+id/cvMan"
+                android:id="@+id/cv_woman"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_130sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:cardCornerRadius="@dimen/_16sdp"
+                app:layout_constraintEnd_toStartOf="@+id/cv_man"
                 app:layout_constraintHorizontal_bias="0.466"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvExplainAddedOutfit">
+                app:layout_constraintTop_toBottomOf="@+id/tv_explain_added_outfit">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
                     <com.sum.shop.utils.BoldTextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/tv_woman"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -139,9 +139,9 @@
                         android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="2dp"
+                        android:layout_marginBottom="@dimen/_2sdp"
                         android:src="@drawable/woman"
-                        app:layout_constraintBottom_toTopOf="@+id/textView2"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_woman"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -149,14 +149,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvMan"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_marginEnd="36dp"
-                app:cardCornerRadius="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/cvWoman"
+                android:id="@+id/cv_man"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_130sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                app:cardCornerRadius="@dimen/_13sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/cv_woman"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cvWoman">
+                app:layout_constraintTop_toTopOf="@+id/cv_woman">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -179,7 +179,7 @@
                         android:id="@+id/imageView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                        android:layout_marginBottom="@dimen/_2sdp"
                         android:src="@drawable/brown_man"
                         app:layout_constraintBottom_toTopOf="@+id/textView3"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -191,14 +191,14 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cvAccessory"
-                android:layout_width="280dp"
-                android:layout_height="160dp"
-                android:layout_marginTop="8dp"
-                app:cardCornerRadius="28dp"
+                android:id="@+id/cv_home_appliences"
+                android:layout_width="@dimen/_160sdp"
+                android:layout_height="@dimen/_130sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                app:cardCornerRadius="@dimen/_13sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvWoman">
+                app:layout_constraintTop_toBottomOf="@+id/cv_woman">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

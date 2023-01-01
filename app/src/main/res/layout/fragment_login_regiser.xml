@@ -8,7 +8,7 @@
     tools:context=".ui.loginregister.LoginRegister">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/loginTabLayout"
+        android:id="@+id/login_register_tab_layout"
         style="@style/TabLayoutColor"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
@@ -25,13 +25,13 @@
         app:tabTextColor="@color/light_black" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginTabLayout" />
+        app:layout_constraintTop_toBottomOf="@id/login_register_tab_layout" />
 
 
 

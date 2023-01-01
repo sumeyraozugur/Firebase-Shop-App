@@ -6,12 +6,9 @@ import android.util.Patterns
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
-import androidx.core.widget.TintableCompoundButton
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.sum.shop.R
 
@@ -65,7 +62,7 @@ fun showProgressDialog(text: String,context: Context) {
 
     mProgressDialog.setContentView(R.layout.dialog_progress)
 
-    mProgressDialog.findViewById<TextView>(R.id.tvProgressText).text =text
+    mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text =text
 
 
 
