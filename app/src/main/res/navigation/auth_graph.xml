@@ -48,7 +48,7 @@
 
     <dialog
         android:id="@+id/termConditionBottomSheet2"
-        android:name="com.sum.shop.ui.termcondition.TermConditionBottomSheet"
+        android:name="com.sum.shop.ui.loginregister.signup.TermConditionBottomSheet"
         android:label="TermConditionBottomSheet" >
         <action
             android:id="@+id/action_termConditionBottomSheet2_to_signUpFragment"

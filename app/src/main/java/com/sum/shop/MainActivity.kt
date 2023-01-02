@@ -22,11 +22,11 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         val navController: NavController = navHostFragment.navController
 
+        //bottom navigation is working correctly
         NavigationUI.setupWithNavController(binding.bottomNavigationView,navController)
 
 
         //put somewhere where you want to see bottom nav
-
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.signInFragment -> binding.bottomNavigationView.gone()
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        //bottom navigation is working correctly
+
 
 
     }

@@ -1,25 +1,18 @@
-package com.sum.shop.ui.termcondition
+package com.sum.shop.ui.loginregister.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.ActivityCompat.recreate
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
-import androidx.navigation.Navigation
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.sum.shop.Constant
-import com.sum.shop.R
 import com.sum.shop.databinding.TermConditionSheetBinding
-import com.sum.shop.utils.sent
 
 class TermConditionBottomSheet : BottomSheetDialogFragment() {
 
     private var _binding: TermConditionSheetBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by lazy { TermConditionBottomSheetViewModel() }
+    private lateinit var viewModel : SignUpTermConditionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,16 +24,19 @@ class TermConditionBottomSheet : BottomSheetDialogFragment() {
 
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(requireActivity())[SignUpTermConditionViewModel::class.java]
 
         binding.btnCancel.setOnClickListener {
            dismiss()
         }
 
         binding.btnTermAccept.setOnClickListener {
-            setFragmentResult("checkBox",bundleOf("acceptCondition" to true))
+            //Constant.result.value = true
+            //viewModel.resultOk.value
+            viewModel.checkResult()
             dismiss()
         }
     }

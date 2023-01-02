@@ -36,6 +36,7 @@ class FireBaseRepository {
     var profileInfo = MutableLiveData<ProfileModel>()
     var isSuccess = MutableLiveData<Boolean>()
     var isSignIn = MutableLiveData<Boolean>()
+    var resultOk = MutableLiveData<Boolean>()
     var womanList = MutableLiveData<List<ProductModel>>()
     var manList = MutableLiveData<List<ProductModel>>()
     var applianceList = MutableLiveData<List<ProductModel>>()
@@ -45,6 +46,8 @@ class FireBaseRepository {
     private val firebaseStorage by lazy { Firebase.storage.reference }
     private val calendar by lazy { Calendar.getInstance() }
     val name = auth.currentUser?.uid.toString() + date() + time()
+
+
 
     //Register
     fun signUp(
@@ -399,6 +402,10 @@ class FireBaseRepository {
                 calendar[Calendar.HOUR_OF_DAY].toString()
 
         return time.toInt()
+    }
+
+    fun checkResult(){
+        resultOk.value = true
     }
 
 }

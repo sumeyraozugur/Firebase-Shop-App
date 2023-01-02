@@ -26,7 +26,7 @@ class SignInViewModel : ViewModel() {
 
     fun signIn(email:String,password:String) = firebaseRepo.signIn(email,password)
 
-    fun checkCurrentUser() =firebaseRepo.checkCurrentUser()
+    fun checkCurrentUser() = firebaseRepo.checkCurrentUser()
 
 
 

@@ -5,15 +5,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sum.shop.repository.FireBaseRepository
 
-class SignUpViewModel : ViewModel() {
+class SignUpTermConditionViewModel : ViewModel() {
     private val firebaseRepo = FireBaseRepository()
 
-    private var _isSuccess= MutableLiveData<Boolean>()
+    private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>
-        get()=_isSuccess
+        get() = _isSuccess
+
+    var resultOk = MutableLiveData<Boolean>()
+
 
     init {
         _isSuccess = firebaseRepo.isSuccess
+        resultOk = firebaseRepo.resultOk
     }
 
 
@@ -23,6 +27,12 @@ class SignUpViewModel : ViewModel() {
         eMail: String,
         password: String,
         isAccept: Boolean
-    ) = firebaseRepo.signUp(firstName,lastName,eMail,password,isAccept)
+    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, isAccept)
+
+      fun checkResult(){
+          firebaseRepo.checkResult()
+      }
+
+
 
 }

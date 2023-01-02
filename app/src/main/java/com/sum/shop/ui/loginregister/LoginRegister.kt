@@ -20,8 +20,6 @@ class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        checkCondition()
-
 
         binding.viewPager.adapter = TabAdapter(this)
 
@@ -30,22 +28,6 @@ class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
         }.attach()
     }
 
-
-    private fun checkCondition() {
-        setFragmentResultListener("checkBox") { _, bundle ->
-            Constant.result = bundle.getBoolean("acceptCondition")//true
-            activity?.recreate()
-
-
-            /*     val fragment: SignUpFragment? =
-                     childFragmentManager.findFragmentById(R.id.action_loginRegiser_to_signUpFragment) as SignUpFragment?
-                 val intent = requireActivity().intent
-                 fragment?.startActivity(intent)
-                 setFragmentResult("check", bundleOf("accept" to result))*/
-
-
-        }
-    }
 
 
 }
