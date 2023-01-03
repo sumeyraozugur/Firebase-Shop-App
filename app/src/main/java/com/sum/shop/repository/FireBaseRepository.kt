@@ -39,7 +39,7 @@ class FireBaseRepository {
     var resultOk = MutableLiveData<Boolean>()
     var womanList = MutableLiveData<List<ProductModel>>()
     var manList = MutableLiveData<List<ProductModel>>()
-    var applianceList = MutableLiveData<List<ProductModel>>()
+    var childrenList = MutableLiveData<List<ProductModel>>()
 
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
@@ -239,13 +239,13 @@ class FireBaseRepository {
     }
 
 
-    fun addProductAppliances(
+    fun addProductChildren(
         img: Uri,
-        applianceTitle: String,
-        appliancePrice: String,
-        applianceDescription: String,
-        applianceQuantiles: String,
-        applianceType: String = "Home Appliances",
+        childrenTitle: String,
+        childrenPrice: String,
+        childrenDescription: String,
+        childrenQuantiles: String,
+        childrenType: String = "Children",
     ) {
         firebaseStorage.child(name).putFile(img).addOnSuccessListener {
 
@@ -254,11 +254,11 @@ class FireBaseRepository {
                 val appliance = hashMapOf(
                     ID to auth.currentUser?.uid,
                     PRODUCT_IMAGE to url,
-                    PRODUCT_TITLE to applianceTitle,
-                    PRODUCT_PRICE to appliancePrice,
-                    PRODUCT_DESCRIPTION to applianceDescription,
-                    PRODUCT_QUANTILES to applianceQuantiles,
-                    PRODUCT_TYPE to applianceType,
+                    PRODUCT_TITLE to childrenTitle,
+                    PRODUCT_PRICE to childrenPrice,
+                    PRODUCT_DESCRIPTION to childrenDescription,
+                    PRODUCT_QUANTILES to childrenQuantiles,
+                    PRODUCT_TYPE to childrenType,
                     PRODUCT_DATE to date(),
                     PRODUCT_TIME to time()
                 )
@@ -286,7 +286,7 @@ class FireBaseRepository {
         docRef.get().addOnSuccessListener { documents ->
             println(documents.documents)
 
-            homeAppliancesToList(documents)
+            childrenToList(documents)
 
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
@@ -364,14 +364,14 @@ class FireBaseRepository {
         }
     }
 
-    private fun homeAppliancesToList(
+    private fun childrenToList(
         querySnapshot: QuerySnapshot?,
     ) {
 
-        val homeAppliancesTempList = arrayListOf<ProductModel>()
+        val childrenTempList = arrayListOf<ProductModel>()
         querySnapshot?.let {
             it.forEach { document ->
-                homeAppliancesTempList.add(
+                childrenTempList.add(
                     ProductModel(
                         document.id,
                         document.get("product image") as String,
@@ -382,7 +382,7 @@ class FireBaseRepository {
                     )
                 )
             }
-            applianceList.value = homeAppliancesTempList
+            childrenList.value = childrenTempList
         }
     }
 

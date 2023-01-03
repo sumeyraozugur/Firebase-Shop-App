@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.homeappliances.HomeAppliancesFragment">
+    tools:context=".ui.children.ChildrenFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_appliance"
+        android:id="@+id/rv_children"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:spanCount="2"

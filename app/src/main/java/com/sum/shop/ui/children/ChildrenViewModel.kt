@@ -1,4 +1,4 @@
-package com.sum.shop.ui.homeappliances
+package com.sum.shop.ui.children
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import com.sum.shop.model.ProductModel
 import com.sum.shop.repository.FireBaseRepository
 
-class HomeAppliancesViewModel:ViewModel() {
+class ChildrenViewModel:ViewModel() {
     private val firebaseRepo = FireBaseRepository()
 
-    private var _applianceList = MutableLiveData<List<ProductModel>>()
-    val applianceList: LiveData<List<ProductModel>>
-        get() = _applianceList
+    private var _childrenList = MutableLiveData<List<ProductModel>>()
+    val childrenList: LiveData<List<ProductModel>>
+        get() = _childrenList
 
     init {
         getProductAppliance()
@@ -19,6 +19,6 @@ class HomeAppliancesViewModel:ViewModel() {
 
     fun getProductAppliance(){
         firebaseRepo.getProductAppliancesRealtime()
-        _applianceList = firebaseRepo.applianceList
+        _childrenList = firebaseRepo.childrenList
     }
 }

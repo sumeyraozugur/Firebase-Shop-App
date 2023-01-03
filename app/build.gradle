@@ -72,5 +72,10 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
 
+    //carousel
+    implementation 'com.mig35:carousellayoutmanager:1.4.6'
+    implementation 'com.github.sparrow007:carouselrecyclerview:1.2.5'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+
 
 }

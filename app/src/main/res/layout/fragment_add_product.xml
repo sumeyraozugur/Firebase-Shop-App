@@ -192,14 +192,14 @@
                     android:textStyle="bold" />
 
                 <com.sum.shop.utils.RadioButton
-                    android:id="@+id/rbAccessory"
+                    android:id="@+id/rbChildren"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/add_edit_address_radio_button_height"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_gender_tab_selector"
                     android:button="@null"
                     android:gravity="center"
-                    android:text="Accessory"
+                    android:text="Children"
                     android:textColor="@drawable/drawable_gender_tab_text_color_selector"
                     android:textStyle="bold" />
             </RadioGroup>

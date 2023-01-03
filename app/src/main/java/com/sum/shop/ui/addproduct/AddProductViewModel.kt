@@ -48,7 +48,7 @@ class AddProductViewModel:ViewModel() {
     }
 
 
-    fun addProductAppliance(
+    fun addProductChildren(
         img: Uri,
         productTitle: String,
         productPrice:String,
@@ -56,7 +56,7 @@ class AddProductViewModel:ViewModel() {
         productQuantiles: String,
         productType:String
     ){
-        firebaseRepo.addProductAppliances(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+        firebaseRepo.addProductChildren(img,productTitle,productPrice,productDescription, productQuantiles,productType)
 
     }
 }

@@ -37,7 +37,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 val productType = when (chosenOption) {
                     R.id.rbWoman -> "Woman"
                     R.id.rbMan -> "Man"
-                    else -> "Home Appliances"
+                    else -> "Children"
                 }
 
                 val productTitle = etProductTitle.text.toString().trim { it <= ' ' }
@@ -66,8 +66,8 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                             productType
                         )
 
-                    if(productType == "Home Appliances")
-                        viewModel.addProductAppliance(
+                    if(productType == "Children")
+                        viewModel.addProductChildren(
                             picture!!,
                             productTitle,
                             productPrice,

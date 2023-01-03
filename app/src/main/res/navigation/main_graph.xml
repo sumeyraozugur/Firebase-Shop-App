@@ -23,8 +23,8 @@
             android:id="@+id/action_homeFragment_to_manFragment"
             app:destination="@id/manFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_homeAppliancesFragment"
-            app:destination="@id/homeAppliancesFragment" />
+            android:id="@+id/action_homeFragment_to_childrenFragment"
+            app:destination="@id/childrenFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -71,8 +71,8 @@
         android:label="fragment_man"
         tools:layout="@layout/fragment_man" />
     <fragment
-        android:id="@+id/homeAppliancesFragment"
-        android:name="com.sum.shop.ui.homeappliances.HomeAppliancesFragment"
+        android:id="@+id/childrenFragment"
+        android:name="com.sum.shop.ui.children.ChildrenFragment"
         android:label="fragment_home_appliances"
-        tools:layout="@layout/fragment_home_appliances" />
+        tools:layout="@layout/fragment_children" />
 </navigation>
