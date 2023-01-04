@@ -6,22 +6,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.updateprofile.UpdateProfileFragment">
+    <ImageButton
+        android:id="@+id/ib_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/color_primary_dark"
+        style="@style/ArrowBackStyle" />
 
+
+    <com.sum.shop.utils.BoldTextView
+        android:id="@+id/tv_woman_title"
+        style="@style/TitleCategoryNameStyle"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ib_arrow_back"
+        app:layout_constraintTop_toTopOf="@id/ib_arrow_back" />
 
     <ImageView
         android:id="@+id/iv_update"
-        android:layout_width="@dimen/_190sdp"
-        android:layout_height="@dimen/_160sdp"
-        android:layout_marginTop="@dimen/_44sdp"
+        android:layout_width="@dimen/_180sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_woman_title" />
 
     <ImageView
         android:id="@+id/iv_update_border"
-        android:layout_width="@dimen/_180sdp"
-        android:layout_height="@dimen/_160sdp"
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="@dimen/_150sdp"
         android:src="@drawable/user_image_background"
         app:layout_constraintBottom_toBottomOf="@+id/iv_update"
         app:layout_constraintEnd_toEndOf="@+id/iv_update"
@@ -36,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_37sdp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="@dimen/_12sdp"
         android:hint="@string/first_name"
         android:textColorHint="@color/color_secondary_text"

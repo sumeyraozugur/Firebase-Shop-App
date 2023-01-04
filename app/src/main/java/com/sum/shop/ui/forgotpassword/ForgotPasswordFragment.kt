@@ -5,10 +5,12 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentPasswordForgotBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.utils.back
 import com.sum.shop.utils.isValidEmail
 import com.sum.shop.utils.showErrorSnackBar
 import com.sum.shop.utils.showToast
@@ -24,6 +26,10 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
 
 
         with(binding) {
+            ibArrowBack.setOnClickListener {
+                Navigation.back(it)
+            }
+
             btnSubmit.setOnClickListener {
                 val emailResult = etEmail.isValidEmail(getString(R.string.invalid_mail))
                 if (emailResult) {

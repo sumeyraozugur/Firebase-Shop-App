@@ -3,9 +3,11 @@ package com.sum.shop.ui.woman
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentWomanBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.utils.back
 
 
 class WomanFragment : Fragment(R.layout.fragment_woman) {
@@ -19,6 +21,11 @@ class WomanFragment : Fragment(R.layout.fragment_woman) {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding){
+
+            ibArrowBack.setOnClickListener {
+                Navigation.back(it)
+            }
+
             rvWoman.adapter = womanAdapter
         }
 

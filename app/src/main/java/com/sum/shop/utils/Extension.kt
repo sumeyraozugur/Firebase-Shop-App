@@ -24,6 +24,11 @@ fun View.visible() {
     visibility = View.VISIBLE
 }
 
+fun Navigation.back(v:View){
+    findNavController(v).navigateUp()
+
+}
+
 fun View.gone() {
     visibility = View.GONE
 }

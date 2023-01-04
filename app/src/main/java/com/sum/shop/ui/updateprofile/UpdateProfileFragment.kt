@@ -5,11 +5,12 @@ import android.text.TextUtils
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentUpdateProfileBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.ui.profile.ProfileViewModel
+import com.sum.shop.utils.back
 import com.sum.shop.utils.showErrorSnackBar
 
 
@@ -22,7 +23,14 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
 
+
+
         with(binding) {
+
+            ibArrowBack.setOnClickListener {
+                Navigation.back(it)
+            }
+
             btnUpdate.setOnClickListener {
                 val firstName = etFirstName.text.toString().trim { it <= ' ' }
                 val lastName = etLastName.text.toString().trim { it <= ' ' }
@@ -90,5 +98,6 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
 
         }
     }
+
 
 }
