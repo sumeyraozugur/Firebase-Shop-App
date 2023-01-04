@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.manFragment -> binding.bottomNavigationView.gone()
                 R.id.childrenFragment -> binding.bottomNavigationView.gone()
                 R.id.forgotPasswordFragment -> binding.bottomNavigationView.gone()
+                R.id.updateProfileFragment -> binding.bottomNavigationView.gone()
                 else -> {
                     binding.bottomNavigationView.visible()
                 }

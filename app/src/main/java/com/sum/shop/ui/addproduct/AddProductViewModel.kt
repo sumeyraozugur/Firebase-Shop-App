@@ -4,14 +4,14 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sum.shop.repository.FireBaseRepository
+import com.sum.shop.repository.FirebaseRepository
 
-class AddProductViewModel:ViewModel() {
-    private val firebaseRepo = FireBaseRepository()
+class AddProductViewModel : ViewModel() {
+    private val firebaseRepo = FirebaseRepository()
 
-    private var _isSuccess= MutableLiveData<Boolean>()
+    private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>
-        get()=_isSuccess
+        get() = _isSuccess
 
 
     init {
@@ -19,17 +19,23 @@ class AddProductViewModel:ViewModel() {
     }
 
 
-
     fun addProduct(
         img: Uri,
         productTitle: String,
-        productPrice:String,
+        productPrice: String,
         productDescription: String,
         productQuantiles: String,
-        productType:String
-        ){
+        productType: String
+    ) {
 
-        firebaseRepo.addProductWoman(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+        firebaseRepo.addProductWoman(
+            img,
+            productTitle,
+            productPrice,
+            productDescription,
+            productQuantiles,
+            productType
+        )
 
     }
 
@@ -37,13 +43,20 @@ class AddProductViewModel:ViewModel() {
     fun addProductMan(
         img: Uri,
         productTitle: String,
-        productPrice:String,
+        productPrice: String,
         productDescription: String,
         productQuantiles: String,
-        productType:String
-    ){
+        productType: String
+    ) {
 
-        firebaseRepo.addProductMan(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+        firebaseRepo.addProductMan(
+            img,
+            productTitle,
+            productPrice,
+            productDescription,
+            productQuantiles,
+            productType
+        )
 
     }
 
@@ -51,12 +64,19 @@ class AddProductViewModel:ViewModel() {
     fun addProductChildren(
         img: Uri,
         productTitle: String,
-        productPrice:String,
+        productPrice: String,
         productDescription: String,
         productQuantiles: String,
-        productType:String
-    ){
-        firebaseRepo.addProductChildren(img,productTitle,productPrice,productDescription, productQuantiles,productType)
+        productType: String
+    ) {
+        firebaseRepo.addProductChildren(
+            img,
+            productTitle,
+            productPrice,
+            productDescription,
+            productQuantiles,
+            productType
+        )
 
     }
 }

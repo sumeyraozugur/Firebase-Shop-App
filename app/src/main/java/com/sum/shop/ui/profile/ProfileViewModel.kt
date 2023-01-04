@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sum.shop.model.ProfileModel
-import com.sum.shop.repository.FireBaseRepository
+import com.sum.shop.repository.FirebaseAuthRepository
 
 class ProfileViewModel:ViewModel() {
-    private val firebaseRepo = FireBaseRepository()
+    private val firebaseRepo = FirebaseAuthRepository()
 
     private var _profileInfo = MutableLiveData<ProfileModel>()
     val profileInfo: LiveData<ProfileModel>
