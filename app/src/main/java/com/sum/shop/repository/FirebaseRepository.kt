@@ -24,20 +24,20 @@ class FirebaseRepository {
     val name = auth.currentUser?.uid.toString() + date() + time()
 
 
-    //woman products upload to Firebase
-    fun addProductWoman(
+    // products upload to Firebase
+    fun addProduct(
         img: Uri,
         womanTitle: String,
         womanPrice: String,
         womanDescription: String,
         womanQuantiles: String,
-        womanType: String = "Woman",
+        womanType: String,
     ) {
         firebaseStorage.child(name).putFile(img).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
 
-                val woman = hashMapOf(
+                val product = hashMapOf(
                     Constant.ID to auth.currentUser?.uid,
                     Constant.PRODUCT_IMAGE to url,
                     Constant.PRODUCT_TITLE to womanTitle,
@@ -49,8 +49,8 @@ class FirebaseRepository {
                     Constant.PRODUCT_TIME to time()
                 )
                 name.let {
-                    firebaseFirestore.collection(Constant.WOMAN_PATH).document()
-                        .set(woman)
+                    firebaseFirestore.collection(womanType.lowercase()).document()
+                        .set(product)
                         .addOnSuccessListener {
                             isSuccess.value = true
                             println(name)
@@ -65,87 +65,6 @@ class FirebaseRepository {
         }
     }
 
-    //man products upload to Firebase
-    fun addProductMan(
-        img: Uri,
-        manTitle: String,
-        manPrice: String,
-        manDescription: String,
-        manQuantiles: String,
-        manType: String = "Man",
-    ) {
-        firebaseStorage.child(name).putFile(img).addOnSuccessListener {
-
-            it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
-
-                val man = hashMapOf(
-                    Constant.ID to auth.currentUser?.uid,
-                    Constant.PRODUCT_IMAGE to url,
-                    Constant.PRODUCT_TITLE to manTitle,
-                    Constant.PRODUCT_PRICE to manPrice,
-                    Constant.PRODUCT_DESCRIPTION to manDescription,
-                    Constant.PRODUCT_QUANTILES to manQuantiles,
-                    Constant.PRODUCT_TYPE to manType,
-                    Constant.PRODUCT_DATE to date(),
-                    Constant.PRODUCT_TIME to time()
-                )
-                name.let {
-                    firebaseFirestore.collection(Constant.MAN_PATH).document()
-                        .set(man)
-                        .addOnSuccessListener {
-                            isSuccess.value = true
-                            println(name)
-                            Log.d("Product", Constant.SUCCESS)
-                        }
-                        .addOnFailureListener { exception ->
-                            isSuccess.value = false
-                            Log.w("Product", exception)
-                        }
-                }
-            }
-        }
-    }
-
-    //children products upload to Firebase
-    fun addProductChildren(
-        img: Uri,
-        childrenTitle: String,
-        childrenPrice: String,
-        childrenDescription: String,
-        childrenQuantiles: String,
-        childrenType: String = "Children",
-    ) {
-        firebaseStorage.child(name).putFile(img).addOnSuccessListener {
-
-            it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
-
-                val appliance = hashMapOf(
-                    Constant.ID to auth.currentUser?.uid,
-                    Constant.PRODUCT_IMAGE to url,
-                    Constant.PRODUCT_TITLE to childrenTitle,
-                    Constant.PRODUCT_PRICE to childrenPrice,
-                    Constant.PRODUCT_DESCRIPTION to childrenDescription,
-                    Constant.PRODUCT_QUANTILES to childrenQuantiles,
-                    Constant.PRODUCT_TYPE to childrenType,
-                    Constant.PRODUCT_DATE to date(),
-                    Constant.PRODUCT_TIME to time()
-                )
-                name.let {
-                    firebaseFirestore.collection(Constant.CHILDREN_PATH).document()
-                        .set(appliance)
-                        .addOnSuccessListener {
-                            isSuccess.value = true
-                            println(name)
-                            Log.d("Product", Constant.SUCCESS)
-                        }
-                        .addOnFailureListener { exception ->
-                            isSuccess.value = false
-                            Log.w("Product", exception)
-                        }
-                }
-            }
-        }
-    }
 
     fun getProductRealtime(path:String) {
 

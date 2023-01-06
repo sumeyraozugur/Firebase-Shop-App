@@ -32,13 +32,15 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 pickImageFromGallery()
             }
             btnAdd.setOnClickListener {
-               val chosenOption = binding.rgType.checkedRadioButtonId
 
-                val productType = when (chosenOption) {
+                val productType = when (binding.rgType.checkedRadioButtonId) {
                     R.id.rbWoman -> "Woman"
                     R.id.rbMan -> "Man"
                     else -> "Children"
                 }
+                println(productType)
+
+
 
                 val productTitle = etProductTitle.text.toString().trim { it <= ' ' }
                 val productPrice = etProductPrice.text.toString().trim { it <= ' ' }
@@ -57,7 +59,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                         )
 
                     if(productType == "Man")
-                        viewModel.addProductMan(
+                        viewModel.addProduct(
                             picture!!,
                             productTitle,
                             productPrice,
@@ -67,7 +69,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                         )
 
                     if(productType == "Children")
-                        viewModel.addProductChildren(
+                        viewModel.addProduct(
                             picture!!,
                             productTitle,
                             productPrice,

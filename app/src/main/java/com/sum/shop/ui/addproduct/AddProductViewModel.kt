@@ -28,48 +28,7 @@ class AddProductViewModel : ViewModel() {
         productType: String
     ) {
 
-        firebaseRepo.addProductWoman(
-            img,
-            productTitle,
-            productPrice,
-            productDescription,
-            productQuantiles,
-            productType
-        )
-
-    }
-
-
-    fun addProductMan(
-        img: Uri,
-        productTitle: String,
-        productPrice: String,
-        productDescription: String,
-        productQuantiles: String,
-        productType: String
-    ) {
-
-        firebaseRepo.addProductMan(
-            img,
-            productTitle,
-            productPrice,
-            productDescription,
-            productQuantiles,
-            productType
-        )
-
-    }
-
-
-    fun addProductChildren(
-        img: Uri,
-        productTitle: String,
-        productPrice: String,
-        productDescription: String,
-        productQuantiles: String,
-        productType: String
-    ) {
-        firebaseRepo.addProductChildren(
+        firebaseRepo.addProduct(
             img,
             productTitle,
             productPrice,

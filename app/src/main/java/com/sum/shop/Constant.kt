@@ -11,9 +11,6 @@ object Constant {
     const val E_MAIL = "email"
     const val FIRST_NAME = "firstname"
     const val LAST_NAME = "lastname"
-    const val WOMAN_PATH = "woman"
-    const val MAN_PATH = "man"
-    const val CHILDREN_PATH = "children"
     const val PRODUCT_IMAGE ="product image"
     const val PRODUCT_TITLE = "product title"
     const val PRODUCT_PRICE = "product price"
@@ -22,6 +19,6 @@ object Constant {
     const val PRODUCT_TYPE = "product type"
     const val PRODUCT_DATE = "date"
     const val PRODUCT_TIME = "time"
-    const val STRING_ARGS_NAME = "category"
+
 
 }
