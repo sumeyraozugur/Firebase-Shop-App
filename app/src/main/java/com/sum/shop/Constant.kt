@@ -1,7 +1,5 @@
 package com.sum.shop
 
-import androidx.lifecycle.MutableLiveData
-
 object Constant {
 
     const val SIGN_IN = "SIGN IN"
@@ -15,7 +13,7 @@ object Constant {
     const val LAST_NAME = "lastname"
     const val WOMAN_PATH = "woman"
     const val MAN_PATH = "man"
-    const val APPLIANCE_PATH = "appliance"
+    const val CHILDREN_PATH = "children"
     const val PRODUCT_IMAGE ="product image"
     const val PRODUCT_TITLE = "product title"
     const val PRODUCT_PRICE = "product price"

@@ -15,9 +15,8 @@ import java.util.*
 
 class FirebaseRepository {
     var isSuccess = MutableLiveData<Boolean>()
-    var womanList = MutableLiveData<List<ProductModel>>()
-    var manList = MutableLiveData<List<ProductModel>>()
-    var childrenList = MutableLiveData<List<ProductModel>>()
+    var categoryList = MutableLiveData<List<ProductModel>>()
+    var path = ""
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
     private val firebaseStorage by lazy { Firebase.storage.reference }
@@ -132,7 +131,7 @@ class FirebaseRepository {
                     Constant.PRODUCT_TIME to time()
                 )
                 name.let {
-                    firebaseFirestore.collection(Constant.APPLIANCE_PATH).document()
+                    firebaseFirestore.collection(Constant.CHILDREN_PATH).document()
                         .set(appliance)
                         .addOnSuccessListener {
                             isSuccess.value = true
@@ -148,50 +147,25 @@ class FirebaseRepository {
         }
     }
 
-    fun getProductAppliancesRealtime() {
+    fun getProductRealtime(path:String) {
 
-        val docRef = firebaseFirestore.collection("appliance")
+        val docRef = firebaseFirestore.collection(path)
+
 
         docRef.get().addOnSuccessListener { documents ->
             println(documents.documents)
 
-            childrenToList(documents)
+            tempToList(documents)
 
         }.addOnFailureListener { exception ->
             Log.d(ContentValues.TAG, "get failed with ", exception)
         }
     }
 
-
-    fun getProductManRealtime() {
-
-        val docRef = firebaseFirestore.collection("man")
-
-        docRef.get().addOnSuccessListener { documents ->
-            println(documents.documents)
-
-            manToList(documents)
-
-        }.addOnFailureListener { exception ->
-            Log.d(ContentValues.TAG, "get failed with ", exception)
-        }
-    }
-
-
-    fun getProductWomanRealtime() {
-
-        val docRef = firebaseFirestore.collection("woman")
-
-        docRef.get().addOnSuccessListener { documents ->
-            womanToList(documents)
-        }.addOnFailureListener { exception ->
-            Log.d(ContentValues.TAG, "get failed with ", exception)
-        }
-    }
-
-    private fun womanToList(
+    private fun tempToList(
         querySnapshot: QuerySnapshot?,
     ) {
+
         val tempList = arrayListOf<ProductModel>()
         querySnapshot?.let {
             it.forEach { document ->
@@ -206,55 +180,9 @@ class FirebaseRepository {
                     )
                 )
             }
-            womanList.value = tempList
+            categoryList.value = tempList
         }
     }
-
-
-    private fun manToList(
-        querySnapshot: QuerySnapshot?,
-    ) {
-
-        val manTempList = arrayListOf<ProductModel>()
-        querySnapshot?.let {
-            it.forEach { document ->
-                manTempList.add(
-                    ProductModel(
-                        document.id,
-                        document.get("product image") as String,
-                        document.get("product title") as String,
-                        document.get("product description") as String,
-                        document.get("product price") as String,
-                        document.get("product quantiles") as String
-                    )
-                )
-            }
-            manList.value = manTempList
-        }
-    }
-
-    private fun childrenToList(
-        querySnapshot: QuerySnapshot?,
-    ) {
-
-        val childrenTempList = arrayListOf<ProductModel>()
-        querySnapshot?.let {
-            it.forEach { document ->
-                childrenTempList.add(
-                    ProductModel(
-                        document.id,
-                        document.get("product image") as String,
-                        document.get("product title") as String,
-                        document.get("product description") as String,
-                        document.get("product price") as String,
-                        document.get("product quantiles") as String
-                    )
-                )
-            }
-            childrenList.value = childrenTempList
-        }
-    }
-
 
     private fun date(): Int {
         val date = calendar[Calendar.DAY_OF_MONTH].toString() +

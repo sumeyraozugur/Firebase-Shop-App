@@ -2,6 +2,7 @@ package com.sum.shop.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sum.shop.databinding.ItemCategoryBinding
@@ -18,13 +19,12 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHoler>(
             with(binding){
                 Glide.with(binding.ivCategories).load(item.categoryImage)
                     .into(binding.ivCategories)
-                itemView.setOnClickListener {
-                  categoryClick(position)
-
+                root.setOnClickListener {
+                 // categoryClick(position)
+                    val action =HomeFragmentDirections.actionHomeFragmentToProductsFragment(item.categoryName)
+                    Navigation.findNavController(it).navigate(action)
                 }
-
             }
-
         }
     }
 

@@ -14,17 +14,8 @@
             android:id="@+id/action_homeFragment_to_addProductFragment"
             app:destination="@id/addProductFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_womanFragment"
-            app:destination="@id/womanFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_manFragment"
-            app:destination="@id/manFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_childrenFragment"
-            app:destination="@id/childrenFragment" />
+            android:id="@+id/action_homeFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -59,20 +50,17 @@
         android:id="@+id/productDetailFragment"
         android:name="com.sum.shop.ui.productdetail.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="objectProduct"
+            app:argType="com.sum.shop.model.ProductModel" />
+    </fragment>
     <fragment
-        android:id="@+id/womanFragment"
-        android:name="com.sum.shop.ui.woman.WomanFragment"
-        android:label="fragment_woman"
-        tools:layout="@layout/fragment_woman" />
-    <fragment
-        android:id="@+id/manFragment"
-        android:name="com.sum.shop.ui.man.ManFragment"
-        android:label="fragment_man"
-        tools:layout="@layout/fragment_man" />
-    <fragment
-        android:id="@+id/childrenFragment"
-        android:name="com.sum.shop.ui.children.ChildrenFragment"
-        android:label="fragment_home_appliances"
-        tools:layout="@layout/fragment_children" />
+        android:id="@+id/productsFragment"
+        android:name="com.sum.shop.ui.products.ProductsFragment"
+        android:label="ProductsFragment" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
 </navigation>

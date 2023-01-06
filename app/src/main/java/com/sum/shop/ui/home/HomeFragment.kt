@@ -44,7 +44,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.rvCategory.set3DItem(true)
         binding.rvCategory.setAlpha(true)
 
-        categoryAdapter.categoryClick={
+   /*     categoryAdapter.categoryClick={
             when(it){
                 0 -> findNavController().navigate(
                     R.id.action_homeFragment_to_womanFragment)
@@ -54,7 +54,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     findNavController().navigate(
                         R.id.action_homeFragment_to_childrenFragment)
             }
-        }
+        }*/
 
     }
 }

@@ -13,7 +13,7 @@
 
 
         <ImageView
-            android:id="@+id/iv_children"
+            android:id="@+id/iv_product"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_140sdp"
             android:layout_marginTop="@dimen/_6sdp"
@@ -28,15 +28,15 @@
             android:id="@+id/view_divider"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:layout_below="@id/iv_children"
+            android:layout_below="@id/iv_product"
             android:layout_marginTop="@dimen/_8sdp"
             android:background="@color/color_border"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_children" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_product" />
 
         <com.sum.shop.utils.BoldTextView
-            android:id="@+id/tv_children_name"
+            android:id="@+id/tv_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
@@ -47,18 +47,18 @@
 
 
         <com.sum.shop.utils.BoldTextView
-            android:id="@+id/tv_children_price"
+            android:id="@+id/tv_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_3sdp"
             android:textColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_children_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_product_name"
             tools:text="25 Tl" />
 
         <com.sum.shop.utils.NormalTextView
-            android:id="@+id/tv_children_count"
+            android:id="@+id/tv_product_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_6sdp"
@@ -70,7 +70,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/tv_children_fav"
+            android:id="@+id/iv_product_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_3sdp"
