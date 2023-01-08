@@ -8,10 +8,12 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentAddProductBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.utils.back
 import com.sum.shop.utils.isNullorEmpty
 import com.sum.shop.utils.showErrorSnackBar
 
@@ -28,9 +30,13 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
         with(binding) {
             ivAddUpdateProduct.setOnClickListener {
-                 //viewModel.addImage()
                 pickImageFromGallery()
             }
+            //Back
+            ibArrowBack.setOnClickListener {
+                Navigation.back(it)
+            }
+
             btnAdd.setOnClickListener {
 
                 val productType = when (binding.rgType.checkedRadioButtonId) {
@@ -38,9 +44,6 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                     R.id.rbMan -> "Man"
                     else -> "Children"
                 }
-                println(productType)
-
-
 
                 val productTitle = etProductTitle.text.toString().trim { it <= ' ' }
                 val productPrice = etProductPrice.text.toString().trim { it <= ' ' }

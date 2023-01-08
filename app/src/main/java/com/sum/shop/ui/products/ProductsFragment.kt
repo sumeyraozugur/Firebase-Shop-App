@@ -20,13 +20,13 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getProduct(args.category.lowercase())
+
+        val categoryType = args.category
+        viewModel.getProduct(categoryType.lowercase())
         initObservers()
 
-
         with(binding) {
-            tvProductTitle.text = args.category
-
+            tvProductTitle.text = categoryType
             ibArrowBack.setOnClickListener {
                 Navigation.back(it)
             }

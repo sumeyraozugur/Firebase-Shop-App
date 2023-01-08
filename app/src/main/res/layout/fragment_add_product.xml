@@ -39,6 +39,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <ImageButton
+                    android:id="@+id/ib_arrow_back"
+                    style="@style/ArrowBackStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/color_primary_dark" />
+
                 <ImageView
                     android:id="@+id/iv_add_update_product"
                     android:layout_width="wrap_content"

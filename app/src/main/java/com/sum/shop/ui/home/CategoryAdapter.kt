@@ -12,13 +12,13 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHoler>(
     private var categoryList = listOf<CategoryModel>()
     var categoryClick: (Int) -> Unit = {}
 
-    inner class CategoryViewHoler(private var binding: ItemCategoryBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class CategoryViewHoler(private var itemCategoryBinding: ItemCategoryBinding) :
+        RecyclerView.ViewHolder(itemCategoryBinding.root) {
 
         fun bind(item: CategoryModel,position: Int) {
-            with(binding){
-                Glide.with(binding.ivCategories).load(item.categoryImage)
-                    .into(binding.ivCategories)
+            with(itemCategoryBinding){
+                Glide.with(itemCategoryBinding.ivCategories).load(item.categoryImage)
+                    .into(itemCategoryBinding.ivCategories)
                 root.setOnClickListener {
                  // categoryClick(position)
                     val action =HomeFragmentDirections.actionHomeFragmentToProductsFragment(item.categoryName)

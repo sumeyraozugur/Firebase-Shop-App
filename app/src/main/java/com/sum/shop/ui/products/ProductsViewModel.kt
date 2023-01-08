@@ -3,10 +3,10 @@ package com.sum.shop.ui.products
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sum.shop.model.ProductModel
-import com.sum.shop.repository.FirebaseRepository
+import com.sum.shop.repository.FirebaseProductRepository
 
 class ProductsViewModel : ViewModel() {
-    private val firebaseRepo = FirebaseRepository()
+    private val firebaseRepo = FirebaseProductRepository()
 
     var categoryList = MutableLiveData<List<ProductModel>>()
      var path = firebaseRepo.path

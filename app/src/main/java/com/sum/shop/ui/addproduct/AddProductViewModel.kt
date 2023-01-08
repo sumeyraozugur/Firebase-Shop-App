@@ -4,10 +4,10 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sum.shop.repository.FirebaseRepository
+import com.sum.shop.repository.FirebaseProductRepository
 
 class AddProductViewModel : ViewModel() {
-    private val firebaseRepo = FirebaseRepository()
+    private val firebaseRepo = FirebaseProductRepository()
 
     private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>

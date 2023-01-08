@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,65 +11,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <androidx.cardview.widget.CardView
-
-                android:id="@+id/cv_image_detail"
-                android:layout_width="@dimen/_250sdp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:background="@color/white"
-                android:backgroundTint="@color/white"
-                android:elevation="@dimen/_10sdp"
-                app:cardCornerRadius="@dimen/_10sdp"
+            <ImageView
+                android:id="@+id/iv_product_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"
+                android:background="@color/color_image_view_background"
+                android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/iv_detail"
-                    android:layout_width="@dimen/_180sdp"
-                    android:layout_height="@dimen/_200sdp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/add_to_cart"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent" />
-            </androidx.cardview.widget.CardView>
+            <ImageButton
+                android:id="@+id/ib_arrow_back"
+                style="@style/ArrowBackStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/color_primary_dark" />
+
+            <com.sum.shop.utils.Button
+                android:id="@+id/btn_detail_add_fav"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:background="@drawable/ic_favorite"
+                android:backgroundTint="@color/color_primary_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_product_image" />
+
 
             <com.sum.shop.utils.BoldTextView
                 android:id="@+id/tv_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_6sdp"
-                android:layout_marginTop="@dimen/_46sdp"
-                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_10ssp"
                 android:gravity="center"
                 android:text="Product Title"
+                android:textColor="@color/color_primary_dark"
                 android:textSize="@dimen/_22ssp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_image_detail" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_product_image" />
 
             <com.sum.shop.utils.NormalTextView
                 android:id="@+id/tv_detail_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_6sdp"
-                android:layout_marginTop="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_6sdp"
                 android:gravity="center"
                 android:paddingLeft="@dimen/_6sdp"
@@ -85,39 +80,28 @@
                 android:id="@+id/tv_detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_26sdp"
                 android:gravity="center"
                 android:text='12TL'
-                android:textColor="@color/black"
+                android:textColor="@color/color_primary_dark"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_add_to_basket"
-                app:layout_constraintEnd_toStartOf="@+id/btn_add_to_basket"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/btn_add_to_basket" />
 
             <com.sum.shop.utils.Button
                 android:id="@+id/btn_add_to_basket"
                 style="@style/ButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="@dimen/_96sdp"
-                android:layout_marginEnd="@dimen/_40sdp"
-                android:text="Add to Basket"
+                android:layout_width="@dimen/_180sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
                 android:background="@drawable/app_gradient_color_background"
+                android:text="Add to Basket"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_info">
 
             </com.sum.shop.utils.Button>
-
-            <CheckBox
-                android:id="@+id/btn_detail_add_fav"
-                android:layout_width="@dimen/_30sdp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:button="@drawable/whistlist_item"
-                app:layout_constraintBottom_toTopOf="@+id/tv_detail_name"
-                app:layout_constraintEnd_toEndOf="@+id/cv_image_detail"
-                app:layout_constraintTop_toBottomOf="@+id/cv_image_detail" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -62,5 +62,8 @@
         <argument
             android:name="category"
             app:argType="string" />
+        <action
+            android:id="@+id/action_productsFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
 </navigation>

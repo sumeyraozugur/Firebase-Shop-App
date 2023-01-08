@@ -13,7 +13,7 @@ import com.sum.shop.Constant
 import com.sum.shop.model.ProductModel
 import java.util.*
 
-class FirebaseRepository {
+class FirebaseProductRepository {
     var isSuccess = MutableLiveData<Boolean>()
     var categoryList = MutableLiveData<List<ProductModel>>()
     var path = ""
