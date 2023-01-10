@@ -11,8 +11,6 @@ class ProductsViewModel : ViewModel() {
     var categoryList = MutableLiveData<List<ProductModel>>()
      var path = firebaseRepo.path
 
-
-
     fun getProduct(path: String) {
         when (path) {
             "man" -> {

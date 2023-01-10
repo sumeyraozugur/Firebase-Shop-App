@@ -22,6 +22,6 @@ data class FavModel( // id int olarak veremedim
     @ColumnInfo(name = "fav_price")
     val productPrice:String,
 
-    @ColumnInfo(name = "fav_count")
-    val productCount:String
+    @ColumnInfo(name = "fav_ok")
+    var isFav:Boolean =false
 )

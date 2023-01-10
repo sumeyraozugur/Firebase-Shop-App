@@ -3,6 +3,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
@@ -15,6 +16,8 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
     val readAllFav: LiveData<List<FavModel>>
     val readAllBasket:LiveData<List<BasketModel>>
     private val repository: RoomProductRepository
+    //var isFav= MutableLiveData<Boolean>()
+
 
 
 
@@ -25,21 +28,26 @@ class ProductDetailViewModel(application: Application) : AndroidViewModel(applic
         repository = RoomProductRepository(favDao,basketDao)
         readAllFav = repository.readAllFav
         readAllBasket = repository.readAllBasket
-
     }
 
     fun addFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addFav(fav)
-            Log.v("addViewModel", fav.productTitle)
+            //isFav.value = true
 
+            Log.v("addViewModel", fav.productTitle)
         }
     }
 
     fun addFav(basket: BasketModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addBasket(basket)
+        }
+    }
 
+    fun updateToFav(fav: FavModel){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.updateTodo(fav)
         }
     }
 

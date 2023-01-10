@@ -20,6 +20,10 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
 
         binding.rvBasket.adapter = adapter
         initObserver()
+
+        adapter.onRemoveBasketClick ={
+            viewModel.deleteFromBasket(it)
+        }
     }
 
     private fun initObserver() {

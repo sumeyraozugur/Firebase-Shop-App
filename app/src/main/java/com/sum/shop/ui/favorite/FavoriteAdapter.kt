@@ -2,12 +2,16 @@ package com.sum.shop.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.sum.shop.R
 import com.sum.shop.databinding.ItemFavBinding
 import com.sum.shop.model.FavModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class FavoriteAdapter() : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
+class FavoriteAdapter( private val viewModel: FavoriteViewModel) : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
     private var favList = listOf<FavModel>()
     var onRemoveFavClick: (Int) -> Unit = {}
 
@@ -32,7 +36,13 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>()
                 favModel.img.let {
                     Glide.with(ivFav).load(favModel.img).into(ivFav)
                 }
+
+                ivFavBtn.setOnClickListener {
+                    onRemoveFavClick(favModel.id)
+                }
+
             }
+
         }
     }
 
@@ -45,3 +55,32 @@ class FavoriteAdapter() : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>()
         notifyDataSetChanged()
     }
 }
+
+
+/*
+                    if (favModel.isFav) {
+                        favModel.isFav = false
+                        //Update Current User
+                        val updateFavModel =
+                            FavModel(favModel.id, favModel.img, favModel.productTitle,
+                                favModel.productDescription,favModel.productPrice,favModel.isFav)
+                        viewModel.updateToFav(updateFavModel)
+                        //viewModel.addFav(favModel)
+                        ivFavBtn.setBackgroundResource(R.drawable.ic_favorite) }
+                    else {
+                        favModel.isFav = true
+                        val updateFavModel =
+                            FavModel(favModel.id, favModel.img, favModel.productTitle,
+                                favModel.productDescription,favModel.productPrice,favModel.isFav)
+                        viewModel.updateToFav(updateFavModel)
+                        ivFavBtn.setBackgroundResource(R.drawable.ic_full_fav)
+
+                    }
+
+                     if (favModel.isFav) {
+                         ivFavBtn.setBackgroundResource(R.drawable.ic_full_fav)
+                         println(favModel.isFav)}
+                     else {
+                         ivFavBtn.setBackgroundResource(R.drawable.ic_favorite)
+                         println(favModel.isFav)
+                     }*/

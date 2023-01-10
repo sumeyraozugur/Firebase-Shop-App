@@ -32,6 +32,10 @@ class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
                 basketModel.img.let {
                     Glide.with(ivBasket).load(basketModel.img).into(ivBasket)
                 }
+
+                btnDelete.setOnClickListener {
+                    onRemoveBasketClick(basketModel.id)
+                }
             }
         }
     }

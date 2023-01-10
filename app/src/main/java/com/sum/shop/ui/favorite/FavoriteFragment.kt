@@ -10,16 +10,24 @@ import com.sum.shop.delegate.viewBinding
 
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     private val binding by viewBinding(FragmentFavoriteBinding::bind)
-    private val adapter by lazy { FavoriteAdapter() }
+    private val adapter by lazy { FavoriteAdapter(viewModel) }
     private lateinit var viewModel: FavoriteViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
 
-        binding.rvFav.adapter = adapter
         initObserver()
+
+
+
+        binding.rvFav.adapter = adapter
+
+        adapter.onRemoveFavClick= {
+            viewModel.deleteTodo(it)
+        }
+
+
     }
 
     private fun initObserver() {
