@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class FavModel( // id int olarak veremedim
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "fav_id")
-    val id: Int,
+    val id: Int =0,
 
     @ColumnInfo(name = "fav_img")
     val img: String,

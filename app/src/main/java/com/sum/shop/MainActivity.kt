@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.loginRegiser -> binding.bottomNavigationView.gone()
                 R.id.splashFragment -> binding.bottomNavigationView.gone()
                 R.id.productsFragment -> binding.bottomNavigationView.gone()
+                R.id.productDetailFragment ->binding.bottomNavigationView.gone()
                 R.id.forgotPasswordFragment -> binding.bottomNavigationView.gone()
                 R.id.updateProfileFragment -> binding.bottomNavigationView.gone()
                 else -> {

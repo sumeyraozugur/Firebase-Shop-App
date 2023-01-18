@@ -16,23 +16,23 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[FavoriteViewModel::class.java]
-
         initObserver()
 
-
-
-        binding.rvFav.adapter = adapter
-
         adapter.onRemoveFavClick= {
-            viewModel.deleteTodo(it)
+            viewModel.deleteFromFav(it)
         }
 
+        binding.rvFav.adapter = adapter
 
     }
 
     private fun initObserver() {
-        viewModel.readAllFav.observe(viewLifecycleOwner) { favList ->
+        viewModel.kisilerListesi.observe(viewLifecycleOwner) { favList ->
             adapter.updateList(favList)
         }
+
+
     }
+
+
 }

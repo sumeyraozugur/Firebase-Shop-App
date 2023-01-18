@@ -4,7 +4,6 @@ import RoomProductRepository
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sum.shop.model.FavModel
@@ -14,35 +13,30 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
-    val readAllFav: LiveData<List<FavModel>>
-    private val repository: RoomProductRepository
+
+    val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
+    val favDao = FavProductDatabase.getDatabase(application).favDao()
+    private val repository: RoomProductRepository = RoomProductRepository(favDao, basketDao)
+    var kisilerListesi = MutableLiveData<List<FavModel>>()
 
     init {
-        val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
-        val favDao = FavProductDatabase.getDatabase(application).favDao()
-        repository = RoomProductRepository(favDao,basketDao)
-        readAllFav = repository.readAllFav
+        kisileriYukle()
+        kisilerListesi = repository.kisileriGetir()
     }
 
-    fun updateToFav(fav: FavModel){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.updateTodo(fav)
-        }
-    }
 
-    fun addFav(fav: FavModel) {
+
+
+    fun deleteFromFav(favId: Int) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addFav(fav)
-            Log.v("addViewModel", fav.productTitle)
+            repository.deleteFromFav(favId)
+            kisileriYukle()
         }
     }
 
-    fun deleteTodo(favId: Int){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.deleteFav(favId)
-        }
+    fun kisileriYukle() {
+        repository.getAll()
     }
-
 
 
 }

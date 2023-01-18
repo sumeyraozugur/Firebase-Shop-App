@@ -23,7 +23,7 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
     }
     fun deleteFromBasket(basketId: Int){
         viewModelScope.launch(Dispatchers.IO){
-            repository.deleteBasket(basketId)
+            repository.deleteFromBasket(basketId)
         }
     }
 }

@@ -1,6 +1,4 @@
 import android.app.Application
-
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,42 +11,50 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(application: Application) : AndroidViewModel(application) {
-    val readAllFav: LiveData<List<FavModel>>
-    val readAllBasket:LiveData<List<BasketModel>>
+    val readAllBasket: LiveData<List<BasketModel>>
     private val repository: RoomProductRepository
-    //var isFav= MutableLiveData<Boolean>()
 
-
-
+    private val _isFav = MutableLiveData<Boolean>()
+    val isFav: LiveData<Boolean> = _isFav
 
     val favDao = FavProductDatabase.getDatabase(application).favDao()
     val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
 
     init {
-        repository = RoomProductRepository(favDao,basketDao)
-        readAllFav = repository.readAllFav
+        repository = RoomProductRepository(favDao, basketDao)
         readAllBasket = repository.readAllBasket
+        _isFav.value = FavModel(1, "", "", "", "").isFav
     }
 
-    fun addFav(fav: FavModel) {
+    fun addToFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addFav(fav)
-            //isFav.value = true
-
-            Log.v("addViewModel", fav.productTitle)
+            repository.addToFav(fav)
         }
     }
 
-    fun addFav(basket: BasketModel) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addBasket(basket)
-        }
+fun addToBasket(basket: BasketModel) {
+    viewModelScope.launch(Dispatchers.IO) {
+        repository.addToBasket(basket)
     }
-
-    fun updateToFav(fav: FavModel){
-        viewModelScope.launch(Dispatchers.IO){
-            repository.updateTodo(fav)
-        }
-    }
-
 }
+
+    fun updateFav(fav: FavModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateFav(fav)
+        }
+    }
+
+    fun deleteFromFav(favId: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteFromFav(favId)
+            kisileriYukle()
+        }
+
+    }
+
+
+    fun kisileriYukle() {
+        repository.getAll()
+    }
+}
+

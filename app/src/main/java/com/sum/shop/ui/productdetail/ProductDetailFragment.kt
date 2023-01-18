@@ -2,6 +2,7 @@ package com.sum.shop.ui.productdetail
 
 import ProductDetailViewModel
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -13,6 +14,7 @@ import com.sum.shop.databinding.FragmentProductDetailBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
+import com.sum.shop.room.FavProductDatabase
 import com.sum.shop.utils.back
 
 
@@ -20,13 +22,23 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
     private val binding by viewBinding(FragmentProductDetailBinding::bind)
     private val viewModel: ProductDetailViewModel by viewModels()
     val args: ProductDetailFragmentArgs by navArgs()
+    private lateinit var favoritesDatabase: FavProductDatabase
     //  var favModel = FavModel(1,"","","","")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val product = args.objectProduct
+        favoritesDatabase = FavProductDatabase.getDatabase(requireContext())
+        var favModel = FavModel(
+            id,
+            product.img,
+            product.productTitle,
+            product.productDescription,
+            product.productPrice,
+        )
 
-       // initObserver()
+
+        //initObserver()
 
 
         Glide.with(this).load(product.img)
@@ -44,16 +56,8 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
 
         //Add fav products to room database
         binding.btnDetailAddFav.setOnClickListener {
-            var favModel = FavModel(
-                0,
-                product.img,
-                product.productTitle,
-                product.productDescription,
-                product.productPrice,
-            )
-            viewModel.addFav(favModel)
 
-          /*  if (!favModel.isFav) {
+            if (!favModel.isFav) {
                 favModel.isFav = true
                 //Update Current User
                 val updateFavModel =
@@ -61,8 +65,8 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
                         favModel.id, favModel.img, favModel.productTitle,
                         favModel.productDescription, favModel.productPrice, favModel.isFav
                     )
-                viewModel.updateToFav(updateFavModel)
-                viewModel.addFav(favModel)
+                viewModel.updateFav(updateFavModel)
+                viewModel.addToFav(updateFavModel)
                 binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_full_fav)
             } else {
                 favModel.isFav = false
@@ -71,28 +75,32 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
                         favModel.id, favModel.img, favModel.productTitle,
                         favModel.productDescription, favModel.productPrice, favModel.isFav
                     )
-                viewModel.updateToFav(updateFavModel)
+                viewModel.updateFav(updateFavModel)
+                viewModel.deleteFromFav(updateFavModel.id)
+                Log.v("Delete Id", updateFavModel.img.toString())
+
                 binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_favorite)
 
             }
-            if (favModel.isFav) {
-                binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_full_fav)
-            } else {
-                binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_favorite)
-            }
-            println(favModel.isFav)
-*/
+
+            //println(favModel.isFav)
 
             //view?.let { Snackbar.make(it, R.string.this_product_added_fav, 1000).show() }
+        }
+
+        if (favModel.isFav) {
+            binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_full_fav)
+        } else {
+            binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_favorite)
         }
 
 
 
 
         binding.btnAddToBasket.setOnClickListener {
-            viewModel.addFav(
+            viewModel.addToBasket(
                 BasketModel(
-                    0,
+                    id,
                     product.img,
                     product.productTitle,
                     product.productDescription,
@@ -118,3 +126,22 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
 
 
 }
+
+/// var favoritesList = favoritesDatabase.favDao().readAllFav()
+
+//       var favoritesList = favoritesDatabase.favDao().readAllFav()
+
+
+// viewModel.addFav(favModel)
+
+/*    if (favoritesList.contains(favModel)) {
+        viewModel.deleteTodo(favModel.id)
+        binding.btnDetailAddFav.setBackgroundResource(R.drawable.ic_favorite)
+
+    } else {
+        binding.btnDetailAddFav.apply {
+            viewModel.addFav(favModel)
+
+            setBackgroundResource(R.drawable.ic_full_fav)
+        }
+    }*/
