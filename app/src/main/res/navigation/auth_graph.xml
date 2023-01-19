@@ -67,7 +67,11 @@
             app:destination="@id/signInFragment" />
         <action
             android:id="@+id/action_loginRegiser2_to_forgotPasswordFragment"
-            app:destination="@id/forgotPasswordFragment" />
+            app:destination="@id/forgotPasswordFragment"
+            app:enterAnim="@anim/enter_anim_column"
+            app:exitAnim="@anim/exit_anim_column"
+            app:popEnterAnim="@anim/popup_enter_anim"
+            app:popExitAnim="@anim/popup_exit_anim" />
         <action
             android:id="@+id/action_loginRegiser_to_signUpFragment"
             app:destination="@id/signUpFragment" />

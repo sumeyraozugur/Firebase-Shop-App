@@ -49,7 +49,6 @@ fun addToBasket(basket: BasketModel) {
             repository.deleteFromFav(favId)
             kisileriYukle()
         }
-
     }
 
 

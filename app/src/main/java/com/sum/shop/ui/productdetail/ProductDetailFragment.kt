@@ -29,7 +29,7 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
         super.onViewCreated(view, savedInstanceState)
         val product = args.objectProduct
         favoritesDatabase = FavProductDatabase.getDatabase(requireContext())
-        var favModel = FavModel(
+        var favModel = FavModel( // room da kontrol et!!
             id,
             product.img,
             product.productTitle,
