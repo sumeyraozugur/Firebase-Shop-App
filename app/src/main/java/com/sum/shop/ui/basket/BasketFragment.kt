@@ -2,11 +2,14 @@ package com.sum.shop.ui.basket
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentBasketBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.utils.sent
 
 class BasketFragment : Fragment(R.layout.fragment_basket ) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
@@ -21,8 +24,12 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
         binding.rvBasket.adapter = adapter
         initObserver()
 
-        adapter.onRemoveBasketClick ={
+        adapter.onRemoveBasketClick = {
             viewModel.deleteFromBasket(it)
+        }
+        binding.btnCheckout.setOnClickListener {
+            Navigation.sent(it, R.id.action_basketFragment_to_paymentFragment)
+            //Toast.makeText(context,"Sumeyra", Toast.LENGTH_SHORT).show()
         }
     }
 

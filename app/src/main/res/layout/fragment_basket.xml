@@ -37,8 +37,7 @@
         style="@style/ButtonStyle"
         android:layout_margin="16dp"
         android:background="@drawable/app_gradient_color_background"
-        android:enabled="false"
-        android:text="Pay"
+        android:text="Checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

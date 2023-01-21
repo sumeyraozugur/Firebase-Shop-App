@@ -49,8 +49,8 @@
     </style>
 
     <style name="BtnIncreaseDecrease">
-        <item name="android:layout_width">@dimen/_20sdp</item>
-        <item name="android:layout_height">@dimen/_20sdp</item>
+        <item name="android:layout_width">@dimen/_18sdp</item>
+        <item name="android:layout_height">@dimen/_18sdp</item>
         <item name="android:background">@drawable/ic_add</item>
         <item name="android:backgroundTint">@color/color_primary</item>
     </style>

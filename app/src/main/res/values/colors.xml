@@ -3,6 +3,7 @@
     <color name="color_primary">#5e35b1</color>
     <color name="color_primary_dark">#2F127A</color>
     <color name="color_secondary">#9162e4</color>
+    <color name="color_count">#916ECF</color>
 
     <color name="color_primary_text">#222934</color>
     <color name="white">#FFFFFFFF</color>
@@ -22,6 +23,9 @@
 
     <color name="color_snack_bar_success">#8BC34A</color>
     <color name="color_snack_bar_error">#F72400</color>
+
+
+
 
 
 

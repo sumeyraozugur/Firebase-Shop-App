@@ -23,7 +23,6 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
     private val viewModel: ProductDetailViewModel by viewModels()
     val args: ProductDetailFragmentArgs by navArgs()
     private lateinit var favoritesDatabase: FavProductDatabase
-    //  var favModel = FavModel(1,"","","","")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,9 +36,7 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
             product.productPrice,
         )
 
-
         //initObserver()
-
 
         Glide.with(this).load(product.img)
             .into(binding.ivProductImage)

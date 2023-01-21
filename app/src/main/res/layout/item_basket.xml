@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_basket"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/_92sdp"
     android:layout_margin="@dimen/_12sdp"
     app:cardCornerRadius="@dimen/_12sdp"
     app:contentPadding="@dimen/_3sdp"
@@ -16,7 +16,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/iv_basket"
@@ -30,63 +33,82 @@
 
         <com.sum.shop.utils.BoldTextView
             android:id="@+id/tv_basket_name"
-            android:layout_width="@dimen/_130sdp"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_22sdp"
             android:text="Basket"
+            android:textColor="@color/color_primary_dark"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toEndOf="@+id/iv_basket"
             app:layout_constraintTop_toTopOf="@+id/iv_basket" />
 
-        <com.sum.shop.utils.Button
+        <ImageView
             android:id="@+id/btn_delete"
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_28sdp"
-            android:background="@drawable/ic_trash"
+            android:src="@drawable/ic_cancel"
+            app:tint = "@color/color_primary_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.sum.shop.utils.Button
             android:id="@+id/btn_minus"
             style="@style/BtnIncreaseDecrease"
-            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginStart="@dimen/_101sdp"
             android:layout_marginBottom="@dimen/_12sdp"
             android:background="@drawable/ic_remove"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_basket_name"
-            app:layout_constraintTop_toBottomOf="@+id/tv_basket_name" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_amount"
+            app:layout_constraintStart_toEndOf="@+id/iv_basket"
+            app:layout_constraintTop_toTopOf="@+id/tv_amount"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
+        <com.sum.shop.utils.NormalTextView
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
-            android:layout_height="21dp"
-            android:layout_marginStart="16dp"
-            android:text="1"
-            android:textSize="@dimen/_13ssp"
-            app:layout_constraintBottom_toBottomOf="@id/btn_minus"
-            app:layout_constraintStart_toEndOf="@id/btn_minus"
-            app:layout_constraintTop_toTopOf="@id/btn_minus" />
+            android:layout_height="@dimen/_16ssp"
+            android:text="6"
+            android:textColor="@color/color_primary_dark"
+            android:textSize="@dimen/_10ssp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_profile_border"
+            app:layout_constraintEnd_toEndOf="@+id/iv_profile_border"
+            app:layout_constraintStart_toStartOf="@+id/iv_profile_border"
+            app:layout_constraintTop_toTopOf="@+id/iv_profile_border" />
+
+        <ImageView
+            android:id="@+id/iv_profile_border"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_19sdp"
+            android:padding="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_9sdp"
+            android:src="@drawable/count_image_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+            app:layout_constraintHorizontal_bias="0.294"
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.757" />
 
         <com.sum.shop.utils.Button
             android:id="@+id/btn_plus"
             style="@style/BtnIncreaseDecrease"
-            android:layout_marginStart="16dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_amount"
-            app:layout_constraintStart_toEndOf="@+id/tv_amount"
-            app:layout_constraintTop_toTopOf="@+id/tv_amount" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_amount"
+            app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
+        <com.sum.shop.utils.NormalTextView
             android:id="@+id/tv_basket_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="@color/color_primary"
             android:textSize="@dimen/_12ssp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_basket_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_basket_name"
             tools:text="18 tl" />
 
 

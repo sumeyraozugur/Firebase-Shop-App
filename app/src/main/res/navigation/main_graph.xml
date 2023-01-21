@@ -52,7 +52,11 @@
         android:id="@+id/basketFragment"
         android:name="com.sum.shop.ui.basket.BasketFragment"
         android:label="fragment_basket"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_basket" >
+        <action
+            android:id="@+id/action_basketFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addProductFragment"
         android:name="com.sum.shop.ui.addproduct.AddProductFragment"
@@ -81,5 +85,23 @@
             app:exitAnim="@anim/exit_anim_column"
             app:popEnterAnim="@anim/popup_enter_anim"
             app:popExitAnim="@anim/popup_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.sum.shop.ui.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.sum.shop.ui.success.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success" >
+        <action
+            android:id="@+id/action_successFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

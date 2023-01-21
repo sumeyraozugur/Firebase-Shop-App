@@ -40,7 +40,7 @@
     <dimen name="progress_text_marginStart">16dp</dimen>
     <dimen name="progress_text_size">16sp</dimen>
     <dimen name="user_image_background_stroke">4dp</dimen>
-    <dimen name="user_image_background_corner_radius">10dp</dimen>
+    <dimen name="user_image_background_corner_radius">8dp</dimen>
     <dimen name="profile_name_marginTop">30dp</dimen>
     <dimen name="profile_name_textSize">22sp</dimen>
     <dimen name="profile_info_marginTop">4dp</dimen>
