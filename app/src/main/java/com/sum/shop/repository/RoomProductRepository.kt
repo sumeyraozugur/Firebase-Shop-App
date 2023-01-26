@@ -16,7 +16,7 @@ class RoomProductRepository(
 ) {
     var kisilerListesi: MutableLiveData<List<FavModel>> = MutableLiveData()
     val readAllBasket: LiveData<List<BasketModel>> = basketProductDao.readAllBasket()
-    var isFav = MutableLiveData<Boolean>()
+
 
 
     fun kisileriGetir(): MutableLiveData<List<FavModel>> {
@@ -31,17 +31,12 @@ class RoomProductRepository(
 
     suspend fun addToFav(product: FavModel) {
         favProductDao.addToFav(product)
-        withContext(Dispatchers.Main) {
-            isFav.value = true
-        }
+
     }
 
 
-    suspend fun deleteFromFav(favId: Int) {
-        favProductDao.deleteFromFav(favId)
-        withContext(Dispatchers.Main) {
-            isFav.value = false
-        }
+    suspend fun deleteFromFav(fav:FavModel) {
+        favProductDao.deleteFromFav(fav)
     }
 
     suspend fun updateFav(fav: FavModel) {
@@ -52,7 +47,7 @@ class RoomProductRepository(
         basketProductDao.addToBasket(product)
     }
 
-    suspend fun deleteFromBasket(basketId: Int) {
+    suspend fun deleteFromBasket(basketId: String) {
         basketProductDao.deleteFromBasket(basketId)
     }
 }

@@ -23,7 +23,6 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         }
 
         binding.rvFav.adapter = adapter
-
     }
 
     private fun initObserver() {

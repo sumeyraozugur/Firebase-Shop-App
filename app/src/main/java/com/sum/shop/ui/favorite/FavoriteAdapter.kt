@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class FavoriteAdapter( private val viewModel: FavoriteViewModel) : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
     private var favList = listOf<FavModel>()
-    var onRemoveFavClick: (Int) -> Unit = {}
+    var onRemoveFavClick: (FavModel) -> Unit = {}
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
@@ -28,8 +28,8 @@ class FavoriteAdapter( private val viewModel: FavoriteViewModel) : RecyclerView.
 
     inner class FavoriteHolder(private var itemFavBinding: ItemFavBinding) :
         RecyclerView.ViewHolder(itemFavBinding.root) {
-        fun bind(favModel: FavModel) {
 
+        fun bind(favModel: FavModel) {
             itemFavBinding.apply {
                 tvFavName.text = favModel.productTitle
                 tvFavPrice.text = "${favModel.productPrice} TL"
@@ -38,7 +38,7 @@ class FavoriteAdapter( private val viewModel: FavoriteViewModel) : RecyclerView.
                 }
 
                 ivFavBtn.setOnClickListener {
-                    onRemoveFavClick(favModel.id)
+                    onRemoveFavClick(favModel)
                 }
 
             }

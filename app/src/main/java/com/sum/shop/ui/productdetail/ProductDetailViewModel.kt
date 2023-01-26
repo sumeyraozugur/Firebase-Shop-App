@@ -1,4 +1,6 @@
 import android.app.Application
+import android.content.Context
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,18 +14,19 @@ import kotlinx.coroutines.launch
 
 class ProductDetailViewModel(application: Application) : AndroidViewModel(application) {
     val readAllBasket: LiveData<List<BasketModel>>
-    private val repository: RoomProductRepository
 
-    private val _isFav = MutableLiveData<Boolean>()
-    val isFav: LiveData<Boolean> = _isFav
 
     val favDao = FavProductDatabase.getDatabase(application).favDao()
     val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
+    private val repository: RoomProductRepository= RoomProductRepository(favDao, basketDao)
+
+   var kisilerListesi = MutableLiveData<List<FavModel>>()
+
+
 
     init {
-        repository = RoomProductRepository(favDao, basketDao)
         readAllBasket = repository.readAllBasket
-        _isFav.value = FavModel(1, "", "", "", "").isFav
+        kisilerListesi = repository.kisileriGetir()
     }
 
     fun addToFav(fav: FavModel) {
@@ -38,22 +41,19 @@ fun addToBasket(basket: BasketModel) {
     }
 }
 
-    fun updateFav(fav: FavModel) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateFav(fav)
-        }
-    }
 
-    fun deleteFromFav(favId: Int) {
+
+    fun deleteFromFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteFromFav(favId)
+            repository.deleteFromFav(fav)
             kisileriYukle()
         }
     }
 
 
-    fun kisileriYukle() {
+    fun kisileriYukle(){
         repository.getAll()
     }
+
 }
 

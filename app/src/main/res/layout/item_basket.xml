@@ -67,7 +67,7 @@
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_16ssp"
-            android:text="6"
+            android:text="0"
             android:textColor="@color/color_primary_dark"
             android:textSize="@dimen/_10ssp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_profile_border"

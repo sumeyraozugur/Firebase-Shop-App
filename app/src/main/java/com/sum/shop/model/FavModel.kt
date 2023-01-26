@@ -1,14 +1,18 @@
 package com.sum.shop.model
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "fav_table")
+@Entity(tableName = "fav_table", primaryKeys = ["fav_id", "uuid"])
 data class FavModel( // id int olarak veremedim
-    @PrimaryKey(autoGenerate = true)
+
     @ColumnInfo(name = "fav_id")
-    val id: Int =0,
+    var id: Long = 0,
+
+    @ColumnInfo(name = "uuid")
+    var uuid: String = "",
 
     @ColumnInfo(name = "fav_img")
     val img: String,
@@ -17,11 +21,9 @@ data class FavModel( // id int olarak veremedim
     val productTitle: String,
 
     @ColumnInfo(name = "fav_description")
-    val productDescription:String,
+    val productDescription: String,
 
     @ColumnInfo(name = "fav_price")
-    val productPrice:String,
+    val productPrice: String,
 
-    @ColumnInfo(name = "fav_ok")
-    var isFav:Boolean =false
 )

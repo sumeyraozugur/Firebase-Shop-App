@@ -9,7 +9,10 @@ import com.sum.shop.model.BasketModel
 
 class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
     private var basketList = listOf<BasketModel>()
-    var onRemoveBasketClick: (Int) -> Unit = {}
+    var onRemoveBasketClick: (String) -> Unit = {}
+    var onIncreaseClick: (Double) -> Unit = {}
+    var onDecreaseClick: (Double) -> Unit = {}
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BasketHolder {
@@ -32,9 +35,27 @@ class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
                 basketModel.img.let {
                     Glide.with(ivBasket).load(basketModel.img).into(ivBasket)
                 }
+                var productCount = basketModel.count
+                tvAmount.text = productCount.toString()
 
                 btnDelete.setOnClickListener {
-                    onRemoveBasketClick(basketModel.id)
+                    onRemoveBasketClick(basketModel.uuid)
+                }
+
+                btnMinus.setOnClickListener {
+                    if (productCount != 1) {
+                        onDecreaseClick(basketModel.productPrice.toDouble())
+                        productCount--
+                        tvAmount.text = productCount.toString()
+                    } else {
+                        onRemoveBasketClick(basketModel.uuid)
+                    }
+                }
+
+                btnPlus.setOnClickListener {
+                    onIncreaseClick(basketModel.productPrice.toDouble())
+                    productCount++
+                    tvAmount.text = productCount.toString()
                 }
             }
         }
@@ -44,8 +65,8 @@ class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
         return basketList.size
     }
 
-    fun updateList(list: List<BasketModel>) {
-        this.basketList = list
+    fun updateList(updatedList: List<BasketModel>) {
+        this.basketList = updatedList
         notifyDataSetChanged()
     }
 }

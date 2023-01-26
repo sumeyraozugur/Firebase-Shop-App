@@ -4,11 +4,14 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "basket_table")
+@Entity(tableName = "basket_table",primaryKeys = ["basket_id", "uuid"])
 data class BasketModel( // id int olarak veremedim
-    @PrimaryKey(autoGenerate = true)
+
     @ColumnInfo(name = "basket_id")
-    val id: Int,
+    val id: Int=0,
+
+    @ColumnInfo(name = "uuid")
+    var uuid: String = "",
 
     @ColumnInfo(name = "basket_img")
     val img: String,
@@ -24,4 +27,6 @@ data class BasketModel( // id int olarak veremedim
 
     @ColumnInfo(name = "basket_count")
     val productCount:String
-)
+){
+    var count = 1
+}

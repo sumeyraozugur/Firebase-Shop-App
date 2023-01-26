@@ -21,21 +21,48 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
 
         viewModel = ViewModelProvider(this)[BasketViewModel::class.java]
 
+
         binding.rvBasket.adapter = adapter
         initObserver()
 
-        adapter.onRemoveBasketClick = {
-            viewModel.deleteFromBasket(it)
-        }
+
+
         binding.btnCheckout.setOnClickListener {
             Navigation.sent(it, R.id.action_basketFragment_to_paymentFragment)
             //Toast.makeText(context,"Sumeyra", Toast.LENGTH_SHORT).show()
         }
+
+        with(viewModel){
+
+            adapter.onRemoveBasketClick = {
+                deleteFromBasket(it)
+            }
+
+            adapter.onIncreaseClick= {
+                increase(it)
+            }
+
+            adapter.onDecreaseClick= {
+                decrease(it)
+            }
+        }
     }
+
 
     private fun initObserver() {
         viewModel.readAllBasket.observe(viewLifecycleOwner) { basketList ->
+            basketList.forEach { basketProduct->
+                val count = basketProduct.count
+                viewModel.increase(basketProduct.productPrice.toDouble()*count)
+
+
+            }
             adapter.updateList(basketList)
+        }
+
+        viewModel.totalAmount.observe(viewLifecycleOwner) {
+            binding.tvAmount.text = it.toString()
+
         }
     }
 

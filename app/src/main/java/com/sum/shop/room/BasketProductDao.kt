@@ -13,8 +13,8 @@ interface BasketProductDao {
     @Query("SELECT * FROM basket_table ORDER BY basket_id ASC")
     fun readAllBasket(): LiveData<List<BasketModel>>
 
-    @Query("DELETE FROM basket_table WHERE basket_id = :idInput")
-    suspend fun deleteFromBasket(idInput: Int)
+    @Query("DELETE FROM basket_table WHERE uuid = :idInput")
+    suspend fun deleteFromBasket(idInput: String)
 
 
 

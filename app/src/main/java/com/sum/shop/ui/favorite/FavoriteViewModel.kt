@@ -25,11 +25,9 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
     }
 
 
-
-
-    fun deleteFromFav(favId: Int) {
+    fun deleteFromFav(fav:FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteFromFav(favId)
+            repository.deleteFromFav(fav)
             kisileriYukle()
         }
     }
