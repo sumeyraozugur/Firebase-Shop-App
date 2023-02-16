@@ -73,6 +73,7 @@
             android:id="@+id/iv_product_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_primary_dark"
             android:layout_marginTop="@dimen/_3sdp"
             android:layout_marginEnd="@dimen/_3sdp"
             app:layout_constraintEnd_toEndOf="parent"

@@ -31,6 +31,7 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
             productTitle = product.productTitle,
             productDescription = product.productDescription,
             productPrice = product.productPrice,
+            productFav = product.productFav
         )
 
         with(binding) {
@@ -48,13 +49,13 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
 
             //Add fav products to room database
             btnDetailAddFav.setOnClickListener {
-                if (favModel.productFav) {
+                if (product.productFav) {
                     btnDetailAddFav.setBackgroundResource(R.drawable.ic_favorite)
-                    favModel.productFav = false
+                    product.productFav = false
                     viewModel.deleteFromFav(favModel)
                 } else {
                     btnDetailAddFav.setBackgroundResource(R.drawable.ic_full_fav)
-                    favModel.productFav = true
+                    product.productFav = true
                     viewModel.addToFav(favModel)
                 }
             }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.sum.shop.R
 import com.sum.shop.databinding.ItemProductsBinding
 import com.sum.shop.model.ProductModel
 import com.sum.shop.utils.visible
@@ -39,6 +40,12 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
                     val action =
                         ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(item)
                     Navigation.findNavController(it).navigate(action)
+                }
+                if(item.productFav){
+                    ivProductFav.setBackgroundResource(R.drawable.ic_full_fav)
+                }
+                else{
+                    ivProductFav.setBackgroundResource(R.drawable.ic_favorite_border)
                 }
             }
         }
