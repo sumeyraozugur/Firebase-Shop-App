@@ -2,16 +2,13 @@ package com.sum.shop.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sum.shop.R
 import com.sum.shop.databinding.ItemFavBinding
 import com.sum.shop.model.FavModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class FavoriteAdapter( private val viewModel: FavoriteViewModel) : RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
+class FavoriteAdapter(private val viewModel: FavoriteViewModel) :
+    RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
     private var favList = listOf<FavModel>()
     var onRemoveFavClick: (FavModel) -> Unit = {}
 
@@ -23,7 +20,6 @@ class FavoriteAdapter( private val viewModel: FavoriteViewModel) : RecyclerView.
 
     override fun onBindViewHolder(holder: FavoriteHolder, position: Int) {
         holder.bind(favList[position])
-
     }
 
     inner class FavoriteHolder(private var itemFavBinding: ItemFavBinding) :

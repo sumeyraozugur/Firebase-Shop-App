@@ -10,12 +10,11 @@ import com.sum.shop.model.CategoryModel
 
 class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHoler>() {
     private var categoryList = listOf<CategoryModel>()
-    var categoryClick: (Int) -> Unit = {}
 
     inner class CategoryViewHoler(private var itemCategoryBinding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(itemCategoryBinding.root) {
 
-        fun bind(item: CategoryModel,position: Int) {
+        fun bind(item: CategoryModel) {
             with(itemCategoryBinding){
                 Glide.with(itemCategoryBinding.ivCategories).load(item.categoryImage)
                     .into(itemCategoryBinding.ivCategories)
@@ -35,7 +34,7 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHoler>(
     }
 
     override fun onBindViewHolder(holder: CategoryViewHoler, position: Int) {
-        holder.bind(categoryList[position],position)
+        holder.bind(categoryList[position])
     }
 
     override fun getItemCount() = categoryList.size

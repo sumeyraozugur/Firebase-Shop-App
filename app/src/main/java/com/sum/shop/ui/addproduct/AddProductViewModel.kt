@@ -1,13 +1,14 @@
 package com.sum.shop.ui.addproduct
 
+import android.app.Application
 import android.net.Uri
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.sum.shop.repository.FirebaseProductRepository
+import com.sum.shop.repository.ProductRepository
 
-class AddProductViewModel : ViewModel() {
-    private val firebaseRepo = FirebaseProductRepository()
+class AddProductViewModel(application: Application) : AndroidViewModel(application) {
+    private val firebaseRepo = ProductRepository(application)
 
     private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>

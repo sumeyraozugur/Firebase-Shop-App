@@ -41,6 +41,7 @@
     <string name="password_match">Password not matches</string>
     <string name="success">Success:)</string>
     <string name="fail">Fail:(</string>
+    <string name="empty_bag">Empty Bag</string>
     <string name="email_sent">Email sent</string>
     <string name="please_wait">please wait</string>
     <!-- TODO: Remove or change this placeholder text -->

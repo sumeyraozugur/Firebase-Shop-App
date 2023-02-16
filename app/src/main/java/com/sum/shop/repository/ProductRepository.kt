@@ -1,8 +1,9 @@
 package com.sum.shop.repository
 
-import android.content.ContentValues
+import android.app.Application
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.QuerySnapshot
@@ -10,10 +11,19 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.sum.shop.Constant
+import com.sum.shop.model.BasketModel
+import com.sum.shop.model.FavModel
 import com.sum.shop.model.ProductModel
+import com.sum.shop.room.BasketProductDatabase
+import com.sum.shop.room.FavProductDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import java.util.*
 
-class FirebaseProductRepository {
+class ProductRepository(application: Application) {
     var isSuccess = MutableLiveData<Boolean>()
     var categoryList = MutableLiveData<List<ProductModel>>()
     var path = ""
@@ -22,6 +32,11 @@ class FirebaseProductRepository {
     private val firebaseStorage by lazy { Firebase.storage.reference }
     private val calendar by lazy { Calendar.getInstance() }
     val name = auth.currentUser?.uid.toString() + date() + time()
+
+    val favDao = FavProductDatabase.getDatabase(application).favDao()
+    val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
+    var favList: MutableLiveData<List<FavModel>> = MutableLiveData()
+    val readAllBasket: LiveData<List<BasketModel>> = basketDao.readAllBasket()
 
 
     // products upload to Firebase
@@ -53,7 +68,7 @@ class FirebaseProductRepository {
                         .set(product)
                         .addOnSuccessListener {
                             isSuccess.value = true
-                            println(name)
+                            // println(name)
                             Log.d("Product", Constant.SUCCESS)
                         }
                         .addOnFailureListener { exception ->
@@ -66,25 +81,34 @@ class FirebaseProductRepository {
     }
 
 
-    fun getProductRealtime(path:String) {
+    suspend fun getProductRealtime(path: String): List<ProductModel> = withContext(Dispatchers.IO) {
 
-        val docRef = firebaseFirestore.collection(path)
-
-
-        docRef.get().addOnSuccessListener { documents ->
-            println(documents.documents)
-
-            tempToList(documents)
-
-        }.addOnFailureListener { exception ->
-            Log.d(ContentValues.TAG, "get failed with ", exception)
+        val docRef = firebaseFirestore.collection(path).get().await()
+        val favList = favDao.getFavoritesTitles().orEmpty()
+        val tempList = arrayListOf<ProductModel>()
+        docRef.documents.forEach {  document ->
+            tempList.add(
+                ProductModel(
+                    document.id,
+                    document.get("product image") as String,
+                    document.get("product title") as String,
+                    document.get("product description") as String,
+                    document.get("product price") as String,
+                    document.get("product quantiles") as String,
+                    favList.contains(document.get("product title") as String)
+                )
+            )
         }
+
+        tempList
+        //    tempToList( )
+
     }
 
-    private fun tempToList(
+    private suspend fun tempToList(
         querySnapshot: QuerySnapshot?,
-    ) {
-
+    ) = withContext(Dispatchers.IO) {
+        val favList = favDao.getFavoritesTitles().orEmpty()
         val tempList = arrayListOf<ProductModel>()
         querySnapshot?.let {
             it.forEach { document ->
@@ -95,11 +119,14 @@ class FirebaseProductRepository {
                         document.get("product title") as String,
                         document.get("product description") as String,
                         document.get("product price") as String,
-                        document.get("product quantiles") as String
+                        document.get("product quantiles") as String,
+                        favList.contains(document.get("product title") as String)
                     )
                 )
             }
-            categoryList.value = tempList
+            categoryList.postValue(tempList)
+
+
         }
     }
 
@@ -118,6 +145,39 @@ class FirebaseProductRepository {
                 calendar[Calendar.HOUR_OF_DAY].toString()
 
         return time.toInt()
+    }
+
+
+//Local repo
+
+
+    fun returnFavList(): MutableLiveData<List<FavModel>> {
+        return favList
+    }
+
+    fun getAllFav() {
+        val job = CoroutineScope(Dispatchers.Main).launch {
+            favList.value = favDao.getAllFav()
+        }
+    }
+
+
+    suspend fun addToFav(product: FavModel) {
+        favDao.addToFav(product)
+    }
+
+
+    suspend fun deleteFromFav(fav: FavModel) {
+        favDao.deleteFromFav(fav)
+    }
+
+
+    suspend fun addToBasket(product: BasketModel) {
+        basketDao.addToBasket(product)
+    }
+
+    suspend fun deleteFromBasket(basketId: String) {
+        basketDao.deleteFromBasket(basketId)
     }
 
 

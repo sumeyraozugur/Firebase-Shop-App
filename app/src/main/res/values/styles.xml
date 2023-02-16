@@ -35,7 +35,7 @@
     <style name="ArrowBackStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginStart">@dimen/_4sdp</item>
+        <item name="android:layout_marginStart">@dimen/_12sdp</item>
         <item name="android:layout_marginTop">@dimen/_8sdp</item>
         <item name="android:background">@drawable/ic_arrow_back</item>
     </style>

@@ -26,12 +26,8 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     }
 
     private fun initObserver() {
-        viewModel.kisilerListesi.observe(viewLifecycleOwner) { favList ->
+        viewModel.kisilerListesi.observe(viewLifecycleOwner){ favList ->
             adapter.updateList(favList)
         }
-
-
     }
-
-
 }

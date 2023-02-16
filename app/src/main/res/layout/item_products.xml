@@ -50,7 +50,7 @@
             android:id="@+id/tv_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/_3sdp"
             android:textColor="@color/red"
             app:layout_constraintStart_toStartOf="parent"

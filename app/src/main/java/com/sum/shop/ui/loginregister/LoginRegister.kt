@@ -1,6 +1,5 @@
 package com.sum.shop.ui.loginregister
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment

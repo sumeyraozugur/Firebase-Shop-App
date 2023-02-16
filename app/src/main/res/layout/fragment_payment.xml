@@ -15,15 +15,13 @@
         style="@style/ArrowBackStyle" />
 
 
-
-
     <com.sum.shop.utils.BoldTextView
         android:id="@+id/tv_payment_title"
         style="@style/TitleCategoryNameStyle"
         android:text="Payment"
         app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ib_arrow_back"
+        app:layout_constraintStart_toStartOf="@+id/ib_arrow_back"
         app:layout_constraintTop_toTopOf="@id/ib_arrow_back" />
 
     <androidx.core.widget.NestedScrollView

@@ -1,28 +1,23 @@
 package com.sum.shop.ui.basket
 
-import RoomProductRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sum.shop.model.BasketModel
-import com.sum.shop.room.BasketProductDatabase
-import com.sum.shop.room.FavProductDatabase
+import com.sum.shop.repository.ProductRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BasketViewModel(application: Application) : AndroidViewModel(application) {
     val readAllBasket: LiveData<List<BasketModel>>
-    private val repository: RoomProductRepository
+    private val repository= ProductRepository(application)
 
     private val _totalAmount = MutableLiveData(0.0)
     val totalAmount: LiveData<Double> = _totalAmount
 
     init {
-        val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
-        val favDao = FavProductDatabase.getDatabase(application).favDao()
-        repository = RoomProductRepository(favDao, basketDao)
         readAllBasket = repository.readAllBasket
     }
 

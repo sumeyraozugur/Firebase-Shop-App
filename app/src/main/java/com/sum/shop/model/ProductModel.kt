@@ -11,5 +11,6 @@ data class ProductModel(
     val productTitle: String,
     val productDescription:String,
     val productPrice:String,
-    val productCount:String
+    val productCount:String,
+    var productFav: Boolean = false
     ) : Parcelable

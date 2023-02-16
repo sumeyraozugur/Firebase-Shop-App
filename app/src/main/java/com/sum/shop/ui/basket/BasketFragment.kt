@@ -10,6 +10,7 @@ import com.sum.shop.R
 import com.sum.shop.databinding.FragmentBasketBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.sent
+import com.sum.shop.utils.showErrorSnackBar
 
 class BasketFragment : Fragment(R.layout.fragment_basket ) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
@@ -26,16 +27,11 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
         initObserver()
 
 
-
-        binding.btnCheckout.setOnClickListener {
-            Navigation.sent(it, R.id.action_basketFragment_to_paymentFragment)
-            //Toast.makeText(context,"Sumeyra", Toast.LENGTH_SHORT).show()
-        }
-
         with(viewModel){
 
             adapter.onRemoveBasketClick = {
                 deleteFromBasket(it)
+                viewModel.resetTotalAmount()
             }
 
             adapter.onIncreaseClick= {
@@ -51,13 +47,22 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
 
     private fun initObserver() {
         viewModel.readAllBasket.observe(viewLifecycleOwner) { basketList ->
-            basketList.forEach { basketProduct->
-                val count = basketProduct.count
-                viewModel.increase(basketProduct.productPrice.toDouble()*count)
-
-
+            basketList?.forEach { basketProduct->
+                viewModel.increase(basketProduct.productPrice.toDouble())
             }
+         /*   if(basketList.isEmpty()){
+                viewModel.resetTotalAmount()
+            }*/
+
             adapter.updateList(basketList)
+
+            binding.btnCheckout.setOnClickListener {
+                if(basketList.isNotEmpty()){
+                    Navigation.sent(it, R.id.action_basketFragment_to_paymentFragment)
+                }else{
+                    showErrorSnackBar(requireContext(), requireView(), getString(R.string.empty_bag), true)
+                }
+            }
         }
 
         viewModel.totalAmount.observe(viewLifecycleOwner) {

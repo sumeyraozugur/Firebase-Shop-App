@@ -16,12 +16,12 @@
 
     <com.sum.shop.utils.BoldTextView
         android:id="@+id/tv_product_title"
-        tools:text="Woman"
+        style="@style/TitleCategoryNameStyle"
         app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ib_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/ib_arrow_back"
-        style="@style/TitleCategoryNameStyle" />
+        tools:text="Woman" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"

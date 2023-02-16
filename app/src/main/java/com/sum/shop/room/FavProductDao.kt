@@ -10,13 +10,15 @@ interface FavProductDao {
     suspend fun addToFav(fav: FavModel)
 
     @Query("SELECT * FROM fav_table ORDER BY fav_id ASC")
-    suspend fun readAllFav(): List<FavModel>
+    suspend fun getAllFav(): List<FavModel>
 
-    @Update
-    suspend fun updateFav(fav: FavModel)
+    @Query("SELECT fav_title FROM fav_table")
+    suspend fun getFavoritesTitles(): List<String>?
 
     @Delete
     suspend fun deleteFromFav(fav:FavModel)
+
+
 
 
 }

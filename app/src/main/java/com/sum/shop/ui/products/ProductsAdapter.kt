@@ -2,7 +2,6 @@ package com.sum.shop.ui.products
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,7 +11,6 @@ import com.sum.shop.utils.visible
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
     private var productsList = listOf<ProductModel>()
-    var onProductsClick: (Int) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
         val binding =
@@ -38,9 +36,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
                 }
 
                 root.setOnClickListener {
-                    val action =ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(item)
+                    val action =
+                        ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(item)
                     Navigation.findNavController(it).navigate(action)
-
                 }
             }
         }
@@ -50,7 +48,6 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
 
     fun setData(product: List<ProductModel>) {
         this.productsList = product
-
         notifyDataSetChanged()
     }
 }
