@@ -2,7 +2,6 @@ package com.sum.shop.ui.basket
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -14,13 +13,15 @@ import com.sum.shop.utils.showErrorSnackBar
 
 class BasketFragment : Fragment(R.layout.fragment_basket ) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
-    private val adapter by lazy { BasketAdapter() }
+    private lateinit var  adapter:BasketAdapter
+
     private lateinit var viewModel: BasketViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[BasketViewModel::class.java]
+        adapter = BasketAdapter(viewModel)
 
 
         binding.rvBasket.adapter = adapter
@@ -47,15 +48,9 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
 
     private fun initObserver() {
         viewModel.readAllBasket.observe(viewLifecycleOwner) { basketList ->
-            basketList?.forEach { basketProduct->
-                viewModel.increase(basketProduct.productPrice.toDouble())
-            }
-         /*   if(basketList.isEmpty()){
-                viewModel.resetTotalAmount()
-            }*/
+            viewModel.totalBasket()
 
             adapter.updateList(basketList)
-
             binding.btnCheckout.setOnClickListener {
                 if(basketList.isNotEmpty()){
                     Navigation.sent(it, R.id.action_basketFragment_to_paymentFragment)

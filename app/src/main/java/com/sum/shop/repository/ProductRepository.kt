@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -25,7 +24,6 @@ import java.util.*
 
 class ProductRepository(application: Application) {
     var isSuccess = MutableLiveData<Boolean>()
-    var categoryList = MutableLiveData<List<ProductModel>>()
     var path = ""
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
@@ -101,34 +99,8 @@ class ProductRepository(application: Application) {
         }
 
         tempList
-        //    tempToList( )
-
     }
 
-    private suspend fun tempToList(
-        querySnapshot: QuerySnapshot?,
-    ) = withContext(Dispatchers.IO) {
-        val favList = favDao.getFavoritesTitles().orEmpty()
-        val tempList = arrayListOf<ProductModel>()
-        querySnapshot?.let {
-            it.forEach { document ->
-                tempList.add(
-                    ProductModel(
-                        document.id,
-                        document.get("product image") as String,
-                        document.get("product title") as String,
-                        document.get("product description") as String,
-                        document.get("product price") as String,
-                        document.get("product quantiles") as String,
-                        favList.contains(document.get("product title") as String)
-                    )
-                )
-            }
-            categoryList.postValue(tempList)
-
-
-        }
-    }
 
     private fun date(): Int {
         val date = calendar[Calendar.DAY_OF_MONTH].toString() +
@@ -179,6 +151,17 @@ class ProductRepository(application: Application) {
     suspend fun deleteFromBasket(basketId: String) {
         basketDao.deleteFromBasket(basketId)
     }
+
+    suspend fun updateBasket(product: BasketModel){
+        basketDao.update(product)
+    }
+
+     suspend fun totalBasket():Double{
+        return  basketDao.getTotalPrice()
+    }
+
+
+
 
 
 }

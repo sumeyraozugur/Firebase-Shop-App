@@ -77,8 +77,9 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
                         product.img,
                         product.productTitle,
                         product.productDescription,
-                        product.productPrice,
-                        product.productCount
+                        product.productPrice.toInt(),
+                        product.productCount,
+                        product.total_amount
                     )
                 )
             }

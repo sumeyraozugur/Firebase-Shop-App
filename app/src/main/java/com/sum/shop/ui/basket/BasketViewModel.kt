@@ -19,6 +19,7 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
 
     init {
         readAllBasket = repository.readAllBasket
+
     }
 
 
@@ -28,6 +29,11 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
+    fun updateBasket(product: BasketModel){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateBasket(product)
+        }
+    }
 
 
 
@@ -42,4 +48,11 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
     fun resetTotalAmount() {
         _totalAmount.value = 0.0
     }
+
+    fun totalBasket(){
+        viewModelScope.launch(Dispatchers.Main) {
+            _totalAmount.value = repository.totalBasket()
+        }
+    }
+
 }

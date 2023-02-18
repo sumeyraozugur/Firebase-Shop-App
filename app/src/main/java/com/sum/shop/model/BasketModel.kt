@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "basket_table",primaryKeys = ["basket_id", "uuid"])
-data class BasketModel( // id int olarak veremedim
+data class BasketModel(
 
     @ColumnInfo(name = "basket_id")
     val id: Int=0,
@@ -23,10 +23,14 @@ data class BasketModel( // id int olarak veremedim
     val productDescription:String,
 
     @ColumnInfo(name = "basket_price")
-    val productPrice:String,
+    val productPrice:Int,
 
     @ColumnInfo(name = "basket_count")
-    val productCount:String
+    val productCount:String,
+
+    @ColumnInfo(name = "basket_total")
+    var total_amount: Double =0.0
 ){
     var count = 1
+
 }

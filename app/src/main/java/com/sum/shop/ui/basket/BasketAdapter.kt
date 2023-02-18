@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.sum.shop.databinding.ItemBasketBinding
 import com.sum.shop.model.BasketModel
 
-class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
+class BasketAdapter(private val viewModel: BasketViewModel) : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
     private var basketList = listOf<BasketModel>()
     var onRemoveBasketClick: (String) -> Unit = {}
     var onIncreaseClick: (Double) -> Unit = {}
@@ -22,7 +22,6 @@ class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
 
     override fun onBindViewHolder(holder: BasketHolder, position: Int) {
         holder.bind(basketList[position])
-
     }
 
     inner class BasketHolder(private var itemBasketBinding: ItemBasketBinding) :
@@ -35,18 +34,19 @@ class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
                 basketModel.img.let {
                     Glide.with(ivBasket).load(basketModel.img).into(ivBasket)
                 }
-                var productCount = basketModel.count
-                tvAmount.text = productCount.toString()
+
+                tvAmount.text =  basketModel.count.toString()
 
                 btnDelete.setOnClickListener {
                     onRemoveBasketClick(basketModel.uuid)
                 }
 
                 btnMinus.setOnClickListener {
-                    if (productCount != 1) {
+                    if ( basketModel.count != 1) {
                         onDecreaseClick(basketModel.productPrice.toDouble())
-                        productCount--
-                        tvAmount.text = productCount.toString()
+                         basketModel.count--
+                        viewModel.updateBasket(basketModel)
+                        tvAmount.text =  basketModel.count.toString()
                     } else {
                         onRemoveBasketClick(basketModel.uuid)
                     }
@@ -54,8 +54,10 @@ class BasketAdapter() : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
 
                 btnPlus.setOnClickListener {
                     onIncreaseClick(basketModel.productPrice.toDouble())
-                    productCount++
-                    tvAmount.text = productCount.toString()
+                     basketModel.count++
+                    viewModel.updateBasket(basketModel)
+                    tvAmount.text =   basketModel.count.toString()
+
                 }
             }
         }

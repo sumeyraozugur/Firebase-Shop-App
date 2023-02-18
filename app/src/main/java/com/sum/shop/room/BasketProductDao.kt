@@ -16,6 +16,8 @@ interface BasketProductDao {
     @Query("DELETE FROM basket_table WHERE uuid = :idInput")
     suspend fun deleteFromBasket(idInput: String)
 
-
-
+    @Query("SELECT SUM(count * basket_price) FROM basket_table")
+    suspend fun getTotalPrice(): Double
+    @Update
+    suspend fun update(basket: BasketModel)
 }
