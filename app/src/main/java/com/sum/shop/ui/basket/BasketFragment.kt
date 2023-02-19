@@ -53,7 +53,15 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
             adapter.updateList(basketList)
             binding.btnCheckout.setOnClickListener {
                 if(basketList.isNotEmpty()){
-                    Navigation.sent(it, R.id.action_basketFragment_to_paymentFragment)
+                    val action =
+                        viewModel._totalAmount.value?.let { it1 ->
+                            BasketFragmentDirections.actionBasketFragmentToPaymentFragment(
+                                it1.toFloat()
+                            )
+                        }
+                    if (action != null) {
+                        Navigation.findNavController(it).navigate(action)
+                    }
                 }else{
                     showErrorSnackBar(requireContext(), requireView(), getString(R.string.empty_bag), true)
                 }

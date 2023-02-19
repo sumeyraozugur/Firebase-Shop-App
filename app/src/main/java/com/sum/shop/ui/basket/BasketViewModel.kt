@@ -14,12 +14,11 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
     val readAllBasket: LiveData<List<BasketModel>>
     private val repository= ProductRepository(application)
 
-    private val _totalAmount = MutableLiveData(0.0)
+    val _totalAmount = MutableLiveData(0.0)
     val totalAmount: LiveData<Double> = _totalAmount
 
     init {
         readAllBasket = repository.readAllBasket
-
     }
 
 
@@ -34,7 +33,6 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
             repository.updateBasket(product)
         }
     }
-
 
 
     fun increase(price: Double) {

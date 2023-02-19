@@ -90,10 +90,10 @@
                 app:layout_constraintTop_toBottomOf="@id/til_card_name">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/et_product_price"
+                    android:id="@+id/et_card_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
                     android:textSize="@dimen/_12sdp" />
@@ -114,10 +114,10 @@
                 app:layout_constraintTop_toBottomOf="@id/til_card_number">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etProductDescription"
+                    android:id="@+id/et_expiry_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
+                    android:inputType="date"
                     android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
                     android:textSize="@dimen/_12ssp" />
@@ -138,10 +138,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/til_card_number">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etProductDescriptio"
+                    android:id="@+id/et_cvv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
+                    android:inputType="number"
                     android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
                     android:textSize="@dimen/_12ssp" />
@@ -149,7 +149,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_product_pric"
+                android:id="@+id/til_address"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

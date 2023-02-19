@@ -34,9 +34,14 @@
     <string name="invalid_password">Must be 6 digit</string>
     <string name="required_field">Required Field</string>
     <string name="required_name">Please enter first name</string>
+    <string name="required_card_name">Please enter card name</string>
     <string name="required_lastname">Please enter last name</string>
+    <string name="required_card_number">Please enter card number</string>
     <string name="required_email">Please enter a valid email address(aa@gmail.com)</string>
+    <string name="required_expiry">Please enter expiry date</string>
     <string name="required_password">Please enter 4 digit password</string>
+    <string name="required_address">Please enter adress</string>
+    <string name="required_cvv">Please enter CVV</string>
     <string name="accept_condition">Please accept terms and condition</string>
     <string name="password_match">Password not matches</string>
     <string name="success">Success:)</string>

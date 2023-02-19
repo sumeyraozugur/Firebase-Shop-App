@@ -94,6 +94,9 @@
         <action
             android:id="@+id/action_paymentFragment_to_successFragment"
             app:destination="@id/successFragment" />
+        <argument
+            android:name="objectTotalAmount"
+            app:argType="float" />
     </fragment>
     <fragment
         android:id="@+id/successFragment"
@@ -103,5 +106,7 @@
         <action
             android:id="@+id/action_successFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <argument android:name="objectTotalAmount"
+            app:argType="float" />
     </fragment>
 </navigation>

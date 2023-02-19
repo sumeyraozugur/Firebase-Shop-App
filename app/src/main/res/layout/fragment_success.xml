@@ -42,7 +42,7 @@
         android:layout_marginTop="22dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="Thank you! Your payment of 30Tl has been received"
+        tools:text="Thank you! Your payment of 30Tl has been received"
         android:textColor="@color/color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
