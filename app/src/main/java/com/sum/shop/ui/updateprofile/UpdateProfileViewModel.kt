@@ -1,5 +1,6 @@
 package com.sum.shop.ui.updateprofile
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -28,8 +29,8 @@ class UpdateProfileViewModel:ViewModel() {
         _profileInfo = firebaseRepo.profileInfo
     }
 
-    fun updateProfile(firstName: String, lastName: String, email: String){
-        firebaseRepo.updateProfile(firstName,lastName,email)
+    fun updateProfile(firstName: String, lastName: String, email: String,picture:Uri){
+        firebaseRepo.updateProfile(firstName,lastName,email,picture)
         _isSuccess= firebaseRepo.isSuccess
     }
 

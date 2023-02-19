@@ -10,6 +10,7 @@ object Constant {
     const val ID = "id"
     const val E_MAIL = "email"
     const val FIRST_NAME = "firstname"
+    const val PROFILE_PICTURE = "picture"
     const val LAST_NAME = "lastname"
     const val PRODUCT_IMAGE ="product image"
     const val PRODUCT_TITLE = "product title"

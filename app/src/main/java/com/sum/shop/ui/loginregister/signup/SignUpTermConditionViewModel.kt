@@ -27,7 +27,7 @@ class SignUpTermConditionViewModel : ViewModel() {
         eMail: String,
         password: String,
         isAccept: Boolean
-    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, isAccept)
+    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, isAccept =isAccept)
 
       fun checkResult(){
           firebaseRepo.checkResult()

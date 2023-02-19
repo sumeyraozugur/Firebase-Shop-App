@@ -1,19 +1,23 @@
 package com.sum.shop.repository
 
 import android.content.ContentValues
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.sum.shop.Constant.E_MAIL
 import com.sum.shop.Constant.FIRST_NAME
 import com.sum.shop.Constant.ID
 import com.sum.shop.Constant.LAST_NAME
+import com.sum.shop.Constant.PROFILE_PICTURE
 import com.sum.shop.Constant.SIGN_UP
 import com.sum.shop.Constant.SUCCESS
 import com.sum.shop.Constant.USERS_PATH
 import com.sum.shop.model.ProfileModel
+import java.util.*
 
 class FirebaseAuthRepository {
     var profileInfo = MutableLiveData<ProfileModel>()
@@ -22,6 +26,8 @@ class FirebaseAuthRepository {
     var resultOk = MutableLiveData<Boolean>()
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
+    private val firebaseStorage by lazy { Firebase.storage.reference }
+    val name = auth.currentUser?.uid.toString()
 
 
     //Register
@@ -30,7 +36,8 @@ class FirebaseAuthRepository {
         lastName: String,
         eMail: String,
         password: String,
-        isAccept: Boolean = false,
+        picture: Uri? = null,
+        isAccept: Boolean = false
     ) {
         auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -40,7 +47,8 @@ class FirebaseAuthRepository {
                         ID to firebaseUser.uid,
                         E_MAIL to eMail,
                         FIRST_NAME to firstName,
-                        LAST_NAME to lastName
+                        LAST_NAME to lastName,
+                        PROFILE_PICTURE to picture
                     )
                     firebaseFirestore.collection(USERS_PATH).document(firebaseUser.uid)
                         .set(user)
@@ -100,6 +108,7 @@ class FirebaseAuthRepository {
                             document.get("firstname") as String,
                             document.get("lastname") as String,
                             user.email,
+                            document.get("picture") as String
                         )
                     }
                 }
@@ -110,20 +119,26 @@ class FirebaseAuthRepository {
     }
 
     //update Profile
-    fun updateProfile(firstName: String, lastName: String, email: String) {
-        auth.currentUser?.let {
-            firebaseFirestore.collection(USERS_PATH).document(it.uid)
-                .update(
-                    "firstname", firstName,
-                    "lastname", lastName,
-                    "email", email
-                ).addOnSuccessListener {
-                    isSuccess.value = true
+    fun updateProfile(firstName: String, lastName: String, email: String, picture:Uri) {
+        firebaseStorage.child(name).putFile(picture).addOnSuccessListener {
 
-                }.addOnFailureListener {
-                    isSuccess.value = false
+            it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
+                auth.currentUser?.let {
+                    firebaseFirestore.collection(USERS_PATH).document(it.uid)
+                        .update(
+                            "firstname", firstName,
+                            "lastname", lastName,
+                            "email", email,
+                            "picture", url
+                        ).addOnSuccessListener {
+                            isSuccess.value = true
 
+                        }.addOnFailureListener {
+                            isSuccess.value = false
+
+                        }
                 }
+            }
         }
     }
 

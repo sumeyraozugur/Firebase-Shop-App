@@ -19,7 +19,6 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     private lateinit var viewModel: ProductsViewModel
     val args: ProductsFragmentArgs by navArgs()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[ProductsViewModel::class.java]

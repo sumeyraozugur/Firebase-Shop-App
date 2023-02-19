@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/iv_profile"
-        android:layout_width="@dimen/_210sdp"
+        android:layout_width="@dimen/_207sdp"
         android:layout_height="@dimen/_180sdp"
         android:layout_marginTop="@dimen/_28sdp"
         android:src="@drawable/ic_user_placeholder"

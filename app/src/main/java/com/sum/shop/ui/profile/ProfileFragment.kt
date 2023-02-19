@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.sum.shop.MainActivity
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentProfileBinding
@@ -31,10 +32,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         }
 
+
      with(binding){
          viewModel.profileInfo.observe(viewLifecycleOwner) {
              tvProfileName.text = "${it.firstName} ${it.lastName}"
              tvProfileEmail.text = it.email
+             Glide.with(binding.ivProfile).load(it.picture).into(binding.ivProfile)
          }
      }
 

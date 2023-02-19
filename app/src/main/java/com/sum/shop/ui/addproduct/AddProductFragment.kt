@@ -52,7 +52,7 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 val productPrice = etProductPrice.text.toString().trim { it <= ' ' }
                 val productDescription = etProductDescription.text.toString().trim { it <= ' ' }
                 val productQuantity = etProductQuantity.text.toString().trim { it <= ' ' }
-                picture
+
                 if( validAddProduct() && picture != null) {
                     if(productType =="Woman")
                         viewModel.addProduct(
