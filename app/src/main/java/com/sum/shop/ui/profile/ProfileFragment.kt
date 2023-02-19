@@ -22,6 +22,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         binding.tvEdit.setOnClickListener {
             Navigation.sent(it, R.id.action_profileFragment_to_updateProfileFragment)
         }
@@ -37,7 +39,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
          viewModel.profileInfo.observe(viewLifecycleOwner) {
              tvProfileName.text = "${it.firstName} ${it.lastName}"
              tvProfileEmail.text = it.email
+
              Glide.with(binding.ivProfile).load(it.picture).into(binding.ivProfile)
+
          }
      }
 

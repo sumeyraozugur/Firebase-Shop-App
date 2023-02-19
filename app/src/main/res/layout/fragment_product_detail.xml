@@ -17,6 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <WebView
+                android:id="@+id/web_view"
+                android:layout_marginTop="55dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <ImageView
                 android:id="@+id/iv_product_image"
                 android:layout_width="match_parent"
@@ -27,6 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <ImageButton
                 android:id="@+id/ib_arrow_back"
                 style="@style/ArrowBackStyle"
@@ -34,17 +41,30 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/color_primary_dark" />
 
+
+
             <com.sum.shop.utils.Button
                 android:id="@+id/btn_detail_add_fav"
                 android:layout_width="@dimen/_24sdp"
                 android:layout_height="@dimen/_26sdp"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
                 android:background="@drawable/ic_favorite"
                 android:backgroundTint="@color/color_primary_dark"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/iv_product_image" />
 
+
+            <com.sum.shop.utils.Button
+                android:id="@+id/btn_detail_share"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:background="@drawable/ic_share"
+                android:backgroundTint="@color/color_primary_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_detail_add_fav" />
 
             <com.sum.shop.utils.BoldTextView
                 android:id="@+id/tv_detail_name"
@@ -102,6 +122,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_info">
 
             </com.sum.shop.utils.Button>
+
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

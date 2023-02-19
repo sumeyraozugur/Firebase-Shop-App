@@ -1,6 +1,7 @@
 package com.sum.shop.ui.productdetail
 
 import ProductDetailViewModel
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -33,6 +34,8 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
             productPrice = product.productPrice,
             productFav = product.productFav
         )
+
+        shareLink()
 
         with(binding) {
             tvDetailName.text = product.productTitle
@@ -82,6 +85,16 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
                         product.total_amount
                     )
                 )
+            }
+        }
+    }
+
+    private fun shareLink(){
+        binding.btnDetailShare.setOnClickListener {
+            Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, binding.webView.url)
+                startActivity(Intent.createChooser(this,"Share Link"))
             }
         }
     }

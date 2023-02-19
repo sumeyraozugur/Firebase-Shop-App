@@ -1,5 +1,6 @@
 package com.sum.shop.ui.loginregister.signup
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,8 +27,9 @@ class SignUpTermConditionViewModel : ViewModel() {
         lastName: String,
         eMail: String,
         password: String,
+        picture:Uri,
         isAccept: Boolean
-    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, isAccept =isAccept)
+    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, picture,isAccept)
 
       fun checkResult(){
           firebaseRepo.checkResult()

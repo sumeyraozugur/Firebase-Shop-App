@@ -119,9 +119,7 @@ class ProductRepository(application: Application) {
         return time.toInt()
     }
 
-
 //Local repo
-
 
     fun returnFavList(): MutableLiveData<List<FavModel>> {
         return favList
@@ -159,9 +157,4 @@ class ProductRepository(application: Application) {
      suspend fun totalBasket():Double{
         return  basketDao.getTotalPrice()
     }
-
-
-
-
-
 }

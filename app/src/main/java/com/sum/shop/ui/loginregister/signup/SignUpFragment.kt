@@ -3,6 +3,7 @@ package com.sum.shop.ui.loginregister.signup
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,9 +36,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 val email = etEmail.text.toString().trim { it <= ' ' }
                 val password = etPassword.text.toString().trim { it <= ' ' }
                 val isCheck = cbTermsAndCondition.isChecked
+                val picture = "https://firebasestorage.googleapis.com/v0/b/mytimeline-3b8ed.appspot.com/o/7osTM3szwOUtG5CUiXLOh1nppuI2?alt=media&token=c11333dc-15eb-41c2-ac88-72e7a167c719"
 
                 if (validateSignUpDetails()) {
-                    viewModel.signUp(firstName, lastName, email, password, isCheck)
+                    viewModel.signUp(firstName, lastName, email, password,picture.toUri() ,isCheck)
                 }
             }
         }
