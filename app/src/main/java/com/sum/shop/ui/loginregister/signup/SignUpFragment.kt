@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.sum.shop.Constant
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSignUpBinding
 import com.sum.shop.delegate.viewBinding
@@ -36,7 +37,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 val email = etEmail.text.toString().trim { it <= ' ' }
                 val password = etPassword.text.toString().trim { it <= ' ' }
                 val isCheck = cbTermsAndCondition.isChecked
-                val picture = "https://firebasestorage.googleapis.com/v0/b/mytimeline-3b8ed.appspot.com/o/7osTM3szwOUtG5CUiXLOh1nppuI2?alt=media&token=c11333dc-15eb-41c2-ac88-72e7a167c719"
+                val picture = Constant.PROFILE_PICTURE_LINK
 
                 if (validateSignUpDetails()) {
                     viewModel.signUp(firstName, lastName, email, password,picture.toUri() ,isCheck)

@@ -39,7 +39,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
          viewModel.profileInfo.observe(viewLifecycleOwner) {
              tvProfileName.text = "${it.firstName} ${it.lastName}"
              tvProfileEmail.text = it.email
-
              Glide.with(binding.ivProfile).load(it.picture).into(binding.ivProfile)
 
          }

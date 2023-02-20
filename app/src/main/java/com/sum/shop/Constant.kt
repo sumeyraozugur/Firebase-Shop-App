@@ -20,6 +20,8 @@ object Constant {
     const val PRODUCT_TYPE = "product type"
     const val PRODUCT_DATE = "date"
     const val PRODUCT_TIME = "time"
+    const val PROFILE_PICTURE_LINK ="https://firebasestorage.googleapis.com/v0/b/mytimeline-3b8ed.appspot.com/o/8rSIYAZDvdgS6iyqO2wBIYbz2692?alt=media&token=25fda3bc-7307-4a7e-be69-8c87319496f5"
+
 
 
 }
