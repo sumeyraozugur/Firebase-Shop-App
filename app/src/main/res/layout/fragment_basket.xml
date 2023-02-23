@@ -23,11 +23,11 @@
     <com.sum.shop.utils.BoldTextView
         android:id="@+id/tv_total"
         android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_margin="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="12dp"
-        android:hint="Total Amount:"
+        android:layout_height="@dimen/_12sdp"
+        android:layout_margin="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:hint="@string/total_amount"
         app:layout_constraintBottom_toTopOf="@+id/btn_checkout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_basket" />
@@ -35,9 +35,8 @@
     <com.sum.shop.utils.Button
         android:id="@+id/btn_checkout"
         style="@style/ButtonStyle"
-        android:layout_margin="16dp"
-        android:background="@drawable/app_gradient_color_background"
-        android:text="Checkout"
+        android:layout_margin="@dimen/_12sdp"
+        android:text="@string/checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -46,7 +45,7 @@
         android:id="@+id/tv_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:textColor="@color/black"
         tools:text="120"
         app:layout_constraintBottom_toTopOf="@+id/btn_checkout"

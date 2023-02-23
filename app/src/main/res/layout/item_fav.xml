@@ -22,7 +22,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/fav_product_image" />
 
         <View
             android:id="@+id/view_divider"
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_2sdp"
-            android:text="TextView"
+            tools:text="TextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_divider" />
 
@@ -62,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_6sdp"
-            android:text="TextView"
+            tools:text="TextView"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +79,8 @@
             app:tint="@color/color_primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_full_fav" />
+            app:srcCompat="@drawable/ic_full_fav"
+            android:contentDescription="@string/fav_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

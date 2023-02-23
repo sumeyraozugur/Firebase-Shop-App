@@ -145,26 +145,15 @@
 
             <com.sum.shop.utils.Button
                 android:id="@+id/btn_register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_12sdp"
+                style="@style/ButtonStyle"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:background="@drawable/app_gradient_color_background"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center"
                 android:paddingTop="@dimen/_6sdp"
                 android:paddingBottom="@dimen/_6sdp"
                 android:text="@string/btn_register"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_14ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_terms_condition" />
-
-
 
 
             <androidx.appcompat.widget.AppCompatCheckBox
@@ -195,6 +184,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

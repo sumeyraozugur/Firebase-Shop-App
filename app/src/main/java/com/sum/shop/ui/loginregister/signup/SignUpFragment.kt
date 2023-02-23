@@ -12,17 +12,18 @@ import com.sum.shop.Constant
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSignUpBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.ui.addproduct.AddProductViewModel
+import com.sum.shop.ui.basket.BasketViewModel
 import com.sum.shop.utils.sent
 import com.sum.shop.utils.showErrorSnackBar
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
-    private lateinit var viewModel : SignUpTermConditionViewModel
+    private val  viewModel by lazy { SignUpTermConditionViewModel() }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[SignUpTermConditionViewModel::class.java]
-
         initObservers()
 
         binding.tvTermsCondition.setOnClickListener {
@@ -37,88 +38,43 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 val email = etEmail.text.toString().trim { it <= ' ' }
                 val password = etPassword.text.toString().trim { it <= ' ' }
                 val isCheck = cbTermsAndCondition.isChecked
-                val picture = Constant.PROFILE_PICTURE_LINK
+                val picture = Constant.PROFILE_PICTURE_LINK.toUri()
 
                 if (validateSignUpDetails()) {
-                    viewModel.signUp(firstName, lastName, email, password,picture.toUri() ,isCheck)
+                    viewModel.signUp(firstName, lastName, email, password,picture ,isCheck)
                 }
             }
         }
     }
 
 
-    private fun validateSignUpDetails(): Boolean {
-        return when {
-            TextUtils.isEmpty(binding.etFirstName.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.required_name),
-                    true
-                )
-                false
-            }
-            TextUtils.isEmpty(binding.etLastName.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.required_lastname),
-                    true
-                )
-                false
-            }
-            TextUtils.isEmpty(binding.etEmail.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.required_email),
-                    true
-                )
-                false
-            }
-            TextUtils.isEmpty(binding.etPassword.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.required_password),
-                    true
-                )
-                false
-            }
-            TextUtils.isEmpty(binding.etConfirmPassword.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.required_password),
-                    true
-                )
-                false
-            }
 
-            binding.etPassword.text.toString()
-                .trim { it <= ' ' } != binding.etConfirmPassword.text.toString()
-                .trim { it <= ' ' } -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.password_match),
-                    true
-                )
-                false
-            }
-            !binding.cbTermsAndCondition.isChecked -> {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.accept_condition),
-                    true
-                )
-                false
-            }
-            else -> {
-                true
-            }
+    private fun validateSignUpDetails(): Boolean {
+        with(binding){
+            val firstName = binding.etFirstName.text.toString().trim { it <= ' ' }
+            val lastName = binding.etLastName.text.toString().trim { it <= ' ' }
+            val email = binding.etEmail.text.toString().trim { it <= ' ' }
+            val password = binding.etPassword.text.toString().trim { it <= ' ' }
+            val confirmPassword = binding.etConfirmPassword.text.toString().trim { it <= ' ' }
+            val isCheck = binding.cbTermsAndCondition.isChecked
+
+
+        return when {
+            firstName.isEmpty() -> showError(getString(R.string.required_name))
+            lastName.isEmpty() -> showError(getString(R.string.required_lastname))
+            email.isEmpty() -> showError(getString(R.string.required_email))
+            password.isEmpty() ->showError(getString(R.string.required_password))
+            confirmPassword.isEmpty() ->showError(getString(R.string.required_password))
+            password != confirmPassword ->showError(getString(R.string.password_match))
+            !isCheck -> showError(getString(R.string.accept_condition))
+            else -> true
+
         }
+        }
+    }
+    private fun showError(errorMsg: String): Boolean {
+        showErrorSnackBar(requireContext(), requireView(), errorMsg, true)
+        return false
     }
 
     private fun initObservers() {
@@ -134,10 +90,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
             }
         })
-/*        Constant.result.observe(viewLifecycleOwner){
-            binding.cbTermsAndCondition.isChecked = it
-
-        }*/
 
         viewModel.resultOk.observe(viewLifecycleOwner, Observer {
             binding.cbTermsAndCondition.isChecked = it

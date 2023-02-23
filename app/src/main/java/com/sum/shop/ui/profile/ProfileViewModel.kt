@@ -13,8 +13,6 @@ class ProfileViewModel:ViewModel() {
     val profileInfo: LiveData<ProfileModel>
         get() = _profileInfo
 
-
-
     init {
         getProfileInfo()
     }

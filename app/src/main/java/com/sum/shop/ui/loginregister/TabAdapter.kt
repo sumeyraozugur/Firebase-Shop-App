@@ -8,7 +8,6 @@ import com.sum.shop.ui.loginregister.signup.SignUpFragment
 class TabAdapter(fragment: Fragment):
     FragmentStateAdapter(fragment){
 
-
     override fun getItemCount(): Int {
         return 2
     }

@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp">
+        tools:layout_editor_absoluteY="12sdp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,9 +23,9 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="Add Your Style!"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/add_your_style"
                 android:textColor="@color/color_primary_dark"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
@@ -36,10 +36,9 @@
                 android:id="@+id/tv_explain_add_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginVertical="@dimen/_6sdp"
-                android:layout_marginTop="8dp"
-                android:text="Add your style and earn money!"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/add_your_style_and_earn_money"
                 android:textColor="#60000000"
                 android:textStyle="italic|bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +50,7 @@
                 android:id="@+id/tv_add_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" Let's get started"
+                android:text="@string/let_s_get_started"
                 android:textColor="@color/color_primary"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_explain_add_style"
@@ -64,9 +63,9 @@
                 android:id="@+id/tv_discord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:textSize="@dimen/_20sdp"
-                android:text="Discover"
+                android:text="@string/discover"
                 android:textColor="@color/color_primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.044"
@@ -82,7 +81,8 @@
                 android:src="@drawable/login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/logo" />
 
             <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
                 android:id="@+id/rv_category"

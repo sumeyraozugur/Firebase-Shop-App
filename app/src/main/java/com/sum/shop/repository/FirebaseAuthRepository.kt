@@ -123,7 +123,7 @@ class FirebaseAuthRepository {
         firebaseStorage.child(name).putFile(picture).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
-                auth.currentUser?.let {
+                auth.currentUser?.let { it ->
                     firebaseFirestore.collection(USERS_PATH).document(it.uid)
                         .update(
                             "firstname", firstName,
@@ -151,6 +151,4 @@ class FirebaseAuthRepository {
     fun checkResult() {
         resultOk.value = true
     }
-
-
 }

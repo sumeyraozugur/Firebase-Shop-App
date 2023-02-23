@@ -12,13 +12,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/color_primary_dark"
-        style="@style/ArrowBackStyle" />
+        style="@style/ArrowBackStyle"
+        android:contentDescription="@string/back_arrow" />
 
 
     <com.sum.shop.utils.BoldTextView
         android:id="@+id/tv_payment_title"
         style="@style/TitleCategoryNameStyle"
-        android:text="Payment"
+        android:text="@string/payment"
         app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/ib_arrow_back"
@@ -58,7 +59,7 @@
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Cardholder Name"
+                android:hint="@string/cardholder_name"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +84,7 @@
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Card Number"
+                android:hint="@string/card_number"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="Expiry Date"
+                android:hint="@string/expiry_date"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toStartOf="@+id/til_cvv"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
-                android:hint="Cvv"
+                android:hint="@string/cvv"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintBottom_toBottomOf="@+id/til_expiry_date"
                 app:layout_constraintEnd_toEndOf="@+id/til_card_number"
@@ -156,7 +157,7 @@
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Address"
+                android:hint="@string/address"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -189,12 +190,10 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.core.widget.NestedScrollView>
-,
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

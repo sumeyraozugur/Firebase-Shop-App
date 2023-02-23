@@ -33,5 +33,4 @@ class UpdateProfileViewModel:ViewModel() {
         firebaseRepo.updateProfile(firstName,lastName,email,picture)
         _isSuccess= firebaseRepo.isSuccess
     }
-
 }

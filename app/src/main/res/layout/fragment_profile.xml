@@ -15,7 +15,8 @@
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/profile_picture" />
 
     <ImageView
         android:id="@+id/iv_profile_border"
@@ -25,7 +26,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
         app:layout_constraintEnd_toEndOf="@+id/iv_profile"
         app:layout_constraintStart_toStartOf="@+id/iv_profile"
-        app:layout_constraintTop_toTopOf="@+id/iv_profile" />
+        app:layout_constraintTop_toTopOf="@+id/iv_profile"
+        android:contentDescription="@string/border" />
 
 
     <com.sum.shop.utils.BoldTextView
@@ -76,7 +78,6 @@
         android:id="@+id/btn_logout"
         style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_36sdp"
-        android:background="@drawable/app_gradient_color_background"
         android:text="@string/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

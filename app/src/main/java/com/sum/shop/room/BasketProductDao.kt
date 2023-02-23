@@ -18,6 +18,7 @@ interface BasketProductDao {
 
     @Query("SELECT SUM(count * basket_price) FROM basket_table")
     suspend fun getTotalPrice(): Double
+
     @Update
-    suspend fun update(basket: BasketModel)
+    suspend fun updateBasket(basket: BasketModel) // For count in adapter
 }

@@ -40,11 +40,11 @@ class ProductRepository(application: Application) {
     // products upload to Firebase
     fun addProduct(
         img: Uri,
-        womanTitle: String,
-        womanPrice: String,
-        womanDescription: String,
-        womanQuantiles: String,
-        womanType: String,
+        productTitle: String,
+        productPrice: String,
+        productDescription: String,
+        productQuantiles: String,
+        productType: String,
     ) {
         firebaseStorage.child(name).putFile(img).addOnSuccessListener {
 
@@ -53,20 +53,19 @@ class ProductRepository(application: Application) {
                 val product = hashMapOf(
                     Constant.ID to auth.currentUser?.uid,
                     Constant.PRODUCT_IMAGE to url,
-                    Constant.PRODUCT_TITLE to womanTitle,
-                    Constant.PRODUCT_PRICE to womanPrice,
-                    Constant.PRODUCT_DESCRIPTION to womanDescription,
-                    Constant.PRODUCT_QUANTILES to womanQuantiles,
-                    Constant.PRODUCT_TYPE to womanType,
+                    Constant.PRODUCT_TITLE to productTitle,
+                    Constant.PRODUCT_PRICE to productPrice,
+                    Constant.PRODUCT_DESCRIPTION to productDescription,
+                    Constant.PRODUCT_QUANTILES to productQuantiles,
+                    Constant.PRODUCT_TYPE to productType,
                     Constant.PRODUCT_DATE to date(),
                     Constant.PRODUCT_TIME to time()
                 )
                 name.let {
-                    firebaseFirestore.collection(womanType.lowercase()).document()
+                    firebaseFirestore.collection(productType.lowercase()).document()
                         .set(product)
                         .addOnSuccessListener {
                             isSuccess.value = true
-                            // println(name)
                             Log.d("Product", Constant.SUCCESS)
                         }
                         .addOnFailureListener { exception ->
@@ -82,18 +81,18 @@ class ProductRepository(application: Application) {
     suspend fun getProductRealtime(path: String): List<ProductModel> = withContext(Dispatchers.IO) {
 
         val docRef = firebaseFirestore.collection(path).get().await()
-        val favList = favDao.getFavoritesTitles().orEmpty()
+        val favList = favDao.getFavTitles().orEmpty()
         val tempList = arrayListOf<ProductModel>()
         docRef.documents.forEach {  document ->
             tempList.add(
                 ProductModel(
                     document.id,
-                    document.get("product image") as String,
-                    document.get("product title") as String,
-                    document.get("product description") as String,
-                    document.get("product price") as String,
-                    document.get("product quantiles") as String,
-                    favList.contains(document.get("product title") as String)
+                    document.get("image") as String,
+                    document.get("title") as String,
+                    document.get("description") as String,// as? String ?: "No description available",
+                    document.get("price") as String,
+                    document.get("quantiles") as String,
+                    favList.contains(document.get("title") as String)
                 )
             )
         }
@@ -126,7 +125,7 @@ class ProductRepository(application: Application) {
     }
 
     fun getAllFav() {
-        val job = CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.Main).launch {
             favList.value = favDao.getAllFav()
         }
     }
@@ -151,7 +150,7 @@ class ProductRepository(application: Application) {
     }
 
     suspend fun updateBasket(product: BasketModel){
-        basketDao.update(product)
+        basketDao.updateBasket(product)
     }
 
      suspend fun totalBasket():Double{

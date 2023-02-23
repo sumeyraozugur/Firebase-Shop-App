@@ -31,8 +31,7 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
             img = product.img,
             productTitle = product.productTitle,
             productDescription = product.productDescription,
-            productPrice = product.productPrice,
-            productFav = product.productFav
+            productPrice = product.productPrice
         )
 
         shareLink()
@@ -81,8 +80,7 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
                         product.productTitle,
                         product.productDescription,
                         product.productPrice.toInt(),
-                        product.productCount,
-                        product.total_amount
+                        product.productCount
                     )
                 )
             }

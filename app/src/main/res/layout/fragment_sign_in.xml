@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/logo" />
 
     <com.sum.shop.utils.BoldTextView
         android:id="@+id/tv_title"
@@ -89,7 +90,6 @@
         android:id="@+id/btn_login"
         style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_22sdp"
-        android:background="@drawable/app_gradient_color_background"
         android:text="@string/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -33,9 +33,6 @@ fun View.gone() {
     visibility = View.GONE
 }
 
-fun showSnackbar(view: View, text: Int) {
-    Snackbar.make(view, text, 1000).show()
-}
 fun showErrorSnackBar(context: Context,view: View,message: String, errorMessage: Boolean) {
     val snackBar =
         Snackbar.make(view, message, Snackbar.LENGTH_LONG)

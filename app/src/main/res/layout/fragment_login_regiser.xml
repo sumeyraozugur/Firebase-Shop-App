@@ -34,7 +34,4 @@
         app:layout_constraintTop_toBottomOf="@id/login_register_tab_layout" />
 
 
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

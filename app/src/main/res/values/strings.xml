@@ -28,7 +28,7 @@
 
 
     <string name="title_forgot_password">FORGOT PASSWORD?</string>
-    <string name="forgot_password_title_description">Enter your e-mail address we\'ll send you a email to reset your password</string>
+    <string name="forgot_password_title_description">Enter your e-mail address we\'ll send you a link to reset your password</string>
     <string name="btn_submit">Submit</string>
 
     <string name="invalid_password">Must be 6 digit</string>
@@ -38,8 +38,9 @@
     <string name="required_lastname">Please enter last name</string>
     <string name="required_card_number">Please enter card number</string>
     <string name="required_email">Please enter a valid email address(aa@gmail.com)</string>
+    <string name="required_picture">Please put a picture</string>
     <string name="required_expiry">Please enter expiry date</string>
-    <string name="required_password">Please enter 4 digit password</string>
+    <string name="required_password">Please enter 6 digit password</string>
     <string name="required_address">Please enter adress</string>
     <string name="required_cvv">Please enter CVV</string>
     <string name="accept_condition">Please accept terms and condition</string>
@@ -196,6 +197,41 @@ Please note that while we have tried to accurately display the colors of product
     <string name="term_second_title">Terms of Use of the Sum Shop App</string>
     <string name="terms_first_title">Terms Of Services</string>
     <string name="pay">Pay</string>
+    <string name="product_title">Product Title</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_quantity">Product Quantity</string>
+    <string name="woman">Woman</string>
+    <string name="man">Man</string>
+    <string name="child">Child</string>
+    <string name="submit">Submit</string>
+    <string name="total_amount">Total Amount:</string>
+    <string name="checkout">Checkout</string>
+    <string name="add_your_style">Add Your Style!</string>
+    <string name="add_your_style_and_earn_money">Add your style and earn money!</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="discover">Discover</string>
+    <string name="payment">Payment</string>
+    <string name="cardholder_name">Cardholder Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="cvv">Cvv</string>
+    <string name="address">Address</string>
+    <string name="product_explainn_product_explainn">Product Explainn Product Explainn</string>
+    <string name="add_to_basket">Add to Basket</string>
+    <string name="payment_successful">Payment Successful!</string>
+    <string name="back_to_shopping">Back To Shopping</string>
+    <string name="update">Update</string>
+    <string name="basket">Basket</string>
+    <string name="_0">0</string>
+    <string name="fav_icon">fav_icon</string>
+    <string name="fav_product_image">fav_product_image</string>
+    <string name="accept">Accept</string>
+    <string name="product_image">product image</string>
+    <string name="border">border</string>
+    <string name="profile_picture">profile picture</string>
+    <string name="back_arrow">back_arrow</string>
+    <string name="logo">logo</string>
 
 
 </resources>

@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Product Title"
+                android:hint="@string/product_title"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Product Price"
+                android:hint="@string/product_price"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,21 +111,21 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilProductDescription"
+                android:id="@+id/til_product_description"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Product Description"
+                android:hint="@string/product_description"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_price">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etProductDescription"
+                    android:id="@+id/et_product_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
@@ -136,21 +136,21 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilProductQuantity"
+                android:id="@+id/til_product_quantity"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginEnd="@dimen/_12sdp"
-                android:hint="Product Quantity"
+                android:hint="@string/product_quantity"
                 android:textColorHint="@color/color_secondary_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilProductDescription">
+                app:layout_constraintTop_toBottomOf="@id/til_product_description">
 
                 <com.sum.shop.utils.EditText
-                    android:id="@+id/etProductQuantity"
+                    android:id="@+id/et_product_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -160,7 +160,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
-                android:id="@+id/rgType"
+                android:id="@+id/rg_type"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_32sdp"
                 android:layout_marginStart="@dimen/_12sdp"
@@ -169,70 +169,40 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilProductQuantity">
+                app:layout_constraintTop_toBottomOf="@id/til_product_quantity">
 
                 <com.sum.shop.utils.RadioButton
-                    android:id="@+id/rbWoman"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_32sdp"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_gender_tab_selector"
-                    android:button="@null"
+                    android:id="@+id/rb_woman"
                     android:checked="true"
-                    android:gravity="center"
-                    android:text="Woman"
-                    android:textColor="@drawable/drawable_gender_tab_text_color_selector"
-                    android:textStyle="bold" />
+                    android:text="@string/woman"
+                    style="@style/RadioButtonStyle" />
 
                 <com.sum.shop.utils.RadioButton
-                    android:id="@+id/rbMan"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_32sdp"
+                    android:id="@+id/rb_man"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:layout_marginEnd="@dimen/_2sdp"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_gender_tab_selector"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="Man"
-                    android:textColor="@drawable/drawable_gender_tab_text_color_selector"
-                    android:textStyle="bold" />
+                    android:text="@string/man"
+                    style="@style/RadioButtonStyle" />
 
                 <com.sum.shop.utils.RadioButton
-                    android:id="@+id/rbChildren"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/add_edit_address_radio_button_height"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_gender_tab_selector"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:text="Children"
-                    android:textColor="@drawable/drawable_gender_tab_text_color_selector"
-                    android:textStyle="bold" />
+                    android:id="@+id/rb_child"
+                    android:text="@string/child"
+                    style="@style/RadioButtonStyle" />
             </RadioGroup>
 
 
             <com.sum.shop.utils.Button
-                android:id="@+id/btnAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:id="@+id/btn_add"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:layout_marginEnd ="@dimen/_12sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
-                android:background="@drawable/app_gradient_color_background"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center"
                 android:paddingTop="@dimen/_8sdp"
                 android:paddingBottom="@dimen/_8sdp"
-                android:text="Submit"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_12sdp"
+                android:text="@string/submit"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rgType" />
+                app:layout_constraintTop_toBottomOf="@+id/rg_type"
+                style="@style/ButtonStyle"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

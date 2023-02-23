@@ -8,20 +8,19 @@ import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentBasketBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.ui.addproduct.AddProductViewModel
+import com.sum.shop.ui.favorite.FavoriteAdapter
 import com.sum.shop.utils.sent
 import com.sum.shop.utils.showErrorSnackBar
 
 class BasketFragment : Fragment(R.layout.fragment_basket ) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
-    private lateinit var  adapter:BasketAdapter
-
-    private lateinit var viewModel: BasketViewModel
+    private val adapter by lazy { BasketAdapter(viewModel) }
+    private val  viewModel by lazy { BasketViewModel(requireActivity().application) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[BasketViewModel::class.java]
-        adapter = BasketAdapter(viewModel)
 
 
         binding.rvBasket.adapter = adapter

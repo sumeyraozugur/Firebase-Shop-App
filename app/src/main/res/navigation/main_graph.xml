@@ -55,7 +55,11 @@
         tools:layout="@layout/fragment_basket" >
         <action
             android:id="@+id/action_basketFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            app:destination="@id/paymentFragment"
+            app:enterAnim="@anim/enter_anim_column"
+            app:exitAnim="@anim/exit_anim_column"
+            app:popEnterAnim="@anim/popup_enter_anim"
+            app:popExitAnim="@anim/popup_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/addProductFragment"
@@ -93,7 +97,11 @@
         tools:layout="@layout/fragment_payment" >
         <action
             android:id="@+id/action_paymentFragment_to_successFragment"
-            app:destination="@id/successFragment" />
+            app:destination="@id/successFragment"
+            app:enterAnim="@anim/enter_anim_column"
+            app:exitAnim="@anim/exit_anim_column"
+            app:popEnterAnim="@anim/popup_enter_anim"
+            app:popExitAnim="@anim/popup_exit_anim" />
         <argument
             android:name="objectTotalAmount"
             app:argType="float" />

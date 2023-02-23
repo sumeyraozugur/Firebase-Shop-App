@@ -8,13 +8,11 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentAddProductBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.ui.basket.BasketViewModel
 import com.sum.shop.utils.back
 import com.sum.shop.utils.isNullorEmpty
 import com.sum.shop.utils.showErrorSnackBar
@@ -23,12 +21,12 @@ import com.sum.shop.utils.showErrorSnackBar
 class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
     private val binding by viewBinding(FragmentAddProductBinding::bind)
-    private lateinit var viewModel: AddProductViewModel
+    private val  viewModel by lazy { AddProductViewModel(requireActivity().application) }
     private var picture: Uri? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[AddProductViewModel::class.java]
+
         observeIsLoad()
 
         with(binding) {
@@ -43,9 +41,9 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
             btnAdd.setOnClickListener {
 
                 val productType = when (binding.rgType.checkedRadioButtonId) {
-                    R.id.rbWoman -> "Woman"
-                    R.id.rbMan -> "Man"
-                    else -> "Children"
+                    R.id.rb_woman -> "Woman"
+                    R.id.rb_man -> "Man"
+                    else -> "Child"
                 }
 
                 val productTitle = etProductTitle.text.toString().trim { it <= ' ' }
@@ -54,36 +52,13 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 val productQuantity = etProductQuantity.text.toString().trim { it <= ' ' }
 
                 if( validAddProduct() && picture != null) {
-                    if(productType =="Woman")
-                        viewModel.addProduct(
-                            picture!!,
-                            productTitle,
-                            productPrice,
-                            productDescription,
-                            productQuantity,
-                            productType
-                        )
-
-                    if(productType == "Man")
-                        viewModel.addProduct(
-                            picture!!,
-                            productTitle,
-                            productPrice,
-                            productDescription,
-                            productQuantity,
-                            productType
-                        )
-
-                    if(productType == "Children")
-                        viewModel.addProduct(
-                            picture!!,
-                            productTitle,
-                            productPrice,
-                            productDescription,
-                            productQuantity,
-                            productType
-                        )
-
+                    viewModel.addProduct(
+                        picture!!,
+                        productTitle,
+                        productPrice,
+                        productDescription,
+                        productQuantity,
+                        productType )
                 }
             }
         }
@@ -104,13 +79,11 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
         }
 
     private fun validAddProduct(): Boolean {
-
         val productTitle = binding.etProductTitle.isNullorEmpty(getString(R.string.required_field))
         val productPrice = binding.etProductPrice.isNullorEmpty(getString(R.string.required_field))
         val productDescription = binding.etProductDescription.isNullorEmpty(getString(R.string.required_field))
         val productQuantity = binding.etProductQuantity.isNullorEmpty(getString(R.string.required_field))
         return productTitle && productPrice && productDescription && productQuantity
-
     }
 
 
@@ -128,6 +101,4 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
             }
         })
     }
-
-
 }

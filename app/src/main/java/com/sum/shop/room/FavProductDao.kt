@@ -13,12 +13,9 @@ interface FavProductDao {
     suspend fun getAllFav(): List<FavModel>
 
     @Query("SELECT fav_title FROM fav_table")
-    suspend fun getFavoritesTitles(): List<String>?
+    suspend fun getFavTitles(): List<String>?
 
     @Delete
     suspend fun deleteFromFav(fav:FavModel)
-
-
-
 
 }

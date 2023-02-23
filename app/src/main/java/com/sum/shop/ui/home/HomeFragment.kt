@@ -33,7 +33,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             R.drawable.man
         )
         val child = CategoryModel(
-            "Children",
+            "Child",
             R.drawable.child
         )
         categoryList.add(woman)

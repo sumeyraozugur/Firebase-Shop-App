@@ -6,18 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.updateprofile.UpdateProfileFragment">
+
     <ImageButton
         android:id="@+id/ib_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/color_primary_dark"
-        style="@style/ArrowBackStyle" />
+        style="@style/ArrowBackStyle"
+        android:contentDescription="@string/back_arrow" />
 
 
     <com.sum.shop.utils.BoldTextView
         android:id="@+id/tv_woman_title"
         style="@style/TitleCategoryNameStyle"
-        android:text="Update"
+        android:text="@string/update"
         app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +33,8 @@
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_woman_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_woman_title"
+        android:contentDescription="@string/profile_picture" />
 
     <ImageView
         android:id="@+id/iv_update_border"
@@ -43,7 +46,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/iv_update"
         app:layout_constraintTop_toTopOf="@+id/iv_update"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:contentDescription="@string/border" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_name"
@@ -122,20 +126,11 @@
 
     <com.sum.shop.utils.Button
         android:id="@+id/btn_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/_12sdp"
+        style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_24sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
-        android:background="@drawable/app_gradient_color_background"
-        android:foreground="?attr/selectableItemBackground"
-        android:gravity="center"
         android:paddingTop="@dimen/_6sdp"
         android:paddingBottom="@dimen/_6sdp"
         android:text="@string/btn_update"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_email" />

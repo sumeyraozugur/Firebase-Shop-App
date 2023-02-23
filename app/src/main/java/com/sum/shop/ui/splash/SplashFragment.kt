@@ -22,19 +22,9 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-   /*     CoroutineScope(Dispatchers.Main).launch {
-            if(Firebase.auth.currentUser !=null){
-                findNavController().navigate(R.id.action_splashFragment_to_main_graph)
 
-            }
-            else
-                findNavController().navigate(R.id.action_splashFragment_to_loginRegiser)
-            delay(3500)
-
-        }*/
         binding.lottieSplash.addAnimatorListener(object : AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {
-
             }
 
             override fun onAnimationEnd(p0: Animator?) {

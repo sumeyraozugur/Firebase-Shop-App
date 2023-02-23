@@ -22,8 +22,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         binding.tvEdit.setOnClickListener {
             Navigation.sent(it, R.id.action_profileFragment_to_updateProfileFragment)
         }
@@ -31,7 +29,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.btnLogout.setOnClickListener {
             viewModel.signOut()
             findNavController().navigate(R.id.loginRegiser)
-
         }
 
 
@@ -43,7 +40,5 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
          }
      }
-
-
     }
 }

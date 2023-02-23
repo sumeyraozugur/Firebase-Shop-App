@@ -18,7 +18,7 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="splash.json"
        />
-    <!--   app:lottie_loop="true"-->
+
 
 
 

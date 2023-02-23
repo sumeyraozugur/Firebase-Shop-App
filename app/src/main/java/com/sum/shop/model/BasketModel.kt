@@ -28,9 +28,6 @@ data class BasketModel(
     @ColumnInfo(name = "basket_count")
     val productCount:String,
 
-    @ColumnInfo(name = "basket_total")
-    var total_amount: Double =0.0
 ){
     var count = 1
-
 }

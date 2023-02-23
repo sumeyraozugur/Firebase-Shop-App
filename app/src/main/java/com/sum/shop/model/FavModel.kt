@@ -22,8 +22,6 @@ data class FavModel(
     val productDescription: String,
 
     @ColumnInfo(name = "fav_price")
-    val productPrice: String,
+    val productPrice: String
 
-    @ColumnInfo(name = "fav_is")
-    var productFav: Boolean = false,
-    )
+)

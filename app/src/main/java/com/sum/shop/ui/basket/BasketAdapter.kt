@@ -57,7 +57,6 @@ class BasketAdapter(private val viewModel: BasketViewModel) : RecyclerView.Adapt
                      basketModel.count++
                     viewModel.updateBasket(basketModel)
                     tvAmount.text =   basketModel.count.toString()
-
                 }
             }
         }

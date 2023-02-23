@@ -3,6 +3,7 @@ package com.sum.shop.ui.products
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
@@ -16,12 +17,11 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     private val binding by viewBinding(FragmentProductsBinding::bind)
     private val productAdapter by lazy { ProductsAdapter() }
-    private lateinit var viewModel: ProductsViewModel
-    val args: ProductsFragmentArgs by navArgs()
+    private val viewModel: ProductsViewModel by viewModels()
+    private val args: ProductsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[ProductsViewModel::class.java]
 
         val categoryType = args.category
         viewModel.getProduct(categoryType.lowercase())
@@ -39,7 +39,6 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     private fun initObservers() {
         with(binding) {
             viewModel.categoryList.observe(viewLifecycleOwner) {
-                println(it)
                 productAdapter.setData(it)
             }
         }

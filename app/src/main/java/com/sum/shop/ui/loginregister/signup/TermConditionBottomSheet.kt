@@ -34,8 +34,6 @@ class TermConditionBottomSheet : BottomSheetDialogFragment() {
         }
 
         binding.btnTermAccept.setOnClickListener {
-            //Constant.result.value = true
-            //viewModel.resultOk.value
             viewModel.checkResult()
             dismiss()
         }

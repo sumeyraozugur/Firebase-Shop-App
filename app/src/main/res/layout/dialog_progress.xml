@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--TODO Step 1: Create a design for progress dialog.-->
-<!--START-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -32,4 +31,3 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-    <!--END-->

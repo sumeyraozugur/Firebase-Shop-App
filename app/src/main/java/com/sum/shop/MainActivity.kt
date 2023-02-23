@@ -2,6 +2,7 @@ package com.sum.shop
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -11,8 +12,6 @@ import com.sum.shop.utils.visible
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,26 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         //put somewhere where you want to see bottom nav
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.signInFragment -> binding.bottomNavigationView.gone()
-                R.id.signUpFragment -> binding.bottomNavigationView.gone()
-                R.id.loginRegiser -> binding.bottomNavigationView.gone()
-                R.id.splashFragment -> binding.bottomNavigationView.gone()
-                R.id.productsFragment -> binding.bottomNavigationView.gone()
-                R.id.productDetailFragment ->binding.bottomNavigationView.gone()
-                R.id.forgotPasswordFragment -> binding.bottomNavigationView.gone()
-                R.id.updateProfileFragment -> binding.bottomNavigationView.gone()
-                R.id.paymentFragment -> binding.bottomNavigationView.gone()
-                R.id.successFragment -> binding.bottomNavigationView.gone()
-                else -> {
-                    binding.bottomNavigationView.visible()
-                }
-            }
+            binding.bottomNavigationView.isVisible = destination.id !in listOf(
+                R.id.signInFragment, R.id.signUpFragment, R.id.loginRegiser, R.id.splashFragment,
+                R.id.productsFragment,R.id.addProductFragment ,R.id.productDetailFragment, R.id.forgotPasswordFragment,
+                R.id.updateProfileFragment, R.id.paymentFragment, R.id.successFragment
+            )
         }
-
-
-
     }
-
 
 }

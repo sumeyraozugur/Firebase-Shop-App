@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.jackandphantom.carouselrecyclerview.view.ReflectionImageView
-        android:id="@+id/ivCategories"
+        android:id="@+id/iv_categories"
         android:layout_width="@dimen/_140sdp"
         android:layout_height="@dimen/_250sdp"
         android:scaleType="fitXY"

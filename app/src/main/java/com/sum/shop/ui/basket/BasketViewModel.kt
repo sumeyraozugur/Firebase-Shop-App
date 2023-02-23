@@ -21,7 +21,6 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
         readAllBasket = repository.readAllBasket
     }
 
-
     fun deleteFromBasket(basketId: String){
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteFromBasket(basketId)

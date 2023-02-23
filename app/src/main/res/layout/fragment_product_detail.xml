@@ -31,7 +31,8 @@
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/product_image" />
 
 
             <ImageButton
@@ -39,7 +40,8 @@
                 style="@style/ArrowBackStyle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/color_primary_dark" />
+                app:tint="@color/color_primary_dark"
+                android:contentDescription="@string/back_arrow" />
 
 
 
@@ -72,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10ssp"
                 android:gravity="center"
-                android:text="Product Title"
+                android:text="@string/product_title"
                 android:textColor="@color/color_primary_dark"
                 android:textSize="@dimen/_22ssp"
                 android:textStyle="bold"
@@ -90,8 +92,8 @@
                 android:gravity="center"
                 android:paddingLeft="@dimen/_6sdp"
                 android:paddingRight="@dimen/_6sdp"
-                android:text=" Product Explainn Product Explainn"
-                android:textSize="20sp"
+                android:text="@string/product_explainn_product_explainn"
+                android:textSize="@dimen/_16ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_name" />
@@ -102,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_26sdp"
                 android:gravity="center"
-                android:text='12TL'
+                tools:text='12TL'
                 android:textColor="@color/color_primary_dark"
                 android:textSize="@dimen/_20ssp"
                 android:textStyle="bold"
@@ -116,17 +118,11 @@
                 android:layout_width="@dimen/_180sdp"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
-                android:background="@drawable/app_gradient_color_background"
-                android:text="Add to Basket"
+                android:text="@string/add_to_basket"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_info">
 
             </com.sum.shop.utils.Button>
-
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
