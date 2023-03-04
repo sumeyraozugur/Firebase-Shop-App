@@ -30,7 +30,8 @@ class BasketAdapter(private val viewModel: BasketViewModel) : RecyclerView.Adapt
 
             itemBasketBinding.apply {
                 tvBasketName.text = basketModel.productTitle
-                tvBasketPrice.text = "${basketModel.productPrice} TL"
+                val productPrice = "${basketModel.productPrice} TL"
+                tvBasketPrice.text = productPrice
                 basketModel.img.let {
                     Glide.with(ivBasket).load(basketModel.img).into(ivBasket)
                 }

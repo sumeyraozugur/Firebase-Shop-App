@@ -46,17 +46,19 @@
     <string name="accept_condition">Please accept terms and condition</string>
     <string name="password_match">Password not matches</string>
     <string name="success">Success:)</string>
+    <string name="product_add">Product added</string>
     <string name="fail">Fail:(</string>
     <string name="empty_bag">Empty Bag</string>
     <string name="email_sent">Email sent</string>
     <string name="please_wait">please wait</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit">Edit</string>
     <string name="btn_logout">Logout</string>
     <string name="btn_update">Update</string>
     <string name="see_all"><u>See All</u></string>
 
+    <string name="success_payment">"Thank you! Your payment of %1$s Tl has been received".</string>
 
     <string name="shop_condition">
         You may not order or obtain products or services from the Site if you \n
@@ -232,6 +234,8 @@ Please note that while we have tried to accurately display the colors of product
     <string name="profile_picture">profile picture</string>
     <string name="back_arrow">back_arrow</string>
     <string name="logo">logo</string>
+    <string name="empty_favorites_message">Empty Favorite</string>
+    <string name="empty_basket_message">Empty Bag</string>
 
 
 </resources>

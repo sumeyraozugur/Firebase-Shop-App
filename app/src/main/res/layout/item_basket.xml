@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/product_image" />
 
-        <com.sum.shop.utils.BoldTextView
+        <com.sum.shop.utils.customs.BoldTextView
             android:id="@+id/tv_basket_name"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.sum.shop.utils.Button
+        <com.sum.shop.utils.customs.Button
             android:id="@+id/btn_minus"
             style="@style/BtnIncreaseDecrease"
             android:layout_marginStart="@dimen/_101sdp"
@@ -64,7 +64,7 @@
             app:layout_constraintTop_toTopOf="@+id/tv_amount"
             app:layout_constraintVertical_bias="0.0" />
 
-        <com.sum.shop.utils.NormalTextView
+        <com.sum.shop.utils.customs.NormalTextView
             android:id="@+id/tv_amount"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_16ssp"
@@ -91,7 +91,7 @@
             app:layout_constraintVertical_bias="0.757"
             android:contentDescription="@string/border" />
 
-        <com.sum.shop.utils.Button
+        <com.sum.shop.utils.customs.Button
             android:id="@+id/btn_plus"
             style="@style/BtnIncreaseDecrease"
             android:layout_marginEnd="40dp"
@@ -101,7 +101,7 @@
             app:layout_constraintTop_toTopOf="@+id/tv_amount"
             app:layout_constraintVertical_bias="0.0" />
 
-        <com.sum.shop.utils.NormalTextView
+        <com.sum.shop.utils.customs.NormalTextView
             android:id="@+id/tv_basket_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -1,19 +1,19 @@
-package com.sum.shop.utils
+package com.sum.shop.utils.customs
 
 import android.content.Context
 import android.graphics.Typeface
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.AppCompatRadioButton
 
-class BoldTextView(context: Context, attrs: AttributeSet) : AppCompatTextView(context, attrs) {
+class RadioButton(context: Context, attrs: AttributeSet) :
+    AppCompatRadioButton(context, attrs) {
+
 
     init {
         applyFont()
     }
 
     private fun applyFont() {
-
-        // This is used to get the file from the assets folder and set it to the title textView.
         val typeface: Typeface =
             Typeface.createFromAsset(context.assets, "Montserrat-Bold.ttf")
         setTypeface(typeface)

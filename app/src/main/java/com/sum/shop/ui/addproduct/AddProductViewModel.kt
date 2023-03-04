@@ -14,9 +14,14 @@ class AddProductViewModel(application: Application) : AndroidViewModel(applicati
     val isSuccess: LiveData<Boolean>
         get() = _isSuccess
 
+    private var _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
 
     init {
         _isSuccess = firebaseRepo.isSuccess
+        _isLoading = firebaseRepo.isLoading
     }
 
 
@@ -37,6 +42,5 @@ class AddProductViewModel(application: Application) : AndroidViewModel(applicati
             productQuantiles,
             productType
         )
-
     }
 }

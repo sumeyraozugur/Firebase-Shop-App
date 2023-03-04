@@ -26,22 +26,22 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
     inner class ProductsViewHolder(private var binding: ItemProductsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ProductModel) {
+        fun bind(productModel: ProductModel) {
             with(binding) {
-                tvProductName.text = item.productTitle
-                tvProductPrice.text = "${item.productPrice} TL"
-                Glide.with(binding.ivProduct).load(item.img).into(binding.ivProduct)
-                if (item.productCount.toInt() <= 3) {
+                tvProductName.text = productModel.productTitle
+                tvProductPrice.text = "${productModel.productPrice} TL"
+                Glide.with(binding.ivProduct).load(productModel.img).into(binding.ivProduct)
+                if (productModel.productCount.toInt() <= 3) {
                     tvProductCount.visible()
-                    tvProductCount.text = "Only ${item.productCount} left in stock " // order soon
+                    tvProductCount.text = "Only ${productModel.productCount} left in stock " // order soon
                 }
 
                 root.setOnClickListener {
                     val action =
-                        ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(item)
+                        ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(productModel)
                     Navigation.findNavController(it).navigate(action)
                 }
-                if(item.productFav){
+                if(productModel.productFav){
                     ivProductFav.setBackgroundResource(R.drawable.ic_full_fav)
                 }
                 else{

@@ -28,8 +28,10 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
         initObservers()
 
         with(binding) {
-            tvProductTitle.text = categoryType
-            ibArrowBack.setOnClickListener {
+            //tvProductTitle.text = categoryType
+            productToolbar.tvProductTitle.text=categoryType
+            //ibArrowBack.setOnClickListener {
+            productToolbar.ibArrowBack.setOnClickListener {
                 Navigation.back(it)
             }
             rvProduct.adapter = productAdapter

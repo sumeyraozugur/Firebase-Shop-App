@@ -1,21 +1,24 @@
-package com.sum.shop.utils
+package com.sum.shop.utils.customs
 
 import android.content.Context
 import android.graphics.Typeface
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatRadioButton
+import androidx.appcompat.widget.AppCompatButton
 
-class RadioButton(context: Context, attrs: AttributeSet) :
-    AppCompatRadioButton(context, attrs) {
 
+class Button(context: Context, attrs: AttributeSet) : AppCompatButton(context, attrs) {
 
     init {
         applyFont()
     }
 
+
     private fun applyFont() {
+
         val typeface: Typeface =
             Typeface.createFromAsset(context.assets, "Montserrat-Bold.ttf")
         setTypeface(typeface)
+
     }
+
 }

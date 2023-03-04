@@ -1,33 +1,31 @@
 package com.sum.shop.ui.loginregister.signup
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
-import com.sum.shop.Constant
+import com.sum.shop.utils.constant.Constant
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSignUpBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.ui.addproduct.AddProductViewModel
-import com.sum.shop.ui.basket.BasketViewModel
-import com.sum.shop.utils.sent
+
 import com.sum.shop.utils.showErrorSnackBar
 
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private val binding by viewBinding(FragmentSignUpBinding::bind)
-    private val  viewModel by lazy { SignUpTermConditionViewModel() }
+    private lateinit var viewModel : SignUpTermConditionViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel = ViewModelProvider(requireActivity())[SignUpTermConditionViewModel::class.java] //live data for update
         initObservers()
 
         binding.tvTermsCondition.setOnClickListener {
-            Navigation.sent(it, R.id.action_loginRegiser_to_termConditionBottomSheet)
+           viewModel.navigateToTermCondition(it)
         }
 
 
@@ -73,21 +71,17 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
     }
     private fun showError(errorMsg: String): Boolean {
-        showErrorSnackBar(requireContext(), requireView(), errorMsg, true)
+        requireView().showErrorSnackBar(errorMsg, true)
         return false
     }
 
     private fun initObservers() {
         viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
             if (it) {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.success),
-                    false
-                )
+                requireView().showErrorSnackBar( getString(R.string.success),false)
+
             } else {
-                showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
+                requireView().showErrorSnackBar( getString(R.string.fail),true)
             }
         })
 
@@ -95,6 +89,4 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             binding.cbTermsAndCondition.isChecked = it
         })
     }
-
-
 }

@@ -11,7 +11,6 @@ import kotlinx.coroutines.launch
 class ProductDetailViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository= ProductRepository(application)
-    val readAllBasket: LiveData<List<BasketModel>> = repository.readAllBasket
 
 
     fun addToFav(fav: FavModel) {

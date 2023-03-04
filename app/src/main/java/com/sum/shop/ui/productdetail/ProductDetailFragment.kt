@@ -15,6 +15,7 @@ import com.sum.shop.delegate.viewBinding
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.utils.back
+import com.sum.shop.utils.showErrorSnackBar
 
 
 class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
@@ -83,6 +84,8 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
                         product.productCount
                     )
                 )
+                requireView().showErrorSnackBar(getString(R.string.product_add), false)
+
             }
         }
     }

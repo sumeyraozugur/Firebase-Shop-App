@@ -8,32 +8,31 @@ import com.bumptech.glide.Glide
 import com.sum.shop.databinding.ItemCategoryBinding
 import com.sum.shop.model.CategoryModel
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHoler>() {
+class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     private var categoryList = listOf<CategoryModel>()
 
-    inner class CategoryViewHoler(private var itemCategoryBinding: ItemCategoryBinding) :
+    inner class CategoryViewHolder(private var itemCategoryBinding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(itemCategoryBinding.root) {
 
-        fun bind(item: CategoryModel) {
+        fun bind(categoryModel: CategoryModel) {
             with(itemCategoryBinding){
-                Glide.with(itemCategoryBinding.ivCategories).load(item.categoryImage)
+                Glide.with(itemCategoryBinding.ivCategories).load(categoryModel.categoryImage)
                     .into(itemCategoryBinding.ivCategories)
                 root.setOnClickListener {
-                 // categoryClick(position)
-                    val action =HomeFragmentDirections.actionHomeFragmentToProductsFragment(item.categoryName)
+                    val action =HomeFragmentDirections.actionHomeFragmentToProductsFragment(categoryModel.categoryName)
                     Navigation.findNavController(it).navigate(action)
                 }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHoler {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val binding =
             ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CategoryViewHoler(binding)
+        return CategoryViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoryViewHoler, position: Int) {
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.bind(categoryList[position])
     }
 
@@ -43,5 +42,4 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHoler>(
         this.categoryList = category
         notifyDataSetChanged()
     }
-
 }

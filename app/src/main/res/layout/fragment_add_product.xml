@@ -19,7 +19,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+           >
 
             <FrameLayout
                 android:id="@+id/frame_layout"
@@ -75,7 +76,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/frame_layout">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_product_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,11 +100,11 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_title">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="@dimen/_12sdp"
                     android:textColor="@color/color_primary_text"
                     android:textSize="@dimen/_12sdp" />
@@ -124,7 +125,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_price">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_product_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -149,7 +150,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_description">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_product_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -171,27 +172,27 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_product_quantity">
 
-                <com.sum.shop.utils.RadioButton
+                <com.sum.shop.utils.customs.RadioButton
                     android:id="@+id/rb_woman"
                     android:checked="true"
                     android:text="@string/woman"
                     style="@style/RadioButtonStyle" />
 
-                <com.sum.shop.utils.RadioButton
+                <com.sum.shop.utils.customs.RadioButton
                     android:id="@+id/rb_man"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:layout_marginEnd="@dimen/_2sdp"
                     android:text="@string/man"
                     style="@style/RadioButtonStyle" />
 
-                <com.sum.shop.utils.RadioButton
+                <com.sum.shop.utils.customs.RadioButton
                     android:id="@+id/rb_child"
                     android:text="@string/child"
                     style="@style/RadioButtonStyle" />
             </RadioGroup>
 
 
-            <com.sum.shop.utils.Button
+            <com.sum.shop.utils.customs.Button
                 android:id="@+id/btn_add"
                 android:layout_marginTop="@dimen/_24sdp"
                 android:layout_marginBottom="@dimen/_16sdp"
@@ -203,6 +204,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_type"
                 style="@style/ButtonStyle"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/loading_lottie"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="loading.json"
+                app:lottie_loop="true" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -12,22 +12,22 @@ import kotlinx.coroutines.launch
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository= ProductRepository(application)
-    var kisilerListesi = MutableLiveData<List<FavModel>>()
+    var favList = MutableLiveData<List<FavModel>>()
 
     init {
-        kisileriYukle()
-        kisilerListesi = repository.returnFavList()
+        getAllFav()
+        favList = repository.returnFavList()
     }
 
 
     fun deleteFromFav(fav:FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteFromFav(fav)
-            kisileriYukle()
+            getAllFav() //to update the list as soon as it is deleted
         }
     }
 
-    fun kisileriYukle() {
+    private fun getAllFav() {
         repository.getAllFav()
     }
 }

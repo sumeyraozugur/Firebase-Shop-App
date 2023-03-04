@@ -51,5 +51,4 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
             _totalAmount.value = repository.totalBasket()
         }
     }
-
 }

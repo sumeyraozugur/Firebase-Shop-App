@@ -45,11 +45,6 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
         })
 
-     /*   Handler(Looper.myLooper()!!).postDelayed({
-
-        }, 3500)*/
-
-
     }
 
 }

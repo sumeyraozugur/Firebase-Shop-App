@@ -28,7 +28,8 @@ class FavoriteAdapter(private val viewModel: FavoriteViewModel) :
         fun bind(favModel: FavModel) {
             itemFavBinding.apply {
                 tvFavName.text = favModel.productTitle
-                tvFavPrice.text = "${favModel.productPrice} TL"
+                val productPrice ="${favModel.productPrice} TL"
+                tvFavPrice.text = productPrice
                 favModel.img.let {
                     Glide.with(ivFav).load(favModel.img).into(ivFav)
                 }
@@ -36,9 +37,7 @@ class FavoriteAdapter(private val viewModel: FavoriteViewModel) :
                 ivFavBtn.setOnClickListener {
                     onRemoveFavClick(favModel)
                 }
-
             }
-
         }
     }
 
@@ -51,32 +50,3 @@ class FavoriteAdapter(private val viewModel: FavoriteViewModel) :
         notifyDataSetChanged()
     }
 }
-
-
-/*
-                    if (favModel.isFav) {
-                        favModel.isFav = false
-                        //Update Current User
-                        val updateFavModel =
-                            FavModel(favModel.id, favModel.img, favModel.productTitle,
-                                favModel.productDescription,favModel.productPrice,favModel.isFav)
-                        viewModel.updateToFav(updateFavModel)
-                        //viewModel.addFav(favModel)
-                        ivFavBtn.setBackgroundResource(R.drawable.ic_favorite) }
-                    else {
-                        favModel.isFav = true
-                        val updateFavModel =
-                            FavModel(favModel.id, favModel.img, favModel.productTitle,
-                                favModel.productDescription,favModel.productPrice,favModel.isFav)
-                        viewModel.updateToFav(updateFavModel)
-                        ivFavBtn.setBackgroundResource(R.drawable.ic_full_fav)
-
-                    }
-
-                     if (favModel.isFav) {
-                         ivFavBtn.setBackgroundResource(R.drawable.ic_full_fav)
-                         println(favModel.isFav)}
-                     else {
-                         ivFavBtn.setBackgroundResource(R.drawable.ic_favorite)
-                         println(favModel.isFav)
-                     }*/

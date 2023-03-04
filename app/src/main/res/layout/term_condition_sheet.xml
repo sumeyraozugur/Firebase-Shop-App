@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/_6sdp">
 
-                    <com.sum.shop.utils.Button
+                    <com.sum.shop.utils.customs.Button
                         android:id="@+id/btn_cancel"
                         android:layout_width="@dimen/_32sdp"
                         android:layout_height="@dimen/_32sdp"
@@ -45,7 +45,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:tint="@color/black" />
 
-                    <com.sum.shop.utils.BoldTextView
+                    <com.sum.shop.utils.customs.BoldTextView
                         android:id="@+id/boldTextView2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
 
 
 
-                    <com.sum.shop.utils.BoldTextView
+                    <com.sum.shop.utils.customs.BoldTextView
                         android:id="@+id/boldTextView3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/boldTextView2" />
 
-                    <com.sum.shop.utils.NormalTextView
+                    <com.sum.shop.utils.customs.NormalTextView
                         android:id="@+id/normalTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/boldTextView3" />
 
-                    <com.sum.shop.utils.Button
+                    <com.sum.shop.utils.customs.Button
                         android:id="@+id/btn_term_accept"
                         android:layout_width="@dimen/_270sdp"
                         android:layout_marginTop="@dimen/_8sdp"

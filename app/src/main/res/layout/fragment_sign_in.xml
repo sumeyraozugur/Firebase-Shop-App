@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="@string/logo" />
 
-    <com.sum.shop.utils.BoldTextView
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
-        <com.sum.shop.utils.EditText
+        <com.sum.shop.utils.customs.EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_email">
 
-        <com.sum.shop.utils.EditText
+        <com.sum.shop.utils.customs.EditText
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.sum.shop.utils.Button
+    <com.sum.shop.utils.customs.Button
         android:id="@+id/btn_login"
         style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_22sdp"
@@ -96,7 +96,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
-    <com.sum.shop.utils.BoldTextView
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

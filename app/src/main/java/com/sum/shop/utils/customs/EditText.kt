@@ -1,4 +1,4 @@
-package com.sum.shop.utils
+package com.sum.shop.utils.customs
 
 import android.content.Context
 import android.graphics.Typeface

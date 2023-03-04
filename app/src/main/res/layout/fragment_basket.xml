@@ -19,8 +19,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.sum.shop.utils.customs.NormalTextView
+        android:id="@+id/tv_basket_empty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:text="@string/empty_basket_message"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_basket"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.sum.shop.utils.BoldTextView
+
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_total"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_12sdp"
@@ -32,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_basket" />
 
-    <com.sum.shop.utils.Button
+    <com.sum.shop.utils.customs.Button
         android:id="@+id/btn_checkout"
         style="@style/ButtonStyle"
         android:layout_margin="@dimen/_12sdp"
@@ -41,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.sum.shop.utils.BoldTextView
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

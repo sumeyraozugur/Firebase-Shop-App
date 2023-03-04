@@ -1,4 +1,4 @@
-package com.sum.shop
+package com.sum.shop.utils.constant
 
 object Constant {
 

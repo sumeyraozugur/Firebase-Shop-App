@@ -1,33 +1,43 @@
 package com.sum.shop.ui.addproduct
 
+
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.bumptech.glide.Glide
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentAddProductBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.utils.back
-import com.sum.shop.utils.isNullorEmpty
-import com.sum.shop.utils.showErrorSnackBar
+import com.sum.shop.ui.loginregister.signup.SignUpTermConditionViewModel
+import com.sum.shop.utils.*
 
 
 class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
     private val binding by viewBinding(FragmentAddProductBinding::bind)
     private val  viewModel by lazy { AddProductViewModel(requireActivity().application) }
-    private var picture: Uri? = null
+    private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+    private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private var selectedPicture : Uri? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         observeIsLoad()
+        registerLauncher()
 
         with(binding) {
             ivAddUpdateProduct.setOnClickListener {
@@ -51,9 +61,9 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
                 val productDescription = etProductDescription.text.toString().trim { it <= ' ' }
                 val productQuantity = etProductQuantity.text.toString().trim { it <= ' ' }
 
-                if( validAddProduct() && picture != null) {
+                if( validAddProduct() && selectedPicture != null) {
                     viewModel.addProduct(
-                        picture!!,
+                        selectedPicture!!,
                         productTitle,
                         productPrice,
                         productDescription,
@@ -64,19 +74,29 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
         }
     }
 
+//Permision
     private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        imageFromGalleryLauncher.launch(intent)
+       this.pickImageFromGalleryWithPermission(activityResultLauncher,permissionLauncher)
     }
-
-    private var imageFromGalleryLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private fun registerLauncher() {
+        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                picture = result.data?.data
-                Glide.with(this).load(picture).into(binding.ivProductImage)
+                selectedPicture = result.data?.data
+                selectedPicture?.let { binding.ivProductImage.setImageURI(it) }
+            } else {
+                requireContext().showToast("Image not selected")
             }
         }
+
+        permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->
+            if (result) {
+                activityResultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
+            } else {
+                requireContext().showToast("Permission needed")
+            }
+        }
+    }
+
 
     private fun validAddProduct(): Boolean {
         val productTitle = binding.etProductTitle.isNullorEmpty(getString(R.string.required_field))
@@ -86,18 +106,26 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
         return productTitle && productPrice && productDescription && productQuantity
     }
 
-
     private fun observeIsLoad() {
         viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
             if (it) {
-                showErrorSnackBar(
-                    requireContext(),
-                    requireView(),
-                    getString(R.string.success),
-                    false
-                )
+                requireView().showErrorSnackBar( getString(R.string.success),false)
             } else {
-                showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
+                requireView().showErrorSnackBar( getString(R.string.fail), true)
+            }
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            with(binding) {
+                loadingLottie.visibility = if (isLoading) View.VISIBLE else View.GONE
+                tilProductDescription.visibility = if (isLoading) View.GONE else View.VISIBLE
+                tilProductPrice.visibility = if (isLoading) View.GONE else View.VISIBLE
+                tilProductTitle.visibility = if (isLoading) View.GONE else View.VISIBLE
+                tilProductQuantity.visibility = if (isLoading) View.GONE else View.VISIBLE
+                ivProductImage.visibility = if (isLoading) View.GONE else View.VISIBLE
+                ivAddUpdateProduct.visibility = if (isLoading) View.GONE else View.VISIBLE
+                rgType.visibility = if (isLoading) View.GONE else View.VISIBLE
+                btnAdd.visibility = if (isLoading) View.GONE else View.VISIBLE
             }
         })
     }

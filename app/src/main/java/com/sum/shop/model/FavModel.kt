@@ -23,5 +23,4 @@ data class FavModel(
 
     @ColumnInfo(name = "fav_price")
     val productPrice: String
-
 )

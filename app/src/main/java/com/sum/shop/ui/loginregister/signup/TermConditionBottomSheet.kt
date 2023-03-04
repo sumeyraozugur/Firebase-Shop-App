@@ -18,7 +18,7 @@ class TermConditionBottomSheet : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = TermConditionSheetBinding.inflate(inflater, container, false)
         return binding.root
 

@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_product" />
 
-        <com.sum.shop.utils.BoldTextView
+        <com.sum.shop.utils.customs.BoldTextView
             android:id="@+id/tv_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view_divider" />
 
 
-        <com.sum.shop.utils.BoldTextView
+        <com.sum.shop.utils.customs.BoldTextView
             android:id="@+id/tv_product_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_product_name"
             tools:text="25 Tl" />
 
-        <com.sum.shop.utils.NormalTextView
+        <com.sum.shop.utils.customs.NormalTextView
             android:id="@+id/tv_product_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

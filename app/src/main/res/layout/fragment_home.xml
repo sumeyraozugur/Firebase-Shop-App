@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.sum.shop.utils.BoldTextView
+            <com.sum.shop.utils.customs.BoldTextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-            <com.sum.shop.utils.NormalTextView
+            <com.sum.shop.utils.customs.NormalTextView
                 android:id="@+id/tv_explain_add_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
-            <com.sum.shop.utils.NormalTextView
+            <com.sum.shop.utils.customs.NormalTextView
                 android:id="@+id/tv_add_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
 
-            <com.sum.shop.utils.BoldTextView
+            <com.sum.shop.utils.customs.BoldTextView
                 android:id="@+id/tv_discord"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

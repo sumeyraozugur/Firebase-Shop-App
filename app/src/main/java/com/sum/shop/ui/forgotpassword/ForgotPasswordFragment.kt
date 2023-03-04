@@ -13,7 +13,7 @@ import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.back
 import com.sum.shop.utils.isValidEmail
 import com.sum.shop.utils.showErrorSnackBar
-import com.sum.shop.utils.showToast
+
 
 
 class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
@@ -35,20 +35,18 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
                 if (emailResult) {
                     val email = etEmail.text.toString()
                     viewModel.changePassword(email)
-
                 }
             }
         }
     }
 
-
     private fun observeChangePassword() {
         viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
             if (it) {
-                showErrorSnackBar(requireContext(),requireView(),getString(R.string.email_sent),false)
+                requireView().showErrorSnackBar(getString(R.string.email_sent),false)
                 findNavController().navigate(R.id.action_forgotPasswordFragment_to_loginFragment)
             } else {
-                showErrorSnackBar(requireContext(),requireView(),getString(R.string.fail),true)
+                requireView().showErrorSnackBar(getString(R.string.fail),true)
             }
         })
     }

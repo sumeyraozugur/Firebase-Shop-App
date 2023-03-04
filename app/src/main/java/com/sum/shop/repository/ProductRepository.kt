@@ -9,7 +9,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.sum.shop.Constant
+import com.sum.shop.utils.constant.Constant
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.model.ProductModel
@@ -24,6 +24,7 @@ import java.util.*
 
 class ProductRepository(application: Application) {
     var isSuccess = MutableLiveData<Boolean>()
+    var isLoading = MutableLiveData<Boolean>()
     var path = ""
     private var auth = Firebase.auth
     private var firebaseFirestore = Firebase.firestore
@@ -37,6 +38,7 @@ class ProductRepository(application: Application) {
     val readAllBasket: LiveData<List<BasketModel>> = basketDao.readAllBasket()
 
 
+
     // products upload to Firebase
     fun addProduct(
         img: Uri,
@@ -46,6 +48,7 @@ class ProductRepository(application: Application) {
         productQuantiles: String,
         productType: String,
     ) {
+        isLoading.value = true
         firebaseStorage.child(name).putFile(img).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
@@ -65,12 +68,14 @@ class ProductRepository(application: Application) {
                     firebaseFirestore.collection(productType.lowercase()).document()
                         .set(product)
                         .addOnSuccessListener {
-                            isSuccess.value = true
-                            Log.d("Product", Constant.SUCCESS)
+                            isSuccess.value =true
+                            isLoading.value = false
+                          //  Log.d("Product", Constant.SUCCESS)
                         }
                         .addOnFailureListener { exception ->
                             isSuccess.value = false
-                            Log.w("Product", exception)
+                            isLoading.value = false
+                          //  Log.w("Product", exception)
                         }
                 }
             }
@@ -79,11 +84,12 @@ class ProductRepository(application: Application) {
 
 
     suspend fun getProductRealtime(path: String): List<ProductModel> = withContext(Dispatchers.IO) {
-
+        isLoading.postValue( true)
         val docRef = firebaseFirestore.collection(path).get().await()
         val favList = favDao.getFavTitles().orEmpty()
         val tempList = arrayListOf<ProductModel>()
         docRef.documents.forEach {  document ->
+
             tempList.add(
                 ProductModel(
                     document.id,
@@ -96,11 +102,11 @@ class ProductRepository(application: Application) {
                 )
             )
         }
-
+        isLoading.postValue( false) // For main thread
         tempList
     }
 
-
+//
     private fun date(): Int {
         val date = calendar[Calendar.DAY_OF_MONTH].toString() +
                 calendar[Calendar.MONTH].toString() +
@@ -120,9 +126,7 @@ class ProductRepository(application: Application) {
 
 //Local repo
 
-    fun returnFavList(): MutableLiveData<List<FavModel>> {
-        return favList
-    }
+    fun returnFavList(): MutableLiveData<List<FavModel>> = favList
 
     fun getAllFav() {
         CoroutineScope(Dispatchers.Main).launch {
@@ -131,29 +135,16 @@ class ProductRepository(application: Application) {
     }
 
 
-    suspend fun addToFav(product: FavModel) {
-        favDao.addToFav(product)
-    }
+    suspend fun addToFav(product: FavModel) = favDao.addToFav(product)
 
+    suspend fun deleteFromFav(fav: FavModel) = favDao.deleteFromFav(fav)
 
-    suspend fun deleteFromFav(fav: FavModel) {
-        favDao.deleteFromFav(fav)
-    }
+    suspend fun addToBasket(product: BasketModel) = basketDao.addToBasket(product)
 
+    suspend fun deleteFromBasket(basketId: String) = basketDao.deleteFromBasket(basketId)
 
-    suspend fun addToBasket(product: BasketModel) {
-        basketDao.addToBasket(product)
-    }
+    suspend fun updateBasket(product: BasketModel) = basketDao.updateBasket(product)
 
-    suspend fun deleteFromBasket(basketId: String) {
-        basketDao.deleteFromBasket(basketId)
-    }
+    suspend fun totalBasket():Double = basketDao.getTotalPrice()
 
-    suspend fun updateBasket(product: BasketModel){
-        basketDao.updateBasket(product)
-    }
-
-     suspend fun totalBasket():Double{
-        return  basketDao.getTotalPrice()
-    }
 }

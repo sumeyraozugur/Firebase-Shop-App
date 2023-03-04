@@ -1,29 +1,27 @@
 package com.sum.shop.ui.updateprofile
 
-import android.Manifest
+
 import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.text.TextUtils
+
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
+
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentUpdateProfileBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.back
+import com.sum.shop.utils.pickImageFromGalleryWithPermission
 import com.sum.shop.utils.showErrorSnackBar
+import com.sum.shop.utils.showToast
 
 
 class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
@@ -41,12 +39,13 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
         registerLauncher()
 
         with(binding) {
+            profileToolbar.tvProductTitle.text= getString(R.string.update)
 
-            ibArrowBack.setOnClickListener {
+            profileToolbar.ibArrowBack.setOnClickListener {
                 Navigation.back(it)
             }
             ivUpdate.setOnClickListener {
-                selectImage()
+                pickImageFromGallery()
             }
 
             btnUpdate.setOnClickListener {
@@ -54,13 +53,14 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
                 val lastName = etLastName.text.toString().trim { it <= ' ' }
                 val email = etEmail.text.toString().trim { it <= ' ' }
 
-                if(validateProfile() )
+                if(validateProfile())
                     selectedPicture?.let { url->
                         viewModel.updateProfile(firstName, lastName, email, url)
                     }
             }
         }
     }
+
     private fun validateProfile(): Boolean {
         val firstName = binding.etFirstName.text.toString().trim()
         val lastName = binding.etLastName.text.toString().trim()
@@ -77,27 +77,13 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
     }
 
     private fun showError(errorMsg: String): Boolean {
-        showErrorSnackBar(requireContext(), requireView(), errorMsg, true)
+        requireView().showErrorSnackBar(errorMsg, true)
         return false
     }
 
-
-    private fun selectImage() {
-        when {
-            ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED -> {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                    Snackbar.make(requireView(), "Permission needed for gallery", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Give permission") {
-                            permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-                        }.show()
-                } else {
-                    permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
-                }
-            }
-            else -> {
-                activityResultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
-            }
-        }
+//permision
+    private fun pickImageFromGallery() {
+        this.pickImageFromGalleryWithPermission(activityResultLauncher,permissionLauncher)
     }
 
     private fun registerLauncher() {
@@ -106,7 +92,7 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
                 selectedPicture = result.data?.data
                 selectedPicture?.let { binding.ivUpdate.setImageURI(it) }
             } else {
-                Toast.makeText(requireContext(), "Image not selected", Toast.LENGTH_LONG).show()
+                requireContext().showToast("Image not selected")
             }
         }
 
@@ -114,10 +100,11 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
             if (result) {
                 activityResultLauncher.launch(Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
             } else {
-                Toast.makeText(requireContext(), "Permission needed", Toast.LENGTH_LONG).show()
+                requireContext().showToast("Permission needed")
             }
         }
     }
+
 
 
     private fun initObservers(){
@@ -128,12 +115,23 @@ class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
                 etEmail.setText(it.email)
             }
 
-            viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
-                if (it) {
-                    showErrorSnackBar(requireContext(), requireView(), getString(R.string.success), false)
-                } else {
-                    showErrorSnackBar(requireContext(), requireView(), getString(R.string.fail), true)
+            viewModel.isSuccess.observe(viewLifecycleOwner, Observer {isSuccess->
+                if (isSuccess)  {
+                    requireView().showErrorSnackBar(getString(R.string.success), false)
+                    viewModel.navigateToHome(requireView())
                 }
+                 else  requireView().showErrorSnackBar(getString(R.string.success), true)
+            })
+            viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+
+                ivUpdate.visibility = if (isLoading) View.GONE else View.VISIBLE
+                ivUpdateBorder.visibility = if (isLoading) View.GONE else View.VISIBLE
+                tilEmail.visibility =if (isLoading) View.GONE else View.VISIBLE
+                tilFirstName.visibility= if (isLoading) View.GONE else View.VISIBLE
+                tilLastName.visibility =  if (isLoading) View.GONE else View.VISIBLE
+                btnUpdate.visibility =  if (isLoading) View.GONE else View.VISIBLE
+                loadingLottie.visibility = if(isLoading) View.VISIBLE else View.GONE
+
             })
         }
     }

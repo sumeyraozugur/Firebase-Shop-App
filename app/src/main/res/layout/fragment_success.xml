@@ -19,7 +19,7 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="success.json" />
 
-    <com.sum.shop.utils.BoldTextView
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_success_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lottie" />
 
-    <com.sum.shop.utils.NormalTextView
+    <com.sum.shop.utils.customs.NormalTextView
         android:id="@+id/tv_success_information"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_success_title" />
 
-    <com.sum.shop.utils.Button
+    <com.sum.shop.utils.customs.Button
         android:id="@+id/btn_back_shop"
         style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_35sdp"

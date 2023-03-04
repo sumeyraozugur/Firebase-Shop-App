@@ -3,24 +3,23 @@ package com.sum.shop.ui.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentHomeBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.model.CategoryModel
-import com.sum.shop.utils.sent
+
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val categoryAdapter by lazy { CategoryAdapter() }
+    private val viewModel by lazy { HomeViewModel() }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvAddStyle.setOnClickListener {
-            Navigation.sent(it, R.id.action_homeFragment_to_addProductFragment)
+           viewModel.navigateToAddProduct(it)
         }
 
         val categoryList = arrayListOf<CategoryModel>()
@@ -43,18 +42,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.rvCategory.adapter =categoryAdapter
         binding.rvCategory.set3DItem(true)
         binding.rvCategory.setAlpha(true)
-
-   /*     categoryAdapter.categoryClick={
-            when(it){
-                0 -> findNavController().navigate(
-                    R.id.action_homeFragment_to_womanFragment)
-                1-> findNavController().navigate(
-                    R.id.action_homeFragment_to_manFragment)
-                else->
-                    findNavController().navigate(
-                        R.id.action_homeFragment_to_childrenFragment)
-            }
-        }*/
-
     }
 }

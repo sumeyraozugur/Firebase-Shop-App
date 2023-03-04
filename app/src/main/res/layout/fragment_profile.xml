@@ -30,7 +30,7 @@
         android:contentDescription="@string/border" />
 
 
-    <com.sum.shop.utils.BoldTextView
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
-    <com.sum.shop.utils.BoldTextView
+    <com.sum.shop.utils.customs.BoldTextView
         android:id="@+id/tv_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_profile"
         tools:text="Sümeyra Özuğur" />
 
-    <com.sum.shop.utils.NormalTextView
+    <com.sum.shop.utils.customs.NormalTextView
         android:id="@+id/tv_profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_profile_name"
         tools:text="ozugursumeyra@gmail.com" />
 
-    <com.sum.shop.utils.Button
+    <com.sum.shop.utils.customs.Button
         android:id="@+id/btn_logout"
         style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_36sdp"
@@ -82,6 +82,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_profile_email" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_lottie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

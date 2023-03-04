@@ -8,20 +8,20 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import com.sum.shop.Constant.E_MAIL
-import com.sum.shop.Constant.FIRST_NAME
-import com.sum.shop.Constant.ID
-import com.sum.shop.Constant.LAST_NAME
-import com.sum.shop.Constant.PROFILE_PICTURE
-import com.sum.shop.Constant.SIGN_UP
-import com.sum.shop.Constant.SUCCESS
-import com.sum.shop.Constant.USERS_PATH
+import com.sum.shop.utils.constant.Constant.E_MAIL
+import com.sum.shop.utils.constant.Constant.FIRST_NAME
+import com.sum.shop.utils.constant.Constant.ID
+import com.sum.shop.utils.constant.Constant.LAST_NAME
+import com.sum.shop.utils.constant.Constant.PROFILE_PICTURE
+import com.sum.shop.utils.constant.Constant.SIGN_UP
+import com.sum.shop.utils.constant.Constant.SUCCESS
+import com.sum.shop.utils.constant.Constant.USERS_PATH
 import com.sum.shop.model.ProfileModel
-import java.util.*
 
 class FirebaseAuthRepository {
     var profileInfo = MutableLiveData<ProfileModel>()
     var isSignIn = MutableLiveData<Boolean>()
+    var isLoading = MutableLiveData<Boolean>()
     var isSuccess = MutableLiveData<Boolean>()
     var resultOk = MutableLiveData<Boolean>()
     private var auth = Firebase.auth
@@ -39,7 +39,9 @@ class FirebaseAuthRepository {
         picture: Uri? = null,
         isAccept: Boolean = false
     ) {
+        isLoading.value = true
         auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener { task ->
+            isLoading.value = false
             if (task.isSuccessful) {
                 val currentUser = auth.currentUser
                 currentUser?.let { firebaseUser ->
@@ -70,39 +72,40 @@ class FirebaseAuthRepository {
 
     //Login
     fun signIn(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
-            it?.let {
+        isLoading.value = true
+        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {authResult->
+            isLoading.value = false
+            authResult?.let {
                 isSignIn.value = true
             }
         }.addOnFailureListener {
             isSignIn.value = false
+            isLoading.value = false
         }
     }
 
     //Change Password
     fun changePassword(email: String) {
+        isLoading.value = true
         auth.sendPasswordResetEmail(email).addOnSuccessListener {
             isSuccess.value = true
+            isLoading.value = false
         }.addOnFailureListener {
             isSuccess.value = false
+            isLoading.value = false
         }
     }
 
-    //Current user control
-    fun checkCurrentUser() {
-        isSuccess.value = false
-        auth.currentUser?.let {
-            isSuccess.value = true
-        }
-    }
 
     //Profile
     fun getProfileInfo() {
+        isLoading.value = true
         auth.currentUser?.let { user ->
 
-            val docRef = firebaseFirestore.collection("users").document(user.uid)
+            val docRef = firebaseFirestore.collection(USERS_PATH).document(user.uid)
             docRef.get()
                 .addOnSuccessListener { document ->
+                    isLoading.value = false
                     document?.let {
                         profileInfo.value = ProfileModel(
                             document.get("firstname") as String,
@@ -113,6 +116,7 @@ class FirebaseAuthRepository {
                     }
                 }
                 .addOnFailureListener { exception ->
+                    isLoading.value = false
                     Log.d(ContentValues.TAG, "get failed with ", exception)
                 }
         }
@@ -120,6 +124,7 @@ class FirebaseAuthRepository {
 
     //update Profile
     fun updateProfile(firstName: String, lastName: String, email: String, picture:Uri) {
+        isLoading.value = true
         firebaseStorage.child(name).putFile(picture).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
@@ -132,9 +137,11 @@ class FirebaseAuthRepository {
                             "picture", url
                         ).addOnSuccessListener {
                             isSuccess.value = true
+                            isLoading.value = false
 
                         }.addOnFailureListener {
                             isSuccess.value = false
+                            isLoading.value = false
 
                         }
                 }

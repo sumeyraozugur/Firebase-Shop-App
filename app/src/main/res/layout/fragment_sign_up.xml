@@ -36,7 +36,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_first_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_first_name">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_last_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_last_name">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_email">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -132,7 +132,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/til_password">
 
-                <com.sum.shop.utils.EditText
+                <com.sum.shop.utils.customs.EditText
                     android:id="@+id/et_confirm_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <com.sum.shop.utils.Button
+            <com.sum.shop.utils.customs.Button
                 android:id="@+id/btn_register"
                 style="@style/ButtonStyle"
                 android:layout_marginTop="@dimen/_24sdp"
@@ -170,7 +170,7 @@
                 app:layout_constraintVertical_bias="0.586"
                 />
 
-            <com.sum.shop.utils.NormalTextView
+            <com.sum.shop.utils.customs.NormalTextView
                 android:id="@+id/tv_terms_condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

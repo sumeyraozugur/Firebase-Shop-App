@@ -6,42 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.products.ProductsFragment">
 
-    <ImageButton
-        android:id="@+id/ib_arrow_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/color_primary_dark"
-        style="@style/ArrowBackStyle"
-        android:contentDescription="@string/back_arrow" />
-
-
-    <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tv_product_title"
-        style="@style/TitleCategoryNameStyle"
-        app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ib_arrow_back"
-        tools:text="Woman" />
+    <include
+        android:id="@+id/product_toolbar"
+        layout="@layout/toolbar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_35sdp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_product_title"
+
+        app:layout_constraintTop_toTopOf="@+id/product_toolbar"
         app:spanCount="2" />
-
-
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

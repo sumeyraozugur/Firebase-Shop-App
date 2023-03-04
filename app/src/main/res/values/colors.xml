@@ -4,6 +4,7 @@
     <color name="color_primary_dark">#2F127A</color>
     <color name="color_secondary">#9162e4</color>
     <color name="color_count">#916ECF</color>
+    <color name="color_toolbar">#FFFFFF</color>
 
     <color name="color_primary_text">#222934</color>
     <color name="white">#FFFFFFFF</color>

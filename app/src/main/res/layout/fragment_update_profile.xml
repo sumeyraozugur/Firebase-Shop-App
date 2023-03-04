@@ -7,34 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.updateprofile.UpdateProfileFragment">
 
-    <ImageButton
-        android:id="@+id/ib_arrow_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/color_primary_dark"
-        style="@style/ArrowBackStyle"
-        android:contentDescription="@string/back_arrow" />
-
-
-    <com.sum.shop.utils.BoldTextView
-        android:id="@+id/tv_woman_title"
-        style="@style/TitleCategoryNameStyle"
-        android:text="@string/update"
-        app:layout_constraintBottom_toBottomOf="@id/ib_arrow_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ib_arrow_back" />
+    <include
+        android:id="@+id/profile_toolbar"
+        layout="@layout/toolbar"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <ImageView
         android:id="@+id/iv_update"
         android:layout_width="@dimen/_180sdp"
         android:layout_height="@dimen/_150sdp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/_47sdp"
+        android:contentDescription="@string/profile_picture"
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_woman_title"
-        android:contentDescription="@string/profile_picture" />
+        app:layout_constraintTop_toTopOf="@+id/profile_toolbar" />
 
     <ImageView
         android:id="@+id/iv_update_border"
@@ -64,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_update">
 
-        <com.sum.shop.utils.EditText
+        <com.sum.shop.utils.customs.EditText
             android:id="@+id/et_first_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_first_name">
 
-        <com.sum.shop.utils.EditText
+        <com.sum.shop.utils.customs.EditText
             android:id="@+id/et_last_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +102,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_last_name">
 
-        <com.sum.shop.utils.EditText
+        <com.sum.shop.utils.customs.EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,7 +112,7 @@
             android:textSize="@dimen/_12ssp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.sum.shop.utils.Button
+    <com.sum.shop.utils.customs.Button
         android:id="@+id/btn_update"
         style="@style/ButtonStyle"
         android:layout_marginTop="@dimen/_24sdp"
@@ -134,6 +122,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_email" />
+
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_lottie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
