@@ -1,6 +1,5 @@
 package com.sum.shop.ui.profile
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -12,7 +11,6 @@ import com.sum.shop.R
 import com.sum.shop.databinding.FragmentProfileBinding
 import com.sum.shop.delegate.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {

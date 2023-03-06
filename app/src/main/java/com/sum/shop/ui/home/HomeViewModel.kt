@@ -10,6 +10,5 @@ class HomeViewModel():ViewModel() {
 
     fun navigateToAddProduct(view:View){
         Navigation.sent(view, R.id.action_homeFragment_to_addProductFragment)
-
     }
 }

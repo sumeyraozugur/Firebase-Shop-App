@@ -12,7 +12,7 @@ import com.sum.shop.ui.addproduct.AddProductViewModel
 import com.sum.shop.utils.showErrorSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class BasketFragment : Fragment(R.layout.fragment_basket ) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
     private val adapter by lazy { BasketAdapter(viewModel) }

@@ -1,22 +1,22 @@
 package com.sum.shop.repository
 
 
-import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.sum.shop.utils.constant.Constant
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.model.ProductModel
 import com.sum.shop.room.BasketProductDao
-import com.sum.shop.room.BasketProductDatabase
 import com.sum.shop.room.FavProductDao
-import com.sum.shop.room.FavProductDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,22 +24,28 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
-// @Inject constructor(private val favDao: FavProductDao, private val basketDao: BasketProductDao)
-class ProductRepository(application: Application){
+
+class ProductRepository @Inject constructor(
+    private val favDao: FavProductDao,
+    private val basketDao: BasketProductDao,
+    private val auth: FirebaseAuth,
+    private val firebaseFirestore: FirebaseFirestore,
+    private val firebaseStorage: FirebaseStorage
+    )
+
+{
     var isSuccess = MutableLiveData<Boolean>()
     var isLoading = MutableLiveData<Boolean>()
     var path = ""
-    private var auth = Firebase.auth
-    private var firebaseFirestore = Firebase.firestore
-    private val firebaseStorage by lazy { Firebase.storage.reference }
+    //var auth = Firebase.auth
+    //private var firebaseFirestore = Firebase.firestore
+    //private val firebaseStorage by lazy { Firebase.storage.reference }
     private val calendar by lazy { Calendar.getInstance() }
     val name = auth.currentUser?.uid.toString() + date() + time()
 
 
-val favDao = FavProductDatabase.getDatabase(application).favDao()
-val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
+
     var favList: MutableLiveData<List<FavModel>> = MutableLiveData()
     val readAllBasket: LiveData<List<BasketModel>> = basketDao.readAllBasket()
 
@@ -55,7 +61,7 @@ val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
         productType: String,
     ) {
         isLoading.value = true
-        firebaseStorage.child(name).putFile(img).addOnSuccessListener {
+        firebaseStorage.reference.child(name).putFile(img).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
 

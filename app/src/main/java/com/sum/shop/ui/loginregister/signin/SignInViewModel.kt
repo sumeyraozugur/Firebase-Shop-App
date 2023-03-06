@@ -13,7 +13,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignInViewModel @Inject constructor(private val firebaseRepo:FirebaseAuthRepository) : ViewModel() {
-    //private val firebaseRepo = FirebaseAuthRepository()
 
     private var _isSignIn= MutableLiveData<Boolean>()
     val isSingnIn: LiveData<Boolean>

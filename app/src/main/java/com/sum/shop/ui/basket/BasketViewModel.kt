@@ -1,8 +1,10 @@
 package com.sum.shop.ui.basket
 
 
-import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.sum.shop.model.BasketModel
 import com.sum.shop.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,11 +12,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//@HiltViewModel
-//class BasketViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
-class BasketViewModel(application: Application) : AndroidViewModel(application) {
+
+@HiltViewModel
+class BasketViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
     val readAllBasket: LiveData<List<BasketModel>>
-    private val repository= ProductRepository(application)
+
 
     val _totalAmount = MutableLiveData(0.0)
     val totalAmount: LiveData<Double> = _totalAmount
@@ -23,13 +25,13 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
         readAllBasket = repository.readAllBasket
     }
 
-    fun deleteFromBasket(basketId: String){
-        viewModelScope.launch(Dispatchers.IO){
+    fun deleteFromBasket(basketId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
             repository.deleteFromBasket(basketId)
         }
     }
 
-    fun updateBasket(product: BasketModel){
+    fun updateBasket(product: BasketModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateBasket(product)
         }
@@ -48,7 +50,7 @@ class BasketViewModel(application: Application) : AndroidViewModel(application) 
         _totalAmount.value = 0.0
     }
 
-    fun totalBasket(){
+    fun totalBasket() {
         viewModelScope.launch(Dispatchers.Main) {
             _totalAmount.value = repository.totalBasket()
         }

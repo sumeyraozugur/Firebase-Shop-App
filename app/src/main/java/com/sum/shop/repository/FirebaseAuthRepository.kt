@@ -23,11 +23,10 @@ import com.sum.shop.model.ProfileModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 class FirebaseAuthRepository @Inject constructor(
     private val auth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage)
+    private val firebaseStorage: FirebaseStorage )
 
 {
     var profileInfo = MutableLiveData<ProfileModel>()

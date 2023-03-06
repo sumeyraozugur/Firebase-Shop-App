@@ -1,6 +1,6 @@
 package com.sum.shop.ui.productdetail
 
-import ProductDetailViewModel
+
 import android.content.Intent
 import android.os.Bundle
 import android.view.View

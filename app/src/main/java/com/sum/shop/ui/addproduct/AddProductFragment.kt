@@ -1,6 +1,5 @@
 package com.sum.shop.ui.addproduct
 
-
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
@@ -24,13 +23,12 @@ import com.sum.shop.ui.loginregister.signup.SignUpTermConditionViewModel
 import com.sum.shop.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 
-
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
     private val binding by viewBinding(FragmentAddProductBinding::bind)
-   // private val viewModel: AddProductViewModel by viewModels()
-    private val  viewModel by lazy { AddProductViewModel(requireActivity().application) }
+    private val viewModel: AddProductViewModel by viewModels()
+   // private val  viewModel by lazy { AddProductViewModel(requireActivity().application) }
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     private var selectedPicture : Uri? = null

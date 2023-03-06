@@ -1,6 +1,5 @@
 package com.sum.shop.ui.success
 
-
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -14,7 +13,7 @@ import com.sum.shop.ui.favorite.FavoriteViewModel
 import com.sum.shop.utils.sent
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class SuccessFragment : Fragment(R.layout.fragment_success) {
     private val binding by viewBinding(FragmentSuccessBinding::bind)
     private val viewModel: SuccessViewModel by viewModels()
@@ -33,7 +32,7 @@ class SuccessFragment : Fragment(R.layout.fragment_success) {
             }
             tvSuccessInformation.text = getString(R.string.success_payment,totalAmount.toString())
         }
-        // Proguard                   )
+        // Proguard
     }
 
 

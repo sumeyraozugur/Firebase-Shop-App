@@ -1,8 +1,5 @@
 package com.sum.shop.ui.favorite
 
-
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,11 +10,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//@HiltViewModel
-//class FavoriteViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
-class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class FavoriteViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
 
-    private val repository= ProductRepository(application)
+
+//    private val repository= ProductRepository(application)
     var favList = MutableLiveData<List<FavModel>>()
 
     init {

@@ -8,7 +8,6 @@ import com.sum.shop.databinding.FragmentHomeBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.model.CategoryModel
 
-
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val categoryAdapter by lazy { CategoryAdapter() }

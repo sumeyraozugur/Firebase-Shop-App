@@ -14,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpTermConditionViewModel @Inject constructor(private val firebaseRepo:FirebaseAuthRepository)  : ViewModel() {
-   // private val firebaseRepo = FirebaseAuthRepository()
 
     private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>

@@ -14,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor( val firebaseRepo: FirebaseAuthRepository): ViewModel() {
-    //private val firebaseRepo = FirebaseAuthRepository()
 
     private var _profileInfo = MutableLiveData<ProfileModel>()
     val profileInfo: LiveData<ProfileModel>

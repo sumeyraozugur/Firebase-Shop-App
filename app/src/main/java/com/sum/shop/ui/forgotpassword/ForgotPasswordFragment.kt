@@ -15,7 +15,6 @@ import com.sum.shop.utils.isValidEmail
 import com.sum.shop.utils.showErrorSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
     private val binding by viewBinding(FragmentPasswordForgotBinding::bind)

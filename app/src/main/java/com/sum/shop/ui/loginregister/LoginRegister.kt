@@ -14,7 +14,6 @@ class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
     private val binding by viewBinding(FragmentLoginRegiserBinding::bind)
     private val titleList = arrayListOf(Constant.SIGN_IN, Constant.SIGN_UP)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -25,7 +24,4 @@ class LoginRegister : Fragment(R.layout.fragment_login_regiser) {
             tab.text = titleList[position]
         }.attach()
     }
-
-
-
 }

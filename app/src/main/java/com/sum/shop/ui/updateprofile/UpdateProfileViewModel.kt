@@ -30,7 +30,6 @@ class UpdateProfileViewModel  @Inject constructor(private val firebaseRepo:Fireb
         get() = _isLoading
 
 
-
     init {
         _isSuccess= firebaseRepo.isSuccess
         _isLoading = firebaseRepo.isLoading

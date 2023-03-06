@@ -18,6 +18,5 @@ class TabAdapter(fragment: Fragment):
             1 -> return SignUpFragment()
         }
         return SignInFragment()
-
     }
 }

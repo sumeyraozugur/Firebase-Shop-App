@@ -21,7 +21,6 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private val viewModel: SignInViewModel by viewModels()
     //private val viewModel by lazy { SignInViewModel() }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

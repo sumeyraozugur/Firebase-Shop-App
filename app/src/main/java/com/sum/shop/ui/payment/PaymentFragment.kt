@@ -11,7 +11,6 @@ import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.back
 import com.sum.shop.utils.showErrorSnackBar
 
-
 class PaymentFragment : Fragment(R.layout.fragment_payment) {
 
     private val binding by viewBinding(FragmentPaymentBinding::bind)

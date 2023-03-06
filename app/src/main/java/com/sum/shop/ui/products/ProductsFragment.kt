@@ -14,7 +14,7 @@ import com.sum.shop.ui.favorite.FavoriteViewModel
 import com.sum.shop.utils.back
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     private val binding by viewBinding(FragmentProductsBinding::bind)
@@ -30,9 +30,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
         initObservers()
 
         with(binding) {
-            //tvProductTitle.text = categoryType
             productToolbar.tvProductTitle.text=categoryType
-            //ibArrowBack.setOnClickListener {
             productToolbar.ibArrowBack.setOnClickListener {
                 Navigation.back(it)
             }

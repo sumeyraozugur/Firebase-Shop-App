@@ -10,7 +10,7 @@ import com.sum.shop.delegate.viewBinding
 import com.sum.shop.ui.loginregister.signin.SignInViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     private val binding by viewBinding(FragmentFavoriteBinding::bind)
     private val adapter by lazy { FavoriteAdapter(viewModel) }

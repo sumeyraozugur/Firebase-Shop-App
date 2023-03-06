@@ -18,7 +18,6 @@ import com.sum.shop.delegate.viewBinding
 class SplashFragment : Fragment(R.layout.fragment_splash) {
     private val binding by viewBinding(FragmentSplashBinding::bind)
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

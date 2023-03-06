@@ -1,24 +1,19 @@
 package com.sum.shop.ui.addproduct
 
-import android.app.Application
-import dagger.hilt.android.lifecycle.HiltViewModel
-
-
-
 import android.net.Uri
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sum.shop.repository.ProductRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
+class AddProductViewModel @Inject constructor(
+    private val firebaseRepo: ProductRepository
+) : ViewModel() {
 
-//@HiltViewModel
-//class AddProductViewModel @Inject constructor(private val firebaseRepo: ProductRepository) : ViewModel() {
 
-class AddProductViewModel(application: Application) : AndroidViewModel(application) {
-    private val firebaseRepo = ProductRepository(application)
     private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>
         get() = _isSuccess
