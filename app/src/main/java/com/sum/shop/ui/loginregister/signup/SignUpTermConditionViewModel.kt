@@ -9,9 +9,12 @@ import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.repository.FirebaseAuthRepository
 import com.sum.shop.utils.sent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SignUpTermConditionViewModel : ViewModel() {
-    private val firebaseRepo = FirebaseAuthRepository()
+@HiltViewModel
+class SignUpTermConditionViewModel @Inject constructor(private val firebaseRepo:FirebaseAuthRepository)  : ViewModel() {
+   // private val firebaseRepo = FirebaseAuthRepository()
 
     private var _isSuccess = MutableLiveData<Boolean>()
     val isSuccess: LiveData<Boolean>

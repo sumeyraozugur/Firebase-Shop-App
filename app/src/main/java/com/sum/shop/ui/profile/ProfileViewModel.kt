@@ -9,9 +9,12 @@ import com.sum.shop.R
 import com.sum.shop.model.ProfileModel
 import com.sum.shop.repository.FirebaseAuthRepository
 import com.sum.shop.utils.sent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProfileViewModel:ViewModel() {
-    private val firebaseRepo = FirebaseAuthRepository()
+@HiltViewModel
+class ProfileViewModel @Inject constructor( val firebaseRepo: FirebaseAuthRepository): ViewModel() {
+    //private val firebaseRepo = FirebaseAuthRepository()
 
     private var _profileInfo = MutableLiveData<ProfileModel>()
     val profileInfo: LiveData<ProfileModel>
@@ -38,5 +41,4 @@ class ProfileViewModel:ViewModel() {
     fun navigateToUpdate(view: View){
         Navigation.sent(view, R.id.action_profileFragment_to_updateProfileFragment)
     }
-
 }

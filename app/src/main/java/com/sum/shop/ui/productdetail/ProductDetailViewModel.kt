@@ -1,18 +1,21 @@
+
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.repository.ProductRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+//@HiltViewModel
+//class ProductDetailViewModel @Inject constructor(private val repository: ProductRepository): ViewModel() {
 class ProductDetailViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository= ProductRepository(application)
-
-
     fun addToFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addToFav(fav)

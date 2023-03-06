@@ -4,24 +4,26 @@ package com.sum.shop.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentProfileBinding
 import com.sum.shop.delegate.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private val binding by viewBinding(FragmentProfileBinding::bind)
-    private val viewModel by lazy{ProfileViewModel()}
+    private val viewModel: ProfileViewModel by viewModels()
+    //private val viewModel by lazy{ProfileViewModel()}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
-
 
             initializeObserver()
 
@@ -33,19 +35,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 viewModel.signOut()
                 findNavController().navigate(R.id.loginRegiser)
             }
-
-
-
-            viewModel.profileInfo.observe(viewLifecycleOwner) {
-                tvProfileName.text = "${it.firstName} ${it.lastName}"
-                tvProfileEmail.text = it.email
-                Glide.with(binding.ivProfile).load(it.picture).into(binding.ivProfile)
-            }
         }
     }
 
     private fun initializeObserver() {
         with(binding){
+
         viewModel.isLoading.observe(viewLifecycleOwner, Observer{isLoading ->
             ivProfile.visibility = if (isLoading) View.GONE else View.VISIBLE
             tvEdit.visibility =  if (isLoading) View.GONE else View.VISIBLE
@@ -54,6 +49,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             btnLogout.visibility=  if (isLoading) View.GONE else View.VISIBLE
             loadingLottie.visibility=  if (isLoading) View.VISIBLE else View.GONE
         })
+
+
+            viewModel.profileInfo.observe(viewLifecycleOwner) {
+                tvProfileName.text = "${it.firstName} ${it.lastName}"
+                tvProfileEmail.text = it.email
+                Glide.with(binding.ivProfile).load(it.picture).into(binding.ivProfile)
+            }
     }
     }
 }

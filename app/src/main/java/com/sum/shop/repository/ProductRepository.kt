@@ -1,8 +1,8 @@
 package com.sum.shop.repository
 
+
 import android.app.Application
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
@@ -13,7 +13,9 @@ import com.sum.shop.utils.constant.Constant
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.model.ProductModel
+import com.sum.shop.room.BasketProductDao
 import com.sum.shop.room.BasketProductDatabase
+import com.sum.shop.room.FavProductDao
 import com.sum.shop.room.FavProductDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,8 +23,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ProductRepository(application: Application) {
+// @Inject constructor(private val favDao: FavProductDao, private val basketDao: BasketProductDao)
+class ProductRepository(application: Application){
     var isSuccess = MutableLiveData<Boolean>()
     var isLoading = MutableLiveData<Boolean>()
     var path = ""
@@ -32,8 +37,9 @@ class ProductRepository(application: Application) {
     private val calendar by lazy { Calendar.getInstance() }
     val name = auth.currentUser?.uid.toString() + date() + time()
 
-    val favDao = FavProductDatabase.getDatabase(application).favDao()
-    val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
+
+val favDao = FavProductDatabase.getDatabase(application).favDao()
+val basketDao = BasketProductDatabase.getDatabase(application).basketDao()
     var favList: MutableLiveData<List<FavModel>> = MutableLiveData()
     val readAllBasket: LiveData<List<BasketModel>> = basketDao.readAllBasket()
 

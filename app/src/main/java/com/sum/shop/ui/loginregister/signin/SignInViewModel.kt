@@ -8,9 +8,12 @@ import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.repository.FirebaseAuthRepository
 import com.sum.shop.utils.sent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SignInViewModel : ViewModel() {
-    private val firebaseRepo = FirebaseAuthRepository()
+@HiltViewModel
+class SignInViewModel @Inject constructor(private val firebaseRepo:FirebaseAuthRepository) : ViewModel() {
+    //private val firebaseRepo = FirebaseAuthRepository()
 
     private var _isSignIn= MutableLiveData<Boolean>()
     val isSingnIn: LiveData<Boolean>

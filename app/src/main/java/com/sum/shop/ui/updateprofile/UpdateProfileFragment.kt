@@ -12,22 +12,25 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentUpdateProfileBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.ui.profile.ProfileViewModel
 import com.sum.shop.utils.back
 import com.sum.shop.utils.pickImageFromGalleryWithPermission
 import com.sum.shop.utils.showErrorSnackBar
 import com.sum.shop.utils.showToast
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class UpdateProfileFragment : Fragment(R.layout.fragment_update_profile) {
 
     private val binding by viewBinding(FragmentUpdateProfileBinding::bind)
-    private val viewModel by lazy{ UpdateProfileViewModel() }
+    private val viewModel: UpdateProfileViewModel by viewModels()
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     private var selectedPicture : Uri? = null

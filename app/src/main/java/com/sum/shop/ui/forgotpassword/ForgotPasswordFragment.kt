@@ -2,8 +2,8 @@ package com.sum.shop.ui.forgotpassword
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -13,12 +13,13 @@ import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.back
 import com.sum.shop.utils.isValidEmail
 import com.sum.shop.utils.showErrorSnackBar
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class ForgotPasswordFragment : Fragment(R.layout.fragment_password_forgot) {
     private val binding by viewBinding(FragmentPasswordForgotBinding::bind)
-    private val viewModel by lazy { ForgotPasswordViewModel() }
+    private val viewModel: ForgotPasswordViewModel by viewModels() // dont use with by lazy
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

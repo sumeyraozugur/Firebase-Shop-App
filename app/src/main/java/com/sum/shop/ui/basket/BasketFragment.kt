@@ -3,16 +3,20 @@ package com.sum.shop.ui.basket
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentBasketBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.ui.addproduct.AddProductViewModel
 import com.sum.shop.utils.showErrorSnackBar
+import dagger.hilt.android.AndroidEntryPoint
 
+//@AndroidEntryPoint
 class BasketFragment : Fragment(R.layout.fragment_basket ) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
     private val adapter by lazy { BasketAdapter(viewModel) }
-    private val  viewModel by lazy { BasketViewModel(requireActivity().application) }
+    private val viewModel: BasketViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,7 +42,6 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
         }
     }
 
-
     private fun initializeObserver() {
         viewModel.readAllBasket.observe(viewLifecycleOwner) { basketList ->
 
@@ -48,7 +51,6 @@ class BasketFragment : Fragment(R.layout.fragment_basket ) {
             if(basketList.isEmpty()){
                 binding.tvBasketEmpty.visibility = View.VISIBLE
             }
-
 
             binding.btnCheckout.setOnClickListener {
                 if(basketList.isNotEmpty()){

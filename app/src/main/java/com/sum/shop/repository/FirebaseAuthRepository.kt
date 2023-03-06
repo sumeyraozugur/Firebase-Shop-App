@@ -4,9 +4,12 @@ import android.content.ContentValues
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.sum.shop.utils.constant.Constant.E_MAIL
 import com.sum.shop.utils.constant.Constant.FIRST_NAME
@@ -17,16 +20,21 @@ import com.sum.shop.utils.constant.Constant.SIGN_UP
 import com.sum.shop.utils.constant.Constant.SUCCESS
 import com.sum.shop.utils.constant.Constant.USERS_PATH
 import com.sum.shop.model.ProfileModel
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class FirebaseAuthRepository {
+
+class FirebaseAuthRepository @Inject constructor(
+    private val auth: FirebaseAuth,
+    private val firebaseFirestore: FirebaseFirestore,
+    private val firebaseStorage: FirebaseStorage)
+
+{
     var profileInfo = MutableLiveData<ProfileModel>()
     var isSignIn = MutableLiveData<Boolean>()
     var isLoading = MutableLiveData<Boolean>()
     var isSuccess = MutableLiveData<Boolean>()
     var resultOk = MutableLiveData<Boolean>()
-    private var auth = Firebase.auth
-    private var firebaseFirestore = Firebase.firestore
-    private val firebaseStorage by lazy { Firebase.storage.reference }
     val name = auth.currentUser?.uid.toString()
 
 
@@ -125,7 +133,8 @@ class FirebaseAuthRepository {
     //update Profile
     fun updateProfile(firstName: String, lastName: String, email: String, picture:Uri) {
         isLoading.value = true
-        firebaseStorage.child(name).putFile(picture).addOnSuccessListener {
+
+        firebaseStorage.reference.child(name).putFile(picture).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
                 auth.currentUser?.let { it ->

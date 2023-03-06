@@ -10,10 +10,11 @@ import com.sum.shop.R
 import com.sum.shop.model.ProfileModel
 import com.sum.shop.repository.FirebaseAuthRepository
 import com.sum.shop.utils.sent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class UpdateProfileViewModel:ViewModel() {
-
-    private val firebaseRepo = FirebaseAuthRepository()
+@HiltViewModel
+class UpdateProfileViewModel  @Inject constructor(private val firebaseRepo:FirebaseAuthRepository):ViewModel() {
 
     private var _profileInfo = MutableLiveData<ProfileModel>()
     val profileInfo: LiveData<ProfileModel>

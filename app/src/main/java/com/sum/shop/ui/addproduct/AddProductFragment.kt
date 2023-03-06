@@ -11,6 +11,7 @@ import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -18,13 +19,17 @@ import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentAddProductBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.ui.loginregister.signin.SignInViewModel
 import com.sum.shop.ui.loginregister.signup.SignUpTermConditionViewModel
 import com.sum.shop.utils.*
+import dagger.hilt.android.AndroidEntryPoint
 
 
+//@AndroidEntryPoint
 class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
     private val binding by viewBinding(FragmentAddProductBinding::bind)
+   // private val viewModel: AddProductViewModel by viewModels()
     private val  viewModel by lazy { AddProductViewModel(requireActivity().application) }
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
@@ -33,8 +38,6 @@ class AddProductFragment : Fragment(R.layout.fragment_add_product) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
 
         observeIsLoad()
         registerLauncher()

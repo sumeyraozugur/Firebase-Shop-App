@@ -1,15 +1,17 @@
 package com.sum.shop.ui.basket
 
+
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.sum.shop.model.BasketModel
 import com.sum.shop.repository.ProductRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+//@HiltViewModel
+//class BasketViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
 class BasketViewModel(application: Application) : AndroidViewModel(application) {
     val readAllBasket: LiveData<List<BasketModel>>
     private val repository= ProductRepository(application)

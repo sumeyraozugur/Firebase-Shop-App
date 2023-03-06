@@ -1,12 +1,19 @@
 package com.sum.shop.ui.products
 
+
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sum.shop.model.ProductModel
 import com.sum.shop.repository.ProductRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
+
+//@HiltViewModel
+//class ProductsViewModel @Inject constructor(private val firebaseRepo: ProductRepository) : ViewModel() {
 
 class ProductsViewModel(application: Application) : AndroidViewModel(application) {
     private val firebaseRepo = ProductRepository(application)
@@ -18,18 +25,6 @@ class ProductsViewModel(application: Application) : AndroidViewModel(application
         categoryList.value = firebaseRepo.getProductRealtime(path)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

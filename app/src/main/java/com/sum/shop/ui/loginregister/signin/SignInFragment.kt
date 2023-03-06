@@ -3,6 +3,7 @@ package com.sum.shop.ui.loginregister.signin
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.sum.shop.R
@@ -12,11 +13,13 @@ import com.sum.shop.delegate.viewBinding
 import com.sum.shop.utils.isNullorEmpty
 import com.sum.shop.utils.isValidEmail
 import com.sum.shop.utils.showErrorSnackBar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private val binding by viewBinding(FragmentSignInBinding::bind)
-    private val viewModel by lazy { SignInViewModel() }
+    private val viewModel: SignInViewModel by viewModels()
+    //private val viewModel by lazy { SignInViewModel() }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

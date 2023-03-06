@@ -16,8 +16,9 @@ import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.utils.back
 import com.sum.shop.utils.showErrorSnackBar
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
     private val binding by viewBinding(FragmentProductDetailBinding::bind)
     private val viewModel: ProductDetailViewModel by viewModels()

@@ -12,7 +12,9 @@ import com.sum.shop.databinding.FragmentProductsBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.ui.favorite.FavoriteViewModel
 import com.sum.shop.utils.back
+import dagger.hilt.android.AndroidEntryPoint
 
+//@AndroidEntryPoint
 class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     private val binding by viewBinding(FragmentProductsBinding::bind)

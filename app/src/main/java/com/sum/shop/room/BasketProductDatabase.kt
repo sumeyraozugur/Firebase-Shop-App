@@ -5,7 +5,12 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.sum.shop.model.BasketModel
-import com.sum.shop.model.FavModel
+
+
+//@Database(entities = [BasketModel::class], version = 1, exportSchema = false)
+//abstract class BasketProductDatabase : RoomDatabase() {
+//    abstract fun basketDao(): BasketProductDao
+//}
 
 @Database(entities = [BasketModel::class], version = 1, exportSchema = false)
 abstract class BasketProductDatabase : RoomDatabase() {
