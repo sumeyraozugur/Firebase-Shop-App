@@ -1,4 +1,9 @@
-# Firebase-Shop-App
+# Firebase-Shop-App🌈
+
+**Explanation:** It is a shop app where you can add and sell products.
+
+
+
 
 <div>
 <table>
@@ -132,7 +137,7 @@
  </div>
  
  
- ## Video
+ ## Video 💥
  
 
 https://user-images.githubusercontent.com/41166029/225932038-cc4cf7f9-c127-4030-95ef-88598dc9ff0b.mp4
