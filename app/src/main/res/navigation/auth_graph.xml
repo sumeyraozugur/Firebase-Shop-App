@@ -8,7 +8,7 @@
         android:id="@+id/signUpFragment"
         android:name="com.sum.shop.ui.loginregister.signup.SignUpFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_sign_up" >
+        tools:layout="@layout/fragment_sign_up">
 
         <action
             android:id="@+id/action_signUpFragment_to_termConditionBottomSheet2"
@@ -22,7 +22,7 @@
         android:id="@+id/signInFragment"
         android:name="com.sum.shop.ui.loginregister.signin.SignInFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
@@ -38,7 +38,7 @@
         android:id="@+id/forgotPasswordFragment"
         android:name="com.sum.shop.ui.forgotpassword.ForgotPasswordFragment"
         android:label="fragment_password_forgot"
-        tools:layout="@layout/fragment_password_forgot" >
+        tools:layout="@layout/fragment_password_forgot">
         <action
             android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
             app:destination="@id/signInFragment" />
@@ -49,7 +49,7 @@
     <dialog
         android:id="@+id/termConditionBottomSheet2"
         android:name="com.sum.shop.ui.loginregister.signup.TermConditionBottomSheet"
-        android:label="TermConditionBottomSheet" >
+        android:label="TermConditionBottomSheet">
         <action
             android:id="@+id/action_termConditionBottomSheet2_to_signUpFragment"
             app:destination="@id/signUpFragment" />
@@ -61,7 +61,7 @@
         android:id="@+id/loginRegiser"
         android:name="com.sum.shop.ui.loginregister.LoginRegister"
         android:label="fragment_login_regiser"
-        tools:layout="@layout/fragment_login_regiser" >
+        tools:layout="@layout/fragment_login_regiser">
         <action
             android:id="@+id/action_loginRegiser2_to_signInFragment"
             app:destination="@id/signInFragment" />
@@ -89,7 +89,7 @@
         android:id="@+id/splashFragment"
         android:name="com.sum.shop.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginRegister"
             app:destination="@id/loginRegiser"
@@ -106,7 +106,7 @@
         android:id="@+id/profileFragment2"
         android:name="com.sum.shop.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment2_to_loginRegiser"
             app:destination="@id/loginRegiser" />

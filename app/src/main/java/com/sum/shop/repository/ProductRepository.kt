@@ -5,21 +5,15 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
-import com.sum.shop.utils.constant.Constant
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
 import com.sum.shop.model.ProductModel
 import com.sum.shop.room.BasketProductDao
 import com.sum.shop.room.FavProductDao
-import kotlinx.coroutines.CoroutineScope
+import com.sum.shop.utils.constant.Constant
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -31,25 +25,16 @@ class ProductRepository @Inject constructor(
     private val basketDao: BasketProductDao,
     private val auth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage
-    )
-
-{
+    private val firebaseStorage: FirebaseStorage,
+) {
     var isSuccess = MutableLiveData<Boolean>()
     var isLoading = MutableLiveData<Boolean>()
     var path = ""
-    //var auth = Firebase.auth
-    //private var firebaseFirestore = Firebase.firestore
-    //private val firebaseStorage by lazy { Firebase.storage.reference }
     private val calendar by lazy { Calendar.getInstance() }
     val name = auth.currentUser?.uid.toString() + date() + time()
 
-
-
     var favList: MutableLiveData<List<FavModel>> = MutableLiveData()
     val readAllBasket: LiveData<List<BasketModel>> = basketDao.readAllBasket()
-
-
 
     // products upload to Firebase
     fun addProduct(
@@ -80,14 +65,14 @@ class ProductRepository @Inject constructor(
                     firebaseFirestore.collection(productType.lowercase()).document()
                         .set(product)
                         .addOnSuccessListener {
-                            isSuccess.value =true
+                            isSuccess.value = true
                             isLoading.value = false
-                          //  Log.d("Product", Constant.SUCCESS)
+                            //  Log.d("Product", Constant.SUCCESS)
                         }
                         .addOnFailureListener { exception ->
                             isSuccess.value = false
                             isLoading.value = false
-                          //  Log.w("Product", exception)
+                            //  Log.w("Product", exception)
                         }
                 }
             }
@@ -96,11 +81,11 @@ class ProductRepository @Inject constructor(
 
 
     suspend fun getProductRealtime(path: String): List<ProductModel> = withContext(Dispatchers.IO) {
-        isLoading.postValue( true)
+        isLoading.postValue(true)
         val docRef = firebaseFirestore.collection(path).get().await()
         val favList = favDao.getFavTitles().orEmpty()
         val tempList = arrayListOf<ProductModel>()
-        docRef.documents.forEach {  document ->
+        docRef.documents.forEach { document ->
 
             tempList.add(
                 ProductModel(
@@ -114,11 +99,11 @@ class ProductRepository @Inject constructor(
                 )
             )
         }
-        isLoading.postValue( false) // For main thread
+        isLoading.postValue(false) // For main thread
         tempList
     }
 
-//
+    //
     private fun date(): Int {
         val date = calendar[Calendar.DAY_OF_MONTH].toString() +
                 calendar[Calendar.MONTH].toString() +
@@ -140,12 +125,10 @@ class ProductRepository @Inject constructor(
 
     fun returnFavList(): MutableLiveData<List<FavModel>> = favList
 
-    fun getAllFav() {
-        CoroutineScope(Dispatchers.Main).launch {
-            favList.value = favDao.getAllFav()
-        }
+    suspend fun getAllFav() {
+        val list = favDao.getAllFav()
+        favList.postValue(list)
     }
-
 
     suspend fun addToFav(product: FavModel) = favDao.addToFav(product)
 
@@ -157,6 +140,5 @@ class ProductRepository @Inject constructor(
 
     suspend fun updateBasket(product: BasketModel) = basketDao.updateBasket(product)
 
-    suspend fun totalBasket():Double = basketDao.getTotalPrice()
-
+    suspend fun totalBasket(): Double = basketDao.getTotalPrice()
 }

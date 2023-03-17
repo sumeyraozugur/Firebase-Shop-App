@@ -8,14 +8,14 @@ import androidx.navigation.fragment.navArgs
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentPaymentBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.utils.back
-import com.sum.shop.utils.showErrorSnackBar
+import com.sum.shop.utils.extension.back
+import com.sum.shop.utils.extension.showErrorSnackBar
+import com.sum.shop.utils.extension.trimmedText
 
 class PaymentFragment : Fragment(R.layout.fragment_payment) {
 
     private val binding by viewBinding(FragmentPaymentBinding::bind)
     private val args: PaymentFragmentArgs by navArgs()
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,9 +24,10 @@ class PaymentFragment : Fragment(R.layout.fragment_payment) {
 
         with(binding) {
             //Back
-            ibArrowBack.setOnClickListener {
+            productToolbar.ibArrowBack.setOnClickListener {
                 Navigation.back(it)
             }
+            productToolbar.tvProductTitle.text = getString(R.string.payment)
 
             btnPay.setOnClickListener {
                 if (validatePaymentDetails()) {
@@ -38,15 +39,13 @@ class PaymentFragment : Fragment(R.layout.fragment_payment) {
         }
     }
 
-
     private fun validatePaymentDetails(): Boolean {
         with(binding) {
-            val cardName = etCardName.text.toString().trim { it <= ' ' }
-            val cardNumber = etCardNumber.text.toString().trim { it <= ' ' }
-            val expiryDate = etExpiryDate.text.toString().trim { it <= ' ' }
-            val cvv = etCvv.text.toString().trim { it <= ' ' }
-            val address = etAddress.text.toString().trim { it <= ' ' }
-
+            val cardName = etCardName.trimmedText()
+            val cardNumber = etCardNumber.trimmedText()
+            val expiryDate = etExpiryDate.trimmedText()
+            val cvv = etCvv.trimmedText()
+            val address = etAddress.trimmedText()
 
 
             return when {
@@ -64,7 +63,4 @@ class PaymentFragment : Fragment(R.layout.fragment_payment) {
         requireView().showErrorSnackBar(errorMsg, true)
         return false
     }
-
 }
-
-

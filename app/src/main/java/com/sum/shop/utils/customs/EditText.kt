@@ -9,13 +9,6 @@ class EditText(context: Context, attrs: AttributeSet) : AppCompatEditText(contex
 
 
     init {
-        applyFont()
-    }
-
-
-    private fun applyFont() {
-        val typeface: Typeface =
-            Typeface.createFromAsset(context.assets, "Montserrat-Regular.ttf")
-        setTypeface(typeface)
+        typeface = Typeface.createFromAsset(context.assets, "Montserrat-Regular.ttf")
     }
 }

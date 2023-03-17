@@ -58,7 +58,6 @@
     <string name="btn_update">Update</string>
     <string name="see_all"><u>See All</u></string>
 
-    <string name="success_payment">"Thank you! Your payment of %1$s Tl has been received".</string>
 
     <string name="shop_condition">
         You may not order or obtain products or services from the Site if you \n
@@ -226,6 +225,7 @@ Please note that while we have tried to accurately display the colors of product
     <string name="update">Update</string>
     <string name="basket">Basket</string>
     <string name="_0">0</string>
+    <string name="_0_TL">0.0 TL</string>
     <string name="fav_icon">fav_icon</string>
     <string name="fav_product_image">fav_product_image</string>
     <string name="accept">Accept</string>
@@ -236,6 +236,17 @@ Please note that while we have tried to accurately display the colors of product
     <string name="logo">logo</string>
     <string name="empty_favorites_message">Empty Favorite</string>
     <string name="empty_basket_message">Empty Bag</string>
+    <string name="image_not_selected">Image not selected</string>
+    <string name="permission_needed">Permission needed</string>
+    <string name="permission_needed_gallery">Permission needed for gallery</string>
+    <string name="give_permission">Give Permission</string>
+    <string name="share_link">Share Link</string>
+    <string name="products_in_stock">There are no products in stock</string>
+    <string name="left_in_stock">"Only %1$s left in stock "</string>
+
+
+    <string name="success_payment">"Thank you! Your payment of %1$s Tl has been received".</string>
+    <string name="total_tl">"%1$s TL"</string>
 
 
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_fav"
@@ -11,19 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <ImageView
             android:id="@+id/iv_product"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="@dimen/_140sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:background="@color/color_image_view_background"
+            android:contentDescription="@string/product_image"
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"
-            android:contentDescription="@string/product_image" />
+            tools:srcCompat="@tools:sample/avatars" />
 
         <View
             android:id="@+id/view_divider"
@@ -42,9 +40,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_2sdp"
-            tools:text="TextView"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_divider" />
+            app:layout_constraintTop_toBottomOf="@+id/view_divider"
+            tools:text="TextView" />
 
 
         <com.sum.shop.utils.customs.BoldTextView
@@ -63,24 +61,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_6sdp"
-            tools:text="TextView"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.907"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="TextView" />
 
         <ImageView
             android:id="@+id/iv_product_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/color_primary_dark"
             android:layout_marginTop="@dimen/_3sdp"
             android:layout_marginEnd="@dimen/_3sdp"
+            android:backgroundTint="@color/color_primary_dark"
+            android:contentDescription="@string/fav_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_favorite"
-            android:contentDescription="@string/fav_icon"  />
+            app:srcCompat="@drawable/ic_favorite" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

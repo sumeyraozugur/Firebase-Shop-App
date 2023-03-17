@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductDetailViewModel @Inject constructor(private val repository: ProductRepository): ViewModel() {
+class ProductDetailViewModel @Inject constructor(private val repository: ProductRepository) :
+    ViewModel() {
 
     fun addToFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -19,11 +20,11 @@ class ProductDetailViewModel @Inject constructor(private val repository: Product
         }
     }
 
-fun addToBasket(basket: BasketModel) {
-    viewModelScope.launch(Dispatchers.IO) {
-        repository.addToBasket(basket)
+    fun addToBasket(basket: BasketModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addToBasket(basket)
+        }
     }
-}
 
     fun deleteFromFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -31,4 +32,3 @@ fun addToBasket(basket: BasketModel) {
         }
     }
 }
-

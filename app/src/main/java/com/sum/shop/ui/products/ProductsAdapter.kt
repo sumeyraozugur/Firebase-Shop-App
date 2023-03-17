@@ -2,15 +2,15 @@ package com.sum.shop.ui.products
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sum.shop.R
 import com.sum.shop.databinding.ItemProductsBinding
 import com.sum.shop.model.ProductModel
-import com.sum.shop.utils.visible
+import com.sum.shop.utils.extension.visible
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
+class ProductsAdapter(private val onClickDetail: (ProductModel) -> Unit) :
+    RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
     private var productsList = listOf<ProductModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
@@ -29,24 +29,24 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
         fun bind(productModel: ProductModel) {
             with(binding) {
                 tvProductName.text = productModel.productTitle
-                tvProductPrice.text = "${productModel.productPrice} TL"
+                tvProductPrice.text =
+                    itemView.context.getString(R.string.total_tl, productModel.productPrice)
                 Glide.with(binding.ivProduct).load(productModel.img).into(binding.ivProduct)
                 if (productModel.productCount.toInt() <= 3) {
                     tvProductCount.visible()
-                    tvProductCount.text = "Only ${productModel.productCount} left in stock " // order soon
+                    tvProductCount.text = itemView.context.getString(
+                        R.string.left_in_stock, productModel.productCount
+                    )// order soon
                 }
 
                 root.setOnClickListener {
-                    val action =
-                        ProductsFragmentDirections.actionProductsFragmentToProductDetailFragment(productModel)
-                    Navigation.findNavController(it).navigate(action)
+                    onClickDetail(productModel)
+
                 }
-                if(productModel.productFav){
-                    ivProductFav.setBackgroundResource(R.drawable.ic_full_fav)
-                }
-                else{
-                    ivProductFav.setBackgroundResource(R.drawable.ic_favorite_border)
-                }
+
+                if (productModel.productFav) ivProductFav.setBackgroundResource(R.drawable.ic_full_fav)
+                else ivProductFav.setBackgroundResource(R.drawable.ic_favorite_border)
+
             }
         }
     }

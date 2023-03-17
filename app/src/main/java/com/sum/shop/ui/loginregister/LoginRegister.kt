@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.sum.shop.utils.constant.Constant
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentLoginRegiserBinding
 import com.sum.shop.delegate.viewBinding
+import com.sum.shop.utils.constant.Constant
 
 
 class LoginRegister : Fragment(R.layout.fragment_login_regiser) {

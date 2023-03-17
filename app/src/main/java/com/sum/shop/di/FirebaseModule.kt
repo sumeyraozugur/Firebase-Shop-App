@@ -1,6 +1,5 @@
 package com.sum.shop.di
 
-
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -26,8 +25,4 @@ object FirebaseModule {
     @Singleton
     @Provides
     fun provideFirebaseStorage(): FirebaseStorage = FirebaseStorage.getInstance()
-
 }
-
-
-

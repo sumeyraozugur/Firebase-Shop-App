@@ -1,31 +1,21 @@
 package com.sum.shop.ui.loginregister.signup
 
 import android.net.Uri
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
-import com.sum.shop.R
 import com.sum.shop.repository.FirebaseAuthRepository
-import com.sum.shop.utils.sent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SignUpTermConditionViewModel @Inject constructor(private val firebaseRepo:FirebaseAuthRepository)  : ViewModel() {
+class SignUpTermConditionViewModel @Inject constructor(private val firebaseRepo: FirebaseAuthRepository) :
+    ViewModel() {
 
-    private var _isSuccess = MutableLiveData<Boolean>()
-    val isSuccess: LiveData<Boolean>
-        get() = _isSuccess
+    private var _isSuccess = firebaseRepo.isSuccess
+    val isSuccess: LiveData<Boolean> = _isSuccess
 
-    var resultOk = MutableLiveData<Boolean>()
-
-
-    init {
-        _isSuccess = firebaseRepo.isSuccess
-        resultOk = firebaseRepo.resultOk
-    }
+    val resultOk = MutableLiveData<Boolean>()
 
 
     fun signUp(
@@ -33,15 +23,12 @@ class SignUpTermConditionViewModel @Inject constructor(private val firebaseRepo:
         lastName: String,
         eMail: String,
         password: String,
-        picture:Uri,
+        picture: Uri,
         isAccept: Boolean
-    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, picture,isAccept)
+    ) = firebaseRepo.signUp(firstName, lastName, eMail, password, picture)
 
-      fun checkResult(){
-          firebaseRepo.checkResult()
-      }
-
-    fun navigateToTermCondition(view:View){
-        Navigation.sent(view, R.id.action_loginRegiser_to_termConditionBottomSheet)
+    //check radio button clicked or not
+    fun checkResult() {
+        resultOk.value = true
     }
 }

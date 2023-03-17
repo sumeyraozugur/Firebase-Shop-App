@@ -1,81 +1,84 @@
-package com.sum.shop.utils
+package com.sum.shop.utils.extension
 
 import android.Manifest
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.provider.MediaStore
 import android.util.Patterns
 import android.view.View
-import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 import com.sum.shop.R
 import com.sum.shop.utils.customs.EditText
 
-fun Navigation.sent(v: View, id: Int) {
-    findNavController(v).navigate(id)
-}
+fun Navigation.sent(v: View, id: Int) = findNavController(v).navigate(id)
 
-fun Context.showToast(message: CharSequence) {
+fun Context.showToast(message: CharSequence) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-}
 
 fun View.visible() {
     visibility = View.VISIBLE
-}
-
-fun Navigation.back(v:View){
-    findNavController(v).navigateUp()
-
 }
 
 fun View.gone() {
     visibility = View.GONE
 }
 
+fun setViewsGone(vararg views: View) {
+    views.forEach {
+        it.gone()
+    }
+}
+
+fun setViewsVisible(vararg views: View) {
+    views.forEach {
+        it.visible()
+    }
+
+}
+
+fun checkEditTexts(vararg editTexts: EditText): Boolean {
+    return editTexts.all {
+        it.isNullorEmpty("required field")
+    }
+}
+
+//fun View.visibleIf(bool: Boolean) {
+//    if (bool) visible() else gone()
+//}
+
+fun Navigation.back(v: View) = findNavController(v).navigateUp()
+
 fun View.showErrorSnackBar(message: String, errorMessage: Boolean) {
     val snackBar = Snackbar.make(this, message, Snackbar.LENGTH_LONG)
     val snackBarView = snackBar.view
 
     if (errorMessage) {
-        snackBarView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_snack_bar_error))
+        snackBarView.setBackgroundColor(
+            ContextCompat.getColor(
+                context,
+                R.color.color_snack_bar_error
+            )
+        )
     } else {
-        snackBarView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_snack_bar_success))
+        snackBarView.setBackgroundColor(
+            ContextCompat.getColor(
+                context,
+                R.color.color_snack_bar_success
+            )
+        )
     }
     snackBar.show()
 }
-
-fun showProgressDialog(text: String,context: Context) {
-
-    val mProgressDialog = Dialog(context)
-    mProgressDialog.setContentView(R.layout.dialog_progress)
-
-    mProgressDialog.findViewById<TextView>(R.id.tv_progress_text).text =text
-    mProgressDialog.setCancelable(false)
-    mProgressDialog.setCanceledOnTouchOutside(false)
-
-    //Start the dialog and display it on screen.
-    mProgressDialog.show()
-}
-
-fun hideProgressDialog(context: Context) {
-    val mProgressDialog = Dialog(context)
-    mProgressDialog.setContentView(R.layout.dialog_progress)
-    if (mProgressDialog.isShowing) {
-        mProgressDialog.dismiss()
-    }
-}
-
-
-
 
 fun EditText.isValidEmail(errorString: String): Boolean {
     val textInputLayout = this.parent.parent as TextInputLayout
@@ -88,6 +91,9 @@ fun EditText.isValidEmail(errorString: String): Boolean {
     }
 }
 
+fun EditText.trimmedText(): String {
+    return this.text.toString().trim()
+}
 
 fun EditText.isNullorEmpty(errorString: String): Boolean {
     val textInputLayout = this.parent.parent as TextInputLayout
@@ -116,10 +122,10 @@ fun Fragment.pickImageFromGalleryWithPermission(
             ) {
                 Snackbar.make(
                     requireView(),
-                    "Permission needed for gallery",
+                    getString(R.string.permission_needed_gallery),
                     Snackbar.LENGTH_INDEFINITE
                 )
-                    .setAction("Give permission") {
+                    .setAction(getString(R.string.give_permission)) {
                         permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
                     }.show()
             } else {
@@ -137,8 +143,8 @@ fun Fragment.pickImageFromGalleryWithPermission(
     }
 }
 
-
-
-
-
-
+fun ImageView.loadImage(url: Any) { //url can be string or int
+    Glide.with(this)
+        .load(url)
+        .into(this)
+}

@@ -1,104 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:fillViewport="true"
+    tools:context=".ui.home.HomeFragment"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="12sdp">
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_scroll_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="12sdp">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.sum.shop.utils.customs.BoldTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/add_your_style"
+            android:textColor="@color/color_primary_dark"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <com.sum.shop.utils.customs.NormalTextView
+            android:id="@+id/tv_explain_add_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="@string/add_your_style_and_earn_money"
+            android:textColor="#60000000"
+            android:textStyle="italic|bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <com.sum.shop.utils.customs.NormalTextView
+            android:id="@+id/tv_add_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/let_s_get_started"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_explain_add_style"
+            app:layout_constraintStart_toEndOf="@+id/tv_explain_add_style"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+        <com.sum.shop.utils.customs.BoldTextView
+            android:id="@+id/tv_discord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:text="@string/discover"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_explain_add_style" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="65dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+            android:id="@+id/rv_category"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.sum.shop.utils.customs.BoldTextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/add_your_style"
-                android:textColor="@color/color_primary_dark"
-                android:textSize="@dimen/_20ssp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-            <com.sum.shop.utils.customs.NormalTextView
-                android:id="@+id/tv_explain_add_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_6sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="@string/add_your_style_and_earn_money"
-                android:textColor="#60000000"
-                android:textStyle="italic|bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.085"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
-
-            <com.sum.shop.utils.customs.NormalTextView
-                android:id="@+id/tv_add_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/let_s_get_started"
-                android:textColor="@color/color_primary"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_explain_add_style"
-                app:layout_constraintStart_toEndOf="@+id/tv_explain_add_style"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title"
-                app:layout_constraintVertical_bias="1.0" />
+            android:layout_height="@dimen/_250sdp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_discord" />
 
 
-            <com.sum.shop.utils.customs.BoldTextView
-                android:id="@+id/tv_discord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:textSize="@dimen/_20sdp"
-                android:text="@string/discover"
-                android:textColor="@color/color_primary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.044"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_explain_add_style" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="@dimen/_180sdp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginStart="64dp"
-                android:layout_marginEnd="65dp"
-                android:src="@drawable/login"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/logo" />
-
-            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
-                android:id="@+id/rv_category"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_250sdp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_discord" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

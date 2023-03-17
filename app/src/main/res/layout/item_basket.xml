@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_basket"
@@ -26,11 +25,11 @@
             android:layout_width="@dimen/_80sdp"
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/_12sdp"
+            android:contentDescription="@string/product_image"
             android:src="@mipmap/ic_launcher_round"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/product_image" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.sum.shop.utils.customs.BoldTextView
             android:id="@+id/tv_basket_name"
@@ -49,9 +48,9 @@
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_28sdp"
             android:src="@drawable/ic_cancel"
-            app:tint = "@color/color_primary_dark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/color_primary_dark" />
 
         <com.sum.shop.utils.customs.Button
             android:id="@+id/btn_minus"
@@ -80,16 +79,16 @@
             android:id="@+id/iv_profile_border"
             android:layout_width="@dimen/_26sdp"
             android:layout_height="@dimen/_19sdp"
-            android:padding="@dimen/_2sdp"
             android:layout_marginBottom="@dimen/_9sdp"
+            android:contentDescription="@string/border"
+            android:padding="@dimen/_2sdp"
             android:src="@drawable/count_image_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_plus"
             app:layout_constraintHorizontal_bias="0.294"
             app:layout_constraintStart_toEndOf="@+id/btn_minus"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.757"
-            android:contentDescription="@string/border" />
+            app:layout_constraintVertical_bias="0.757" />
 
         <com.sum.shop.utils.customs.Button
             android:id="@+id/btn_plus"

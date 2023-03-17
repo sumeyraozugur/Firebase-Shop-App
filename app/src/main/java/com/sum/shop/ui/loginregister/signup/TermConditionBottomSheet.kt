@@ -7,12 +7,16 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sum.shop.databinding.TermConditionSheetBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TermConditionBottomSheet : BottomSheetDialogFragment() {
 
     private var _binding: TermConditionSheetBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel : SignUpTermConditionViewModel
+
+    //private val viewModel:SignUpTermConditionViewModel by viewModels()
+    private lateinit var viewModel: SignUpTermConditionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,7 +33,7 @@ class TermConditionBottomSheet : BottomSheetDialogFragment() {
         viewModel = ViewModelProvider(requireActivity())[SignUpTermConditionViewModel::class.java]
 
         binding.btnCancel.setOnClickListener {
-           dismiss()
+            dismiss()
         }
 
         binding.btnTermAccept.setOnClickListener {

@@ -4,33 +4,31 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSignInBinding
-
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.utils.isNullorEmpty
-import com.sum.shop.utils.isValidEmail
-import com.sum.shop.utils.showErrorSnackBar
+import com.sum.shop.utils.extension.isNullorEmpty
+import com.sum.shop.utils.extension.isValidEmail
+import com.sum.shop.utils.extension.sent
+import com.sum.shop.utils.extension.showErrorSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private val binding by viewBinding(FragmentSignInBinding::bind)
     private val viewModel: SignInViewModel by viewModels()
-    //private val viewModel by lazy { SignInViewModel() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initObservers()
 
-
         with(binding) {
 
             tvForgotPassword.setOnClickListener {
-               viewModel.navigateToForgot(it)
+                Navigation.sent(it, R.id.action_loginRegiser2_to_forgotPasswordFragment)
             }
 
             btnLogin.setOnClickListener {
@@ -51,18 +49,12 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
 
     private fun initObservers() {
-        viewModel.isSingnIn.observe(viewLifecycleOwner, Observer {
+        viewModel.isSingnIn.observe(viewLifecycleOwner) {
             if (it) {
                 findNavController().navigate(R.id.action_loginRegiser_to_main_graph)
             } else {
                 requireView().showErrorSnackBar(getString(R.string.fail), true)
             }
-        })
-
-         viewModel.isSuccess.observe(viewLifecycleOwner, Observer {
-             if(it){
-                 findNavController().navigate(R.id.action_loginRegiser_to_main_graph)
-             }
-         })
+        }
     }
 }

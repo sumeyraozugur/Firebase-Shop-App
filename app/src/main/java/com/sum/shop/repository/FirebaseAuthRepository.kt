@@ -5,12 +5,9 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.storage
+import com.sum.shop.model.ProfileModel
 import com.sum.shop.utils.constant.Constant.E_MAIL
 import com.sum.shop.utils.constant.Constant.FIRST_NAME
 import com.sum.shop.utils.constant.Constant.ID
@@ -19,23 +16,18 @@ import com.sum.shop.utils.constant.Constant.PROFILE_PICTURE
 import com.sum.shop.utils.constant.Constant.SIGN_UP
 import com.sum.shop.utils.constant.Constant.SUCCESS
 import com.sum.shop.utils.constant.Constant.USERS_PATH
-import com.sum.shop.model.ProfileModel
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class FirebaseAuthRepository @Inject constructor(
     private val auth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore,
-    private val firebaseStorage: FirebaseStorage )
-
-{
-    var profileInfo = MutableLiveData<ProfileModel>()
-    var isSignIn = MutableLiveData<Boolean>()
-    var isLoading = MutableLiveData<Boolean>()
-    var isSuccess = MutableLiveData<Boolean>()
-    var resultOk = MutableLiveData<Boolean>()
+    private val firebaseStorage: FirebaseStorage,
+) {
+    val profileInfo = MutableLiveData<ProfileModel>() //callback flow
+    val isSignIn = MutableLiveData<Boolean>()
+    val isLoading = MutableLiveData<Boolean>()
+    val isSuccess = MutableLiveData<Boolean>()
     val name = auth.currentUser?.uid.toString()
-
 
     //Register
     fun signUp(
@@ -44,35 +36,34 @@ class FirebaseAuthRepository @Inject constructor(
         eMail: String,
         password: String,
         picture: Uri? = null,
-        isAccept: Boolean = false
-    ) {
+
+        ) {
         isLoading.value = true
-        auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener { task ->
+        auth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener {
             isLoading.value = false
-            if (task.isSuccessful) {
-                val currentUser = auth.currentUser
-                currentUser?.let { firebaseUser ->
-                    val user = hashMapOf(
-                        ID to firebaseUser.uid,
-                        E_MAIL to eMail,
-                        FIRST_NAME to firstName,
-                        LAST_NAME to lastName,
-                        PROFILE_PICTURE to picture
-                    )
-                    firebaseFirestore.collection(USERS_PATH).document(firebaseUser.uid)
-                        .set(user)
-                        .addOnSuccessListener {
-                            isSuccess.value = true
-                            Log.d(SIGN_UP, SUCCESS)
-                        }
-                        .addOnFailureListener { exception ->
-                            isSuccess.value = false
-                            Log.w(SIGN_UP, exception)
-                        }
-                }
-            } else {
+
+            val currentUser = auth.currentUser
+            currentUser?.let { firebaseUser ->
+                val user = hashMapOf(
+                    ID to firebaseUser.uid,
+                    E_MAIL to eMail,
+                    FIRST_NAME to firstName,
+                    LAST_NAME to lastName,
+                    PROFILE_PICTURE to picture
+                )
+                firebaseFirestore.collection(USERS_PATH).document(firebaseUser.uid)
+                    .set(user)
+                    .addOnSuccessListener {
+                        isSuccess.value = true
+                        Log.d(SIGN_UP, SUCCESS)
+                    }
+                    .addOnFailureListener { exception ->
+                        isSuccess.value = false
+                        Log.w(SIGN_UP, exception)
+                    }
+            }?.addOnFailureListener {
                 isSuccess.value = false
-                Log.w(SIGN_UP, task.exception)
+                Log.w(SIGN_UP, it.toString())
             }
         }
     }
@@ -80,7 +71,7 @@ class FirebaseAuthRepository @Inject constructor(
     //Login
     fun signIn(email: String, password: String) {
         isLoading.value = true
-        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {authResult->
+        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener { authResult ->
             isLoading.value = false
             authResult?.let {
                 isSignIn.value = true
@@ -94,7 +85,7 @@ class FirebaseAuthRepository @Inject constructor(
     //Change Password
     fun changePassword(email: String) {
         isLoading.value = true
-        auth.sendPasswordResetEmail(email).addOnSuccessListener {
+        auth.sendPasswordResetEmail(email).addOnSuccessListener {//or addOnCompleteListener
             isSuccess.value = true
             isLoading.value = false
         }.addOnFailureListener {
@@ -130,14 +121,14 @@ class FirebaseAuthRepository @Inject constructor(
     }
 
     //update Profile
-    fun updateProfile(firstName: String, lastName: String, email: String, picture:Uri) {
+    fun updateProfile(firstName: String, lastName: String, email: String, picture: Uri) {
         isLoading.value = true
 
         firebaseStorage.reference.child(name).putFile(picture).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
-                auth.currentUser?.let { it ->
-                    firebaseFirestore.collection(USERS_PATH).document(it.uid)
+                auth.currentUser?.let { user ->
+                    firebaseFirestore.collection(USERS_PATH).document(user.uid)
                         .update(
                             "firstname", firstName,
                             "lastname", lastName,
@@ -150,7 +141,6 @@ class FirebaseAuthRepository @Inject constructor(
                         }.addOnFailureListener {
                             isSuccess.value = false
                             isLoading.value = false
-
                         }
                 }
             }
@@ -158,12 +148,5 @@ class FirebaseAuthRepository @Inject constructor(
     }
 
     //Signout
-    fun signOut() {
-        auth.signOut()
-    }
-
-    //check radio button clicked or not
-    fun checkResult() {
-        resultOk.value = true
-    }
+    fun signOut() = auth.signOut()
 }

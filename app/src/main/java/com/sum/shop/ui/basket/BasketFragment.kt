@@ -8,68 +8,70 @@ import androidx.navigation.Navigation
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentBasketBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.ui.addproduct.AddProductViewModel
-import com.sum.shop.utils.showErrorSnackBar
+import com.sum.shop.utils.extension.showErrorSnackBar
+import com.sum.shop.utils.extension.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BasketFragment : Fragment(R.layout.fragment_basket ) {
+class BasketFragment : Fragment(R.layout.fragment_basket) {
     private val binding by viewBinding(FragmentBasketBinding::bind)
-    private val adapter by lazy { BasketAdapter(viewModel) }
     private val viewModel: BasketViewModel by viewModels()
+    private val adapter by lazy {
+        BasketAdapter(
+            onRemoveBasketClick = ::onRemoveBasketClick,
+            viewModel::increase,
+            viewModel::decrease
+        )
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.rvBasket.adapter = adapter
         initializeObserver()
+    }
 
-
-        with(viewModel){
-
-            adapter.onRemoveBasketClick = {
-                deleteFromBasket(it)
-                resetTotalAmount()
-            }
-
-            adapter.onIncreaseClick= {
-                increase(it)
-            }
-
-            adapter.onDecreaseClick= {
-                decrease(it)
-            }
-        }
+    private fun onRemoveBasketClick(s: String) {
+        viewModel.deleteFromBasket(s)
+        viewModel.resetTotalAmount()
     }
 
     private fun initializeObserver() {
-        viewModel.readAllBasket.observe(viewLifecycleOwner) { basketList ->
+        with(binding) {
+            viewModel.apply {
 
-            viewModel.totalBasket()
-            adapter.updateList(basketList)
+                readAllBasket.observe(viewLifecycleOwner) { basketList ->
 
-            if(basketList.isEmpty()){
-                binding.tvBasketEmpty.visibility = View.VISIBLE
-            }
+                    totalBasket()
+                    adapter.updateList(basketList)
 
-            binding.btnCheckout.setOnClickListener {
-                if(basketList.isNotEmpty()){
-                    val action =
-                        viewModel._totalAmount.value?.let { it1 ->
-                            BasketFragmentDirections.actionBasketFragmentToPaymentFragment(it1.toFloat())
+                    if (basketList.isEmpty()) {
+                        tvBasketEmpty.visible()
+                    }
+
+                    btnCheckout.setOnClickListener {
+                        if (basketList.isNotEmpty()) {
+                            val action =
+                                totalAmount.value?.let { double ->
+                                    BasketFragmentDirections.actionBasketFragmentToPaymentFragment(
+                                        double.toFloat()
+                                    )
+                                }
+                            if (action != null) {
+                                Navigation.findNavController(it).navigate(action)
+                            }
+                        } else {
+                            requireView().showErrorSnackBar(getString(R.string.empty_bag), true)
                         }
-                    if (action != null) {
-                        Navigation.findNavController(it).navigate(action)
                     }
                 }
-                else{
-                    requireView().showErrorSnackBar(getString(R.string.empty_bag),true)
+
+                totalAmount.observe(viewLifecycleOwner) {
+                    if (it == null) tvAmount.text = getString(R.string._0_TL)
+                    else tvAmount.text = getString(R.string.total_tl, it.toString())
                 }
             }
-        }
-
-        viewModel.totalAmount.observe(viewLifecycleOwner) {
-            binding.tvAmount.text = it.toString()
         }
     }
 }

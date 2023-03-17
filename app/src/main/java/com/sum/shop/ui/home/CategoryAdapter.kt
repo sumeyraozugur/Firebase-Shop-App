@@ -2,25 +2,24 @@ package com.sum.shop.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.sum.shop.databinding.ItemCategoryBinding
 import com.sum.shop.model.CategoryModel
+import com.sum.shop.utils.extension.loadImage
 
-class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
-    private var categoryList = listOf<CategoryModel>()
+class CategoryAdapter(private val onClickCategory: (CategoryModel) -> Unit) :
+    RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+    private var categoryList = listOf<CategoryModel>() //ListAdapter
 
     inner class CategoryViewHolder(private var itemCategoryBinding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(itemCategoryBinding.root) {
 
         fun bind(categoryModel: CategoryModel) {
-            with(itemCategoryBinding){
-                Glide.with(itemCategoryBinding.ivCategories).load(categoryModel.categoryImage)
-                    .into(itemCategoryBinding.ivCategories)
+            with(itemCategoryBinding) {
+                ivCategories.loadImage(categoryModel.categoryImage)
                 root.setOnClickListener {
-                    val action =HomeFragmentDirections.actionHomeFragmentToProductsFragment(categoryModel.categoryName)
-                    Navigation.findNavController(it).navigate(action)
+                    onClickCategory(categoryModel)
+
                 }
             }
         }
@@ -40,6 +39,6 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
 
     fun setData(category: List<CategoryModel>) {
         this.categoryList = category
-        notifyDataSetChanged()
+        notifyItemRangeChanged(0, categoryList.size)
     }
 }

@@ -9,15 +9,14 @@ import androidx.navigation.fragment.navArgs
 import com.sum.shop.R
 import com.sum.shop.databinding.FragmentSuccessBinding
 import com.sum.shop.delegate.viewBinding
-import com.sum.shop.ui.favorite.FavoriteViewModel
-import com.sum.shop.utils.sent
+import com.sum.shop.utils.extension.sent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SuccessFragment : Fragment(R.layout.fragment_success) {
     private val binding by viewBinding(FragmentSuccessBinding::bind)
     private val viewModel: SuccessViewModel by viewModels()
-    private val args:SuccessFragmentArgs by navArgs()
+    private val args: SuccessFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,19 +25,19 @@ class SuccessFragment : Fragment(R.layout.fragment_success) {
 
         initializeObserver()
 
-        with(binding){
+        with(binding) {
             btnBackShop.setOnClickListener {
-                viewModel.navigateHome(it)
+                Navigation.sent(it, R.id.action_successFragment_to_homeFragment)
             }
-            tvSuccessInformation.text = getString(R.string.success_payment,totalAmount.toString())
+            tvSuccessInformation.text = getString(R.string.success_payment, totalAmount.toString())
         }
         // Proguard
     }
 
 
-    private fun initializeObserver(){
+    private fun initializeObserver() {
         viewModel.readAllBasket.observe(viewLifecycleOwner) { basketList ->
-            basketList.forEach{basketModel->
+            basketList.forEach { basketModel ->
                 viewModel.deleteFromBasket(basketModel.uuid)
             }
         }

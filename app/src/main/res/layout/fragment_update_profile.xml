@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +8,7 @@
 
     <include
         android:id="@+id/profile_toolbar"
-        layout="@layout/toolbar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        layout="@layout/toolbar" />
 
     <ImageView
         android:id="@+id/iv_update"
@@ -28,14 +25,14 @@
         android:id="@+id/iv_update_border"
         android:layout_width="@dimen/_182sdp"
         android:layout_height="@dimen/_150sdp"
+        android:contentDescription="@string/border"
         android:src="@drawable/user_image_background"
         app:layout_constraintBottom_toBottomOf="@+id/iv_update"
         app:layout_constraintEnd_toEndOf="@+id/iv_update"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/iv_update"
         app:layout_constraintTop_toTopOf="@+id/iv_update"
-        app:layout_constraintVertical_bias="0.0"
-        android:contentDescription="@string/border" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_name"
@@ -70,7 +67,7 @@
         android:layout_marginStart="@dimen/_12sdp"
         android:layout_marginTop="@dimen/update_til_image_marginTop"
 
-        android:layout_marginEnd= "@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
         android:hint="@string/last_name"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,7 +92,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="@dimen/update_til_image_marginTop"
         android:layout_marginEnd="@dimen/_12sdp"
-
         android:hint="@string/email_id"
         android:textColorHint="@color/color_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,7 +120,6 @@
         app:layout_constraintTop_toBottomOf="@+id/til_email" />
 
 
-
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading_lottie"
         android:layout_width="match_parent"
@@ -137,6 +132,5 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="loading.json"
         app:lottie_loop="true" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

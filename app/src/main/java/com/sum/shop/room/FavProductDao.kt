@@ -16,6 +16,5 @@ interface FavProductDao {
     suspend fun getFavTitles(): List<String>?
 
     @Delete
-    suspend fun deleteFromFav(fav:FavModel)
-
+    suspend fun deleteFromFav(fav: FavModel)
 }

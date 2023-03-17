@@ -1,6 +1,6 @@
 package com.sum.shop.model
 
 data class CategoryModel(
-    var categoryName: String,
+    val categoryName: String,
     val categoryImage: Int
 )

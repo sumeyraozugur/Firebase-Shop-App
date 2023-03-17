@@ -14,8 +14,8 @@ import com.sum.shop.databinding.FragmentProductDetailBinding
 import com.sum.shop.delegate.viewBinding
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
-import com.sum.shop.utils.back
-import com.sum.shop.utils.showErrorSnackBar
+import com.sum.shop.utils.extension.back
+import com.sum.shop.utils.extension.showErrorSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,7 +32,6 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
             uuid = product.id,
             img = product.img,
             productTitle = product.productTitle,
-            productDescription = product.productDescription,
             productPrice = product.productPrice
         )
 
@@ -41,7 +40,8 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
         with(binding) {
             tvDetailName.text = product.productTitle
             tvDetailInfo.text = product.productDescription
-            tvDetailPrice.text = "${product.productPrice} TL"
+            tvDetailPrice.text = getString(R.string.total_tl, product.productPrice)
+
 
             Glide.with(this@ProductDetailFragment).load(product.img)
                 .into(binding.ivProductImage)
@@ -67,40 +67,36 @@ class ProductDetailFragment() : Fragment(R.layout.fragment_product_detail) {
 
             if (product.productFav) {
                 btnDetailAddFav.setBackgroundResource(R.drawable.ic_full_fav)
-            }
-            else {
+            } else {
                 btnDetailAddFav.setBackgroundResource(R.drawable.ic_favorite)
             }
 
-
             btnAddToBasket.setOnClickListener {
                 viewModel.addToBasket(
-                    BasketModel(
-                        id,
-                        product.id,
-                        product.img,
-                        product.productTitle,
-                        product.productDescription,
-                        product.productPrice.toInt(),
-                        product.productCount
-                    )
+                    product?.let { product ->
+                        BasketModel(
+                            id,
+                            product.id!!,
+                            product.img!!,
+                            product.productTitle!!,
+                            product.productPrice!!.toInt(),
+                            product.productCount!!
+                        )
+
+                    }
                 )
                 requireView().showErrorSnackBar(getString(R.string.product_add), false)
-
             }
         }
     }
 
-    private fun shareLink(){
+    private fun shareLink() {
         binding.btnDetailShare.setOnClickListener {
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, binding.webView.url)
-                startActivity(Intent.createChooser(this,"Share Link"))
+                startActivity(Intent.createChooser(this, getString(R.string.share_link)))
             }
         }
     }
 }
-
-
-

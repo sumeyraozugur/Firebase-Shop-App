@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,22 +11,22 @@
         android:layout_width="@dimen/_207sdp"
         android:layout_height="@dimen/_180sdp"
         android:layout_marginTop="@dimen/_28sdp"
+        android:contentDescription="@string/profile_picture"
         android:src="@drawable/ic_user_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/profile_picture" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_profile_border"
         android:layout_width="@dimen/_208sdp"
         android:layout_height="@dimen/_180sdp"
+        android:contentDescription="@string/border"
         android:src="@drawable/user_image_background"
         app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
         app:layout_constraintEnd_toEndOf="@+id/iv_profile"
         app:layout_constraintStart_toStartOf="@+id/iv_profile"
-        app:layout_constraintTop_toTopOf="@+id/iv_profile"
-        android:contentDescription="@string/border" />
+        app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
 
     <com.sum.shop.utils.customs.BoldTextView
@@ -96,6 +95,4 @@
         app:lottie_fileName="loading.json"
         app:lottie_loop="true" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-

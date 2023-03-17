@@ -11,10 +11,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavoriteViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
+class FavoriteViewModel @Inject constructor(private val repository: ProductRepository) :
+    ViewModel() {
 
-
-//    private val repository= ProductRepository(application)
     var favList = MutableLiveData<List<FavModel>>()
 
     init {
@@ -23,7 +22,7 @@ class FavoriteViewModel @Inject constructor(private val repository: ProductRepos
     }
 
 
-    fun deleteFromFav(fav:FavModel) {
+    fun deleteFromFav(fav: FavModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteFromFav(fav)
             getAllFav() //to update the list as soon as it is deleted
@@ -31,6 +30,8 @@ class FavoriteViewModel @Inject constructor(private val repository: ProductRepos
     }
 
     private fun getAllFav() {
-        repository.getAllFav()
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getAllFav()
+        }
     }
 }

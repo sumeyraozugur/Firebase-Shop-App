@@ -12,18 +12,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class BasketViewModel @Inject constructor(private val repository: ProductRepository) : ViewModel() {
-    val readAllBasket: LiveData<List<BasketModel>>
+    val readAllBasket: LiveData<List<BasketModel>> = repository.readAllBasket
 
-
-    val _totalAmount = MutableLiveData(0.0)
+    private val _totalAmount = MutableLiveData(0.0)
     val totalAmount: LiveData<Double> = _totalAmount
-
-    init {
-        readAllBasket = repository.readAllBasket
-    }
 
     fun deleteFromBasket(basketId: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -31,19 +25,21 @@ class BasketViewModel @Inject constructor(private val repository: ProductReposit
         }
     }
 
-    fun updateBasket(product: BasketModel) {
+    private fun updateBasket(product: BasketModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateBasket(product)
         }
     }
 
 
-    fun increase(price: Double) {
-        _totalAmount.value = _totalAmount.value?.plus(price)
+    fun increase(product: BasketModel) {
+        _totalAmount.value = _totalAmount.value?.plus(product.productPrice)
+        updateBasket(product)
     }
 
-    fun decrease(price: Double) {
-        _totalAmount.value = _totalAmount.value?.minus(price)
+    fun decrease(product: BasketModel) {
+        _totalAmount.value = _totalAmount.value?.minus(product.productPrice)
+        updateBasket(product)
     }
 
     fun resetTotalAmount() {
@@ -51,7 +47,7 @@ class BasketViewModel @Inject constructor(private val repository: ProductReposit
     }
 
     fun totalBasket() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch() {
             _totalAmount.value = repository.totalBasket()
         }
     }
