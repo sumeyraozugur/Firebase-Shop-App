@@ -2,14 +2,24 @@ package com.sum.shop.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sum.shop.databinding.ItemCategoryBinding
 import com.sum.shop.model.CategoryModel
+import com.sum.shop.utils.diffutil.DiffUtilCallback
 import com.sum.shop.utils.extension.loadImage
 
 class CategoryAdapter(private val onClickCategory: (CategoryModel) -> Unit) :
-    RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
-    private var categoryList = listOf<CategoryModel>() //ListAdapter
+    ListAdapter<CategoryModel, CategoryAdapter.CategoryViewHolder>(
+        DiffUtilCallback<CategoryModel>(
+            itemsTheSame = { oldItem, newItem ->
+                oldItem == newItem
+            },
+            contentsTheSame = { oldItem, newItem ->
+                oldItem == newItem
+            }
+        )
+    ) {
 
     inner class CategoryViewHolder(private var itemCategoryBinding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(itemCategoryBinding.root) {
@@ -19,7 +29,6 @@ class CategoryAdapter(private val onClickCategory: (CategoryModel) -> Unit) :
                 ivCategories.loadImage(categoryModel.categoryImage)
                 root.setOnClickListener {
                     onClickCategory(categoryModel)
-
                 }
             }
         }
@@ -31,14 +40,10 @@ class CategoryAdapter(private val onClickCategory: (CategoryModel) -> Unit) :
         return CategoryViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
-        holder.bind(categoryList[position])
-    }
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) =
+        holder.bind(currentList[position])
 
-    override fun getItemCount() = categoryList.size
+    override fun getItemCount() = currentList.size
 
-    fun setData(category: List<CategoryModel>) {
-        this.categoryList = category
-        notifyItemRangeChanged(0, categoryList.size)
-    }
+
 }

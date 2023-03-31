@@ -55,7 +55,7 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     private fun initObservers() {
         with(binding) {
             viewModel.categoryList.observe(viewLifecycleOwner) { productList ->
-                productAdapter.setData(productList)
+                productAdapter.submitList(productList)
             }
 
             viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

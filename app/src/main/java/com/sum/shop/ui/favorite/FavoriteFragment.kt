@@ -15,12 +15,6 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     private val binding by viewBinding(FragmentFavoriteBinding::bind)
     private val viewModel: FavoriteViewModel by viewModels()
     private val adapter by lazy { FavoriteAdapter(viewModel::deleteFromFav) }
-//    private val adapter by lazy {
-//        FavoriteAdapter(onRemoveFavClick = {
-//            viewModel.deleteFromFav(it)
-//        })
-//    }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +27,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     private fun initializeObserver() {
         viewModel.favList.observe(viewLifecycleOwner) { favList ->
-            adapter.updateList(favList)
+            adapter.submitList(favList)
             if (favList.isEmpty()) {
                 binding.tvFavEmpty.visible()
             }

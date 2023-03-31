@@ -8,7 +8,7 @@ import com.sum.shop.model.BasketModel
 interface BasketProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addToBasket(todo: BasketModel)
+    suspend fun addToBasket(basket: BasketModel)
 
     @Query("SELECT * FROM basket_table ORDER BY basket_id ASC")
     fun readAllBasket(): LiveData<List<BasketModel>>

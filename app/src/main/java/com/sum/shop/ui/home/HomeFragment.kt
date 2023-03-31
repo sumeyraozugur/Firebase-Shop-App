@@ -39,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         categoryList.add(woman)
         categoryList.add(man)
         categoryList.add(child)
-        categoryAdapter.setData(categoryList)
+        categoryAdapter.submitList(categoryList)
         binding.rvCategory.adapter = categoryAdapter
         binding.rvCategory.set3DItem(true)
         binding.rvCategory.setAlpha(true)

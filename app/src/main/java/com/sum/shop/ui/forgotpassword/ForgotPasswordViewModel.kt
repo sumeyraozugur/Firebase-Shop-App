@@ -13,7 +13,6 @@ class ForgotPasswordViewModel @Inject constructor(private val firebaseRepo: Fire
     private val _isSuccess = firebaseRepo.isSuccess
     val isSuccess: LiveData<Boolean> = _isSuccess
 
-
     fun changePassword(email: String) = firebaseRepo.changePassword(email)
 
 }

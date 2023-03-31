@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--TODO Step 2: Create a custom background selector for the Radio button. -->
-<!--START-->
+<?xml version="1.0" encoding="utf-8"?><!--START-->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true">
         <shape android:shape="rectangle">

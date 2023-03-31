@@ -2,10 +2,12 @@ package com.sum.shop.ui.basket
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sum.shop.R
 import com.sum.shop.databinding.ItemBasketBinding
 import com.sum.shop.model.BasketModel
+import com.sum.shop.utils.diffutil.DiffUtilCallback
 import com.sum.shop.utils.extension.loadImage
 import com.sum.shop.utils.extension.showErrorSnackBar
 
@@ -13,16 +15,23 @@ class BasketAdapter(
     private val onRemoveBasketClick: (String) -> Unit = {},
     private val onIncreaseClick: (BasketModel) -> Unit = {},
     private val onDecreaseClick: (BasketModel) -> Unit = {}
-) : RecyclerView.Adapter<BasketAdapter.BasketHolder>() {
-
-    private var basketList = listOf<BasketModel>()
+) : ListAdapter<BasketModel, BasketAdapter.BasketHolder>(
+    DiffUtilCallback<BasketModel>(
+        itemsTheSame = { oldItem, newItem ->
+            oldItem == newItem
+        },
+        contentsTheSame = { oldItem, newItem ->
+            oldItem == newItem
+        }
+    )
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = BasketHolder(
         ItemBasketBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun onBindViewHolder(holder: BasketHolder, position: Int) =
-        holder.bind(basketList[position])
+        holder.bind(currentList[position])
 
     inner class BasketHolder(private var itemBasketBinding: ItemBasketBinding) :
         RecyclerView.ViewHolder(itemBasketBinding.root) {
@@ -62,10 +71,6 @@ class BasketAdapter(
         }
     }
 
-    override fun getItemCount() = basketList.size
+    override fun getItemCount() = currentList.size
 
-    fun updateList(updatedList: List<BasketModel>) {
-        this.basketList = updatedList
-        notifyDataSetChanged()
-    }
 }

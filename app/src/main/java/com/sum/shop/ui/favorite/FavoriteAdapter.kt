@@ -2,16 +2,25 @@ package com.sum.shop.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sum.shop.R
 import com.sum.shop.databinding.ItemFavBinding
 import com.sum.shop.model.FavModel
+import com.sum.shop.utils.diffutil.DiffUtilCallback
 import com.sum.shop.utils.extension.loadImage
 
 class FavoriteAdapter(private val onRemoveFavClick: (FavModel) -> Unit = {}) :
-    RecyclerView.Adapter<FavoriteAdapter.FavoriteHolder>() {
-    private var favList = listOf<FavModel>()
-
+    ListAdapter<FavModel, FavoriteAdapter.FavoriteHolder>(
+        DiffUtilCallback<FavModel>(
+            itemsTheSame = { oldItem, newItem ->
+                oldItem == newItem
+            },
+            contentsTheSame = { oldItem, newItem ->
+                oldItem == newItem
+            }
+        )
+    ) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteHolder {
         val binding = ItemFavBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,7 +28,7 @@ class FavoriteAdapter(private val onRemoveFavClick: (FavModel) -> Unit = {}) :
     }
 
     override fun onBindViewHolder(holder: FavoriteHolder, position: Int) {
-        holder.bind(favList[position])
+        holder.bind(currentList[position])
     }
 
     inner class FavoriteHolder(private var itemFavBinding: ItemFavBinding) :
@@ -40,11 +49,5 @@ class FavoriteAdapter(private val onRemoveFavClick: (FavModel) -> Unit = {}) :
         }
     }
 
-    override fun getItemCount() = favList.size
-
-
-    fun updateList(list: List<FavModel>) {
-        this.favList = list
-        notifyDataSetChanged()
-    }
+    override fun getItemCount() = currentList.size
 }

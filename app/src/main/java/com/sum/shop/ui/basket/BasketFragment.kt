@@ -44,7 +44,7 @@ class BasketFragment : Fragment(R.layout.fragment_basket) {
                 readAllBasket.observe(viewLifecycleOwner) { basketList ->
 
                     totalBasket()
-                    adapter.updateList(basketList)
+                    adapter.submitList(basketList)
 
                     if (basketList.isEmpty()) {
                         tvBasketEmpty.visible()
