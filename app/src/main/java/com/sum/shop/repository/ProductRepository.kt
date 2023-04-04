@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.perf.FirebasePerformance
 import com.google.firebase.storage.FirebaseStorage
 import com.sum.shop.model.BasketModel
 import com.sum.shop.model.FavModel
@@ -46,6 +47,11 @@ class ProductRepository @Inject constructor(
         productType: String,
     ) {
         isLoading.value = true
+
+        // Start performance trace
+        val trace = FirebasePerformance.getInstance().newTrace("add_product_trace")
+        trace.start()
+
         firebaseStorage.reference.child(name).putFile(img).addOnSuccessListener {
 
             it.metadata?.reference?.downloadUrl?.addOnSuccessListener { url ->
@@ -65,11 +71,17 @@ class ProductRepository @Inject constructor(
                     firebaseFirestore.collection(productType.lowercase()).document()
                         .set(product)
                         .addOnSuccessListener {
+                            // Stop performance trace
+                            trace.stop()
+
                             isSuccess.value = true
                             isLoading.value = false
                             //  Log.d("Product", Constant.SUCCESS)
                         }
                         .addOnFailureListener { exception ->
+                            // Stop performance trace
+                            trace.stop()
+
                             isSuccess.value = false
                             isLoading.value = false
                             //  Log.w("Product", exception)
@@ -79,9 +91,13 @@ class ProductRepository @Inject constructor(
         }
     }
 
-
     suspend fun getProductRealtime(path: String): List<ProductModel> = withContext(Dispatchers.IO) {
         isLoading.postValue(true)
+
+        // Start performance trace
+        val trace = FirebasePerformance.getInstance().newTrace("get_product_realtime_trace")
+        trace.start()
+
         val docRef = firebaseFirestore.collection(path).get().await()
         val favList = favDao.getFavTitles().orEmpty()
         val tempList = arrayListOf<ProductModel>()
@@ -99,6 +115,10 @@ class ProductRepository @Inject constructor(
                 )
             )
         }
+
+        // Stop performance trace
+        trace.stop()
+
         isLoading.postValue(false) // For main thread
         tempList
     }

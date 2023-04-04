@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.perf.FirebasePerformance
 import com.google.firebase.storage.FirebaseStorage
 import com.sum.shop.model.ProfileModel
 import com.sum.shop.utils.constant.Constant.E_MAIL
@@ -16,7 +17,9 @@ import com.sum.shop.utils.constant.Constant.PROFILE_PICTURE
 import com.sum.shop.utils.constant.Constant.SIGN_UP
 import com.sum.shop.utils.constant.Constant.SUCCESS
 import com.sum.shop.utils.constant.Constant.USERS_PATH
+import java.net.HttpURLConnection
 import javax.inject.Inject
+import com.google.firebase.perf.metrics.Trace
 
 class FirebaseAuthRepository @Inject constructor(
     private val auth: FirebaseAuth,
@@ -36,9 +39,10 @@ class FirebaseAuthRepository @Inject constructor(
         eMail: String,
         password: String,
         picture: Uri? = null,
-
-        ) {
+    ) {
         isLoading.value = true
+        val metric = FirebasePerformance.getInstance().newHttpMetric("/signup", FirebasePerformance.HttpMethod.POST)
+        metric.start()
         auth.createUserWithEmailAndPassword(eMail, password).addOnSuccessListener {
             isLoading.value = false
 
@@ -55,32 +59,52 @@ class FirebaseAuthRepository @Inject constructor(
                     .set(user)
                     .addOnSuccessListener {
                         isSuccess.value = true
+                        metric.setHttpResponseCode(HttpURLConnection.HTTP_OK)
+                        metric.setRequestPayloadSize((firstName+lastName+eMail+password).length.toLong())
+                        metric.stop()
                         Log.d(SIGN_UP, SUCCESS)
                     }
                     .addOnFailureListener { exception ->
                         isSuccess.value = false
+                        metric.setHttpResponseCode(HttpURLConnection.HTTP_BAD_REQUEST)
+                        metric.setRequestPayloadSize((firstName+lastName+eMail+password).length.toLong())
+                        metric.stop()
                         Log.w(SIGN_UP, exception)
                     }
             }?.addOnFailureListener {
                 isSuccess.value = false
+                metric.setHttpResponseCode(HttpURLConnection.HTTP_BAD_REQUEST)
+                metric.setRequestPayloadSize((firstName+lastName+eMail+password).length.toLong())
+                metric.stop()
                 Log.w(SIGN_UP, it.toString())
             }
         }
     }
 
+
     //Login
+
+
     fun signIn(email: String, password: String) {
+        val trace = FirebasePerformance.getInstance().newTrace("signIn")
+        trace.start()
+
         isLoading.value = true
         auth.signInWithEmailAndPassword(email, password).addOnSuccessListener { authResult ->
             isLoading.value = false
             authResult?.let {
                 isSignIn.value = true
+               // trace.incrementCounter("success")
             }
         }.addOnFailureListener {
             isSignIn.value = false
             isLoading.value = false
+           // trace.incrementCounter("failure")
+        }.addOnCompleteListener {
+            trace.stop()
         }
     }
+
 
     //Change Password
     fun changePassword(email: String) {
@@ -97,6 +121,9 @@ class FirebaseAuthRepository @Inject constructor(
 
     //Profile
     fun getProfileInfo() {
+        val trace = FirebasePerformance.getInstance().newTrace("getProfileInfo")
+        trace.start()
+
         isLoading.value = true
         auth.currentUser?.let { user ->
 
@@ -111,14 +138,20 @@ class FirebaseAuthRepository @Inject constructor(
                             user.email,
                             document.get("picture") as String
                         )
+                        //trace.incrementCounter("success")
                     }
                 }
                 .addOnFailureListener { exception ->
                     isLoading.value = false
                     Log.d(ContentValues.TAG, "get failed with ", exception)
+                    //trace.incrementCounter("failure")
+                }
+                .addOnCompleteListener {
+                    trace.stop()
                 }
         }
     }
+
 
     //update Profile
     fun updateProfile(firstName: String, lastName: String, email: String, picture: Uri) {
